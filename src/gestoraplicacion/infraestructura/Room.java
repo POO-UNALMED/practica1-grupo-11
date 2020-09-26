@@ -9,6 +9,19 @@ public class Room {
 	private Procedimiento procedimiento;
 	private String inventario[];
 	
+	public Room() {}
+	
+	public Room(String codigo, Paciente paciente, boolean ocupado, Procedimiento procedimiento, String[] inventario) {
+		super();
+		this.codigo = codigo;
+		this.paciente = paciente;
+		this.ocupado = ocupado;
+		this.procedimiento = procedimiento;
+		this.inventario = inventario;
+	}
+
+
+
 	public String getCodigo() {
 		return codigo;
 	}

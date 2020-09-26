@@ -8,6 +8,20 @@ public class Persona {
 	private Date fechaNacimiento;
 	private String telefono;
 	private String direccion;
+
+	
+	
+	public Persona() {}
+	
+	public Persona(String nombre, String id, Date fechaNacimiento, String telefono, String direccion) {
+		super();
+		this.nombre = nombre;
+		this.id = id;
+		this.fechaNacimiento = fechaNacimiento;
+		this.telefono = telefono;
+		this.direccion = direccion;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}

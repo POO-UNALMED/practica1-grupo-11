@@ -8,6 +8,18 @@ public class Solicitud {
 	private Procedimiento solicitud;
 	private boolean aprobado;
 	
+	public Solicitud() {};
+	
+	public Solicitud(String codigo, Persona solicitante, Procedimiento solicitud, boolean aprobado) {
+		super();
+		this.codigo = codigo;
+		this.solicitante = solicitante;
+		this.solicitud = solicitud;
+		this.aprobado = aprobado;
+	}
+
+
+
 	public String getCodigo() {
 		return codigo;
 	}
