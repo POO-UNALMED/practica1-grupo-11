@@ -13,8 +13,10 @@ public class Paciente extends Persona {
 	
 	
 	Paciente(){
-		
+
 	}
+	
+	
 	
 	
 	public HistoriaClinica getHistoriaClinica() {
