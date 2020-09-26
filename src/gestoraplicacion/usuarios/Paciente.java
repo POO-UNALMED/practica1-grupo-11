@@ -1,4 +1,6 @@
 package gestoraplicacion.usuarios;
+import java.util.Date;
+
 import gestoraplicacion.infraestructura.HistoriaClinica;
 import gestoraplicacion.infraestructura.Room;
 import gestoraplicacion.infraestructura.Solicitud;
@@ -12,9 +14,26 @@ public class Paciente extends Persona {
 	private Solicitud[] solicitudes;
 	
 	
-	Paciente(){
-
+	Paciente(){}
+	
+	public Paciente(String[] patologia, HistoriaClinica historiaClinica, String eps, boolean deAlta, Room habitacion,
+			Solicitud[] solicitudes) {
+		super();
+		this.patologia = patologia;
+		this.historiaClinica = historiaClinica;
+		this.eps = eps;
+		this.deAlta = deAlta;
+		this.habitacion = habitacion;
+		this.solicitudes = solicitudes;
 	}
+	
+	
+	public Paciente(String nombre, String id, Date fechaNacimiento, String telefono, String direccion) {
+		super(nombre, id, fechaNacimiento, telefono, direccion);
+		// TODO Auto-generated constructor stub
+	}
+
+	
 	
 	
 	
