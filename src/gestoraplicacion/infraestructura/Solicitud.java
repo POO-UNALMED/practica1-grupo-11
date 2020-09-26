@@ -11,7 +11,6 @@ public class Solicitud {
 	public Solicitud() {};
 	
 	public Solicitud(String codigo, Persona solicitante, Procedimiento solicitud, boolean aprobado) {
-		super();
 		this.codigo = codigo;
 		this.solicitante = solicitante;
 		this.solicitud = solicitud;

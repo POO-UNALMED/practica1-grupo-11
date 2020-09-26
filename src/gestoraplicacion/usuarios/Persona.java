@@ -14,7 +14,6 @@ public class Persona {
 	public Persona() {}
 	
 	public Persona(String nombre, String id, Date fechaNacimiento, String telefono, String direccion) {
-		super();
 		this.nombre = nombre;
 		this.id = id;
 		this.fechaNacimiento = fechaNacimiento;

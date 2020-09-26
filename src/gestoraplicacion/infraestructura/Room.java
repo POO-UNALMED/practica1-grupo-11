@@ -12,7 +12,6 @@ public class Room {
 	public Room() {}
 	
 	public Room(String codigo, Paciente paciente, boolean ocupado, Procedimiento procedimiento, String[] inventario) {
-		super();
 		this.codigo = codigo;
 		this.paciente = paciente;
 		this.ocupado = ocupado;
