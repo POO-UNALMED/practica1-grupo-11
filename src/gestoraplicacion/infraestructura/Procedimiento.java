@@ -10,6 +10,9 @@ public class Procedimiento {
 	private Room habitacion;
 	private boolean completado;
 	
+	Procedimiento(){
+		
+	}
 	
 	public String getTipoProcedimiento() {
 		return tipoProcedimiento;
