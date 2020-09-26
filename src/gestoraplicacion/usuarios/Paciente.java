@@ -14,11 +14,19 @@ public class Paciente extends Persona {
 	private Solicitud[] solicitudes;
 	
 	
-	Paciente(){}
-	
-	public Paciente(String[] patologia, HistoriaClinica historiaClinica, String eps, boolean deAlta, Room habitacion,
-			Solicitud[] solicitudes) {
+	Paciente(){
 		super();
+	}
+	
+	
+	Paciente(String nombre, String id, Date fechaNacimiento, String telefono, String direccion) {
+		super(nombre, id, fechaNacimiento, telefono, direccion);
+		// TODO Auto-generated constructor stub
+	}
+	
+	Paciente(String[] patologia, HistoriaClinica historiaClinica, String eps, boolean deAlta, Room habitacion,
+			Solicitud[] solicitudes, String nombre, String id, Date fechaNacimiento, String telefono, String direccion) {
+		this(nombre, id, fechaNacimiento, telefono, direccion);
 		this.patologia = patologia;
 		this.historiaClinica = historiaClinica;
 		this.eps = eps;
@@ -28,13 +36,8 @@ public class Paciente extends Persona {
 	}
 	
 	
-	public Paciente(String nombre, String id, Date fechaNacimiento, String telefono, String direccion) {
-		super(nombre, id, fechaNacimiento, telefono, direccion);
-		// TODO Auto-generated constructor stub
-	}
 
-	
-	
+
 	
 	
 	
