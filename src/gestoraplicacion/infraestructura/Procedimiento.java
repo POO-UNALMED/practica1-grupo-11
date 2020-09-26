@@ -10,10 +10,26 @@ public class Procedimiento {
 	private Room habitacion;
 	private boolean completado;
 	
-	Procedimiento(){
-		
-	}
+	Procedimiento(){}
 	
+	public Procedimiento(String tipoProcedimiento, Medico medico, HistoriaClinica historiaClinica, double costo,
+			boolean pazYSalvo, Room habitacion, boolean completado) {
+		super();
+		this.tipoProcedimiento = tipoProcedimiento;
+		this.medico = medico;
+		this.historiaClinica = historiaClinica;
+		this.costo = costo;
+		this.pazYSalvo = pazYSalvo;
+		this.habitacion = habitacion;
+		this.completado = completado;
+	}
+
+	
+	
+	
+	
+
+
 	public String getTipoProcedimiento() {
 		return tipoProcedimiento;
 	}
