@@ -13,21 +13,14 @@ public class Administrador extends Persona {
 	
 	public Administrador() {
 		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-	
-	public Administrador(String nombre, String id, Date fechaNacimiento, String telefono, String direccion) {
-		super(nombre, id, fechaNacimiento, telefono, direccion);
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	
 
-	public Administrador(String cargo, Solicitud[] solicitudesPaciente, 
-			Solicitud[] solicitudesMedico, String nombre, String id, Date fechaNacimiento, String telefono, String direccion) {
-		this(nombre, id, fechaNacimiento, telefono, direccion);
+	public Administrador(String nombre, String id, Date fechaNacimiento, String telefono, String direccion,
+			String cargo, Solicitud[] solicitudesPaciente, Solicitud[] solicitudesMedico) {
+		super(nombre, id, fechaNacimiento, telefono, direccion);
 		this.cargo = cargo;
 		this.solicitudesPaciente = solicitudesPaciente;
 		this.solicitudesMedico = solicitudesMedico;

@@ -10,11 +10,11 @@ public class Procedimiento {
 	private Room habitacion;
 	private boolean completado;
 	
-	Procedimiento(){}
+	public Procedimiento(){}
 	
 	public Procedimiento(String tipoProcedimiento, Medico medico, HistoriaClinica historiaClinica, double costo,
 			boolean pazYSalvo, Room habitacion, boolean completado) {
-		super();
+		
 		this.tipoProcedimiento = tipoProcedimiento;
 		this.medico = medico;
 		this.historiaClinica = historiaClinica;

@@ -1,5 +1,11 @@
 package gestoraplicacion.usuarios;
 
+import java.util.Date;
+
+import gestoraplicacion.infraestructura.Hospital;
+import gestoraplicacion.infraestructura.Procedimiento;
+import gestoraplicacion.infraestructura.Solicitud;
+
 public class Medico extends Persona{
 	private int especialidad;
 	private boolean[] horario;
@@ -11,54 +17,81 @@ public class Medico extends Persona{
 	
 	public Medico() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
+	
+	public Medico(String nombre, String id, Date fechaNacimiento, String telefono, String direccion, int especialidad,
+			boolean[] horario, Procedimiento[] procedAsignados, Hospital hospital, Solicitud[] estadoSolicitudes,
+			int estadoCuenta) {
+		super(nombre, id, fechaNacimiento, telefono, direccion);
+		this.especialidad = especialidad;
+		this.horario = horario;
+		this.procedAsignados = procedAsignados;
+		this.hospital = hospital;
+		this.estadoSolicitudes = estadoSolicitudes;
+		this.estadoCuenta = estadoCuenta;
+	}
+
+
 	public int getEspecialidad() {
 		return especialidad;
 	}
 
-	public void setEspecial(int especialidad) {
+
+	public void setEspecialidad(int especialidad) {
 		this.especialidad = especialidad;
 	}
+
 
 	public boolean[] getHorario() {
 		return horario;
 	}
 
+
 	public void setHorario(boolean[] horario) {
 		this.horario = horario;
 	}
 
+
 	public Procedimiento[] getProcedAsignados() {
-		return procedAsignadas;
+		return procedAsignados;
 	}
-	
-	public void setProcedAsignados(Procedimiento[] procedAsignadas) {
-		this.procedAsignadas = procedAsignadas;
+
+
+	public void setProcedAsignados(Procedimiento[] procedAsignados) {
+		this.procedAsignados = procedAsignados;
 	}
+
 
 	public Hospital getHospital() {
 		return hospital;
 	}
 
+
 	public void setHospital(Hospital hospital) {
 		this.hospital = hospital;
 	}
+
 
 	public Solicitud[] getEstadoSolicitudes() {
 		return estadoSolicitudes;
 	}
 
+
 	public void setEstadoSolicitudes(Solicitud[] estadoSolicitudes) {
-		this.estadoSolicitues = estadoSolicitudes;
+		this.estadoSolicitudes = estadoSolicitudes;
 	}
+
 
 	public int getEstadoCuenta() {
 		return estadoCuenta;
 	}
 
+
 	public void setEstadoCuenta(int estadoCuenta) {
 		this.estadoCuenta = estadoCuenta;
 	}
+	
+	
 }

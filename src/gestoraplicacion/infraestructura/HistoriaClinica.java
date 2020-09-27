@@ -9,13 +9,12 @@ public class HistoriaClinica {
 	private Procedimiento[] procedimientos;
 	
 	public HistoriaClinica() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	
 	public HistoriaClinica(String codigo, Paciente paciente, Procedimiento[] procedimientos) {
-		super();
+		
 		this.codigo = codigo;
 		this.paciente = paciente;
 		this.procedimientos = procedimientos;
