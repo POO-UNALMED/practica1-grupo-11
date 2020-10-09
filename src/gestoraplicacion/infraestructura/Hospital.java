@@ -7,6 +7,10 @@ import gestoraplicacion.usuarios.Medico;
 import gestoraplicacion.usuarios.Paciente;
 
 public class Hospital implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8558031300117756825L;
 	private String nit;
 	private String nombre;
 	private int camasDisponibles;

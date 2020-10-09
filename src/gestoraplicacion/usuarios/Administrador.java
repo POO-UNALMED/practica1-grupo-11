@@ -6,6 +6,10 @@ import gestoraplicacion.infraestructura.Solicitud;
 
 public class Administrador extends Persona {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6389465017650662973L;
 	private String cargo;
 	private Solicitud[] solicitudesPaciente;
 	private Solicitud[] solicitudesMedico;

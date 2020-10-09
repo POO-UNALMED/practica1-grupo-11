@@ -5,6 +5,10 @@ import java.io.Serializable;
 import gestoraplicacion.usuarios.Paciente;
 
 public class Room implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 594910417039129492L;
 	private String codigo;
 	private Paciente paciente;
 	private boolean ocupado;

@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Persona implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -735928645591952061L;
 	private String nombre;
 	private String id;
 	private Date fechaNacimiento;

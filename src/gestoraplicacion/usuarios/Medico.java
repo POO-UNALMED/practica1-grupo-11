@@ -7,6 +7,10 @@ import gestoraplicacion.infraestructura.Procedimiento;
 import gestoraplicacion.infraestructura.Solicitud;
 
 public class Medico extends Persona{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6361786807611231845L;
 	private int especialidad;
 	private boolean[] horario;
 	private Procedimiento[] procedAsignados;

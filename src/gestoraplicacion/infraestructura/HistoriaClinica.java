@@ -6,6 +6,10 @@ import gestoraplicacion.usuarios.Paciente;
 
 public class HistoriaClinica implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7221419680251132944L;
 	private String codigo;
 	private Paciente paciente;
 	private Procedimiento[] procedimientos;

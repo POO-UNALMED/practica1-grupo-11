@@ -5,6 +5,10 @@ import java.io.Serializable;
 import gestoraplicacion.usuarios.Persona;
 
 public class Solicitud implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8336027985146111782L;
 	private String codigo;
 	private Persona solicitante;
 	private Procedimiento solicitud;

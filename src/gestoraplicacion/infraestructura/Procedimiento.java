@@ -4,6 +4,10 @@ import java.io.Serializable;
 import gestoraplicacion.usuarios.Medico;
 
 public class Procedimiento implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7092617778020316714L;
 	private String tipoProcedimiento;
 	private Medico medico;
 	private HistoriaClinica historiaClinica;

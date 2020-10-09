@@ -6,6 +6,10 @@ import gestoraplicacion.infraestructura.Room;
 import gestoraplicacion.infraestructura.Solicitud;
 
 public class Paciente extends Persona {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2109574389975012203L;
 	private String[] patologia;
 	private HistoriaClinica historiaClinica;
 	private String eps;
