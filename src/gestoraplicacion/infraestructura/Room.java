@@ -1,8 +1,10 @@
 package gestoraplicacion.infraestructura;
 
+import java.io.Serializable;
+
 import gestoraplicacion.usuarios.Paciente;
 
-public class Room {
+public class Room implements Serializable{
 	private String codigo;
 	private Paciente paciente;
 	private boolean ocupado;

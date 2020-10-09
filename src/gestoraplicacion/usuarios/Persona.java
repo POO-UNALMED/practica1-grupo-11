@@ -1,8 +1,9 @@
 package gestoraplicacion.usuarios;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Persona {
+public class Persona implements Serializable {
 	private String nombre;
 	private String id;
 	private Date fechaNacimiento;

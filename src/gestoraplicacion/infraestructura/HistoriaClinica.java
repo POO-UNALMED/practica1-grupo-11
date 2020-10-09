@@ -1,8 +1,10 @@
 package gestoraplicacion.infraestructura;
+import java.io.Serializable;
+
 import gestoraplicacion.usuarios.Paciente;
 
 
-public class HistoriaClinica {
+public class HistoriaClinica implements Serializable{
 	
 	private String codigo;
 	private Paciente paciente;

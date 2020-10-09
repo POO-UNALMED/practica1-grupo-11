@@ -1,7 +1,9 @@
 package gestoraplicacion.infraestructura;
+import java.io.Serializable;
+
 import gestoraplicacion.usuarios.Medico;
 
-public class Procedimiento {
+public class Procedimiento implements Serializable{
 	private String tipoProcedimiento;
 	private Medico medico;
 	private HistoriaClinica historiaClinica;

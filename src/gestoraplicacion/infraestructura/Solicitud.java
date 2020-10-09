@@ -1,8 +1,10 @@
 package gestoraplicacion.infraestructura;
 
+import java.io.Serializable;
+
 import gestoraplicacion.usuarios.Persona;
 
-public class Solicitud {
+public class Solicitud implements Serializable{
 	private String codigo;
 	private Persona solicitante;
 	private Procedimiento solicitud;

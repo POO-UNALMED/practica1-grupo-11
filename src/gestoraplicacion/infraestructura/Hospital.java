@@ -1,10 +1,12 @@
 package gestoraplicacion.infraestructura;
 
+import java.io.Serializable;
+
 import gestoraplicacion.usuarios.Administrador;
 import gestoraplicacion.usuarios.Medico;
 import gestoraplicacion.usuarios.Paciente;
 
-public class Hospital {
+public class Hospital implements Serializable {
 	private String nit;
 	private String nombre;
 	private int camasDisponibles;
