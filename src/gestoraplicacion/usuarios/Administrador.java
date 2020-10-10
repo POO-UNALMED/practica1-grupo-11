@@ -1,7 +1,9 @@
 package gestoraplicacion.usuarios;
 
+import java.util.ArrayList;
 import java.util.Date;
 
+import gestoraplicacion.infraestructura.Hospital;
 import gestoraplicacion.infraestructura.Solicitud;
 
 public class Administrador extends Persona {
@@ -11,8 +13,9 @@ public class Administrador extends Persona {
 	 */
 	private static final long serialVersionUID = 6389465017650662973L;
 	private String cargo;
-	private Solicitud[] solicitudesPaciente;
-	private Solicitud[] solicitudesMedico;
+	private ArrayList<Solicitud> solicitudesPaciente= new ArrayList<Solicitud>();
+	private Hospital hospital;
+	//private Solicitud[] solicitudesMedico;
 
 	public Administrador() {
 		super();
@@ -20,13 +23,25 @@ public class Administrador extends Persona {
 	}
 
 	public Administrador(String nombre, String id, Date fechaNacimiento, String telefono, String direccion,
-			String cargo, Solicitud[] solicitudesPaciente, Solicitud[] solicitudesMedico) {
+			String cargo, ArrayList<Solicitud> solicitudesPaciente) {
 		super(nombre, id, fechaNacimiento, telefono, direccion);
 		this.cargo = cargo;
 		this.solicitudesPaciente = solicitudesPaciente;
-		this.solicitudesMedico = solicitudesMedico;
+		//this.solicitudesMedico = solicitudesMedico;
 	}
-
+	
+	
+	/*
+	 * Método consultarDeudasDePaciente() es parte de Funcionalidad de
+	 * "Consultar deudas de un paciente para ver si está a paz y salvo".
+	 * 
+	 *Ruta de Clases accesadas:Administrador-->Hospital-->Paciente-->HistoriaClinica-->Procedimiento.
+	 */
+	public double consultarDeudasDePaciente(String id) {
+		return hospital.totalCostosPorPaciente(id);
+	}
+	
+	
 	public String getCargo() {
 		return cargo;
 	}
@@ -35,20 +50,20 @@ public class Administrador extends Persona {
 		this.cargo = cargo;
 	}
 
-	public Solicitud[] getSolicitudesPaciente() {
+	public ArrayList<Solicitud> getSolicitudesPaciente() {
 		return solicitudesPaciente;
 	}
 
-	public void setSolicitudesPaciente(Solicitud[] solicitudesPaciente) {
+	public void setSolicitudesPaciente(ArrayList<Solicitud> solicitudesPaciente) {
 		this.solicitudesPaciente = solicitudesPaciente;
 	}
 
-	public Solicitud[] getSolicitudesMedico() {
-		return solicitudesMedico;
-	}
-
-	public void setSolicitudesMedico(Solicitud[] solicitudesMedico) {
-		this.solicitudesMedico = solicitudesMedico;
-	}
+//	public Solicitud[] getSolicitudesMedico() {
+//		return solicitudesMedico;
+//	}
+//
+//	public void setSolicitudesMedico(Solicitud[] solicitudesMedico) {
+//		this.solicitudesMedico = solicitudesMedico;
+//	}
 
 }

@@ -1,7 +1,9 @@
 package gestoraplicacion.infraestructura;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
+import basedatos.BDDriver;
 import gestoraplicacion.usuarios.Administrador;
 import gestoraplicacion.usuarios.Medico;
 import gestoraplicacion.usuarios.Paciente;
@@ -14,27 +16,46 @@ public class Hospital implements Serializable {
 	private String nit;
 	private String nombre;
 	private int camasDisponibles;
-	private Administrador administrador;
-	private Paciente[] pacientes;
-	private Medico[] medicos;
-	private Room[] habitaciones;
-	
-	
-	
+	private ArrayList<Administrador> administradores = BDDriver.administradores;
+	private ArrayList<Paciente> pacientes = BDDriver.pacientes;
+	private ArrayList<Medico> medicos = BDDriver.medicos;
+	private ArrayList<Room> rooms = BDDriver.rooms;
 
 	public Hospital() {
-		
+
 	}
-	
-	public Hospital(String nit, String nombre, int camasDisponibles, Administrador administrador, Paciente[] pacientes,
-			Medico[] medicos, Room[] habitaciones) {
+
+	public Hospital(String nit, String nombre, int camasDisponibles) {
 		this.nit = nit;
 		this.nombre = nombre;
 		this.camasDisponibles = camasDisponibles;
-		this.administrador = administrador;
-		this.pacientes = pacientes;
-		this.medicos = medicos;
-		this.habitaciones = habitaciones;
+
+	}
+
+	/*
+	 * Método totalCostosPorPaciente() es parte de Funcionalidad de
+	 * "Consultar deudas de un paciente para ver si está a paz y salvo". Recorre
+	 * todos los pacientes en busca del id, y cuando lo encuentra hace llamado del
+	 * método valorTotaldeProcediminetos() de la clase Paciente.
+	 * 
+	 * Ruta de Clases accesadas:Administrador-->Hospital-->Paciente-->HistoriaClinica-->Procedimiento.
+	 */
+	public double totalCostosPorPaciente(String id) {
+		boolean existePaciente = false;
+		Paciente pacienteAux = null;
+		for (Paciente p : pacientes) {
+			if (p.getId() == id) {
+				pacienteAux = p;
+				existePaciente = true;
+				break;
+			}
+		}
+		if (existePaciente == true) {
+			return pacienteAux.valorTotaldeProcedimientos();
+		} else {
+			System.out.println("Este paciente no se encuentra en nuestra base de datos");
+			return 0.0;
+		}
 	}
 	
 	
@@ -63,39 +84,36 @@ public class Hospital implements Serializable {
 		this.camasDisponibles = camasDisponibles;
 	}
 
-	public Administrador getAdministrador() {
-		return administrador;
+	public ArrayList<Administrador> getAdministradores() {
+		return administradores;
 	}
 
-	public void setAdministrador(Administrador administrador) {
-		this.administrador = administrador;
+	public void setAdministradores(ArrayList<Administrador> administrador) {
+		this.administradores = administrador;
 	}
 
-	public Paciente[] getPacientes() {
+	public ArrayList<Paciente> getPacientes() {
 		return pacientes;
 	}
 
-	public void setPacientes(Paciente[] pacientes) {
+	public void setPacientes(ArrayList<Paciente> pacientes) {
 		this.pacientes = pacientes;
 	}
 
-	public Medico[] getMedicos() {
+	public ArrayList<Medico> getMedicos() {
 		return medicos;
 	}
 
-	public void setMedicos(Medico[] medicos) {
+	public void setMedicos(ArrayList<Medico> medicos) {
 		this.medicos = medicos;
 	}
 
-	public Room[] getHabitaciones() {
-		return habitaciones;
+	public ArrayList<Room> getRooms() {
+		return rooms;
 	}
 
-	public void setHabitaciones(Room[] habitaciones) {
-		this.habitaciones = habitaciones;
+	public void setRooms(ArrayList<Room> rooms) {
+		this.rooms = rooms;
 	}
 
-
-
-	
 }

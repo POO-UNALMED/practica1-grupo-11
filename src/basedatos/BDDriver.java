@@ -27,4 +27,17 @@ public class BDDriver {
 	public static ArrayList<Medico> medicos = new ArrayList<Medico>();
 	public static ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
 
+	/*
+	 * Está pendiente añadir métodos estáticos de fábrica para crear objetos, y ponerles condiciones para que:
+	 *  
+	 * 1. sólo pueda haber uno y solo un administrador y uno y solo un hospital
+	 * 2. Cada vez que se cree un paciente también se cree su respectiva historia clinica.
+	 * 
+	 *  
+	 *  y empezar a trabajar la interfaz gráfica. 
+	 *  
+	 */
+	
+	
+	
 }

@@ -59,7 +59,12 @@ public class Procedimiento implements Serializable{
 		this.historiaClinica = historiaClinica;
 	}
 	
-	
+	/*
+	 * Método getCosto() parte de Funcionalidad de
+	 * "Consultar deudas de un paciente para ver si está a paz y salvo".
+	 * 
+	 * Ruta de Clases accesadas:Administrador-->Hospital-->Paciente-->HistoriaClinica-->Procedimiento.
+	 */
 	public double getCosto() {
 		return costo;
 	}

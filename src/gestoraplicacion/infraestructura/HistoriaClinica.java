@@ -1,5 +1,6 @@
 package gestoraplicacion.infraestructura;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import gestoraplicacion.usuarios.Paciente;
 
@@ -12,18 +13,36 @@ public class HistoriaClinica implements Serializable{
 	private static final long serialVersionUID = 7221419680251132944L;
 	private String codigo;
 	private Paciente paciente;
-	private Procedimiento[] procedimientos;
+	private ArrayList<Procedimiento> procedimientos= new ArrayList<Procedimiento>();
 	
 	public HistoriaClinica() {
 		
 	}
 
 	
-	public HistoriaClinica(String codigo, Paciente paciente, Procedimiento[] procedimientos) {
+	public HistoriaClinica(String codigo, Paciente paciente, ArrayList<Procedimiento> procedimientos) {
 		
 		this.codigo = codigo;
 		this.paciente = paciente;
 		this.procedimientos = procedimientos;
+	}
+	
+	
+	/*
+	 * Método totalCostos() parte de Funcionalidad de
+	 * "Consultar deudas de un paciente para ver si está a paz y salvo". Accede a
+	 * los procedimientos que tiene asignada la HistoriaClinica de determinado
+	 * paciente y suma el total de los costos de cada procedimiento
+	 * 
+	 * Ruta de Clases accesadas:Administrador-->Hospital-->Paciente-->HistoriaClinica-->Procedimiento.
+	 * 
+	 */
+	public double totalCostos() {
+		double total=0;
+		for(Procedimiento proced:procedimientos) {
+			total+=proced.getCosto();
+		}
+		return total;
 	}
 	
 
@@ -40,10 +59,10 @@ public class HistoriaClinica implements Serializable{
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
 	}
-	public Procedimiento[] getProcedimientos() {
+	public ArrayList<Procedimiento> getProcedimientos() {
 		return procedimientos;
 	}
-	public void setProcedimientos(Procedimiento[] procedimientos) {
+	public void setProcedimientos(ArrayList<Procedimiento> procedimientos) {
 		this.procedimientos = procedimientos;
 	}
 	
