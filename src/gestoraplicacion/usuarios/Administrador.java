@@ -5,7 +5,7 @@ import java.util.Date;
 import gestoraplicacion.infraestructura.Solicitud;
 
 public class Administrador extends Persona {
-	
+
 	/**
 	 * 
 	 */
@@ -13,14 +13,11 @@ public class Administrador extends Persona {
 	private String cargo;
 	private Solicitud[] solicitudesPaciente;
 	private Solicitud[] solicitudesMedico;
-	
-	
+
 	public Administrador() {
 		super();
-		
+
 	}
-	
-	
 
 	public Administrador(String nombre, String id, Date fechaNacimiento, String telefono, String direccion,
 			String cargo, Solicitud[] solicitudesPaciente, Solicitud[] solicitudesMedico) {
@@ -30,29 +27,28 @@ public class Administrador extends Persona {
 		this.solicitudesMedico = solicitudesMedico;
 	}
 
-
-
 	public String getCargo() {
 		return cargo;
 	}
+
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
+
 	public Solicitud[] getSolicitudesPaciente() {
 		return solicitudesPaciente;
 	}
+
 	public void setSolicitudesPaciente(Solicitud[] solicitudesPaciente) {
 		this.solicitudesPaciente = solicitudesPaciente;
 	}
+
 	public Solicitud[] getSolicitudesMedico() {
 		return solicitudesMedico;
 	}
+
 	public void setSolicitudesMedico(Solicitud[] solicitudesMedico) {
 		this.solicitudesMedico = solicitudesMedico;
 	}
-	
-	
-	
-	
 
 }
