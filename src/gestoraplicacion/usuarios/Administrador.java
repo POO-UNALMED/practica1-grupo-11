@@ -3,8 +3,13 @@ package gestoraplicacion.usuarios;
 import java.util.ArrayList;
 import java.util.Date;
 
+import gestoraplicacion.infraestructura.HistoriaClinica;
 import gestoraplicacion.infraestructura.Hospital;
+import gestoraplicacion.infraestructura.Procedimiento;
+import gestoraplicacion.infraestructura.Room;
 import gestoraplicacion.infraestructura.Solicitud;
+
+import gestoraplicacion.usuarios.*;
 
 public class Administrador extends Persona {
 
@@ -15,7 +20,7 @@ public class Administrador extends Persona {
 	private String cargo;
 	private ArrayList<Solicitud> solicitudesPaciente= new ArrayList<Solicitud>();
 	private Hospital hospital;
-	//private Solicitud[] solicitudesMedico;
+	private ArrayList<Solicitud> solicitudesMedico = new ArrayList<Solicitud>();
 
 	public Administrador() {
 		super();
@@ -23,7 +28,7 @@ public class Administrador extends Persona {
 	}
 
 	public Administrador(String nombre, String id, Date fechaNacimiento, String telefono, String direccion,
-			String cargo, ArrayList<Solicitud> solicitudesPaciente) {
+			String cargo, ArrayList<Solicitud> solicitudesPaciente, ArrayList<Solicitud> solicitudesMedico) {
 		super(nombre, id, fechaNacimiento, telefono, direccion);
 		this.cargo = cargo;
 		this.solicitudesPaciente = solicitudesPaciente;
@@ -32,8 +37,8 @@ public class Administrador extends Persona {
 	
 	
 	/*
-	 * Método consultarDeudasDePaciente() es parte de Funcionalidad de
-	 * "Consultar deudas de un paciente para ver si está a paz y salvo".
+	 * Mï¿½todo consultarDeudasDePaciente() es parte de Funcionalidad de
+	 * "Consultar deudas de un paciente para ver si estï¿½ a paz y salvo".
 	 * 
 	 *Ruta de Clases accesadas:Administrador-->Hospital-->Paciente-->HistoriaClinica-->Procedimiento.
 	 */
@@ -65,5 +70,20 @@ public class Administrador extends Persona {
 //	public void setSolicitudesMedico(Solicitud[] solicitudesMedico) {
 //		this.solicitudesMedico = solicitudesMedico;
 //	}
+	
+	/*
+	 * Crea una nueva solicitud y la agregamos a una lista de elementos dependiendo
+	 * si el solicitante es un paciente o un doctor.
+	 */
+	public Solicitud crearSolicitud(String codigo, Persona solicitante, Procedimiento procedimiento, boolean aprobado) {
+		Solicitud solicitud =  new Solicitud(codigo, solicitante, procedimiento, aprobado);
+		if (Paciente.class.isInstance(solicitante)) {
+			solicitudesPaciente.add(solicitud);
+		} else if (Medico.class.isInstance(solicitante)) {
+			solicitudesMedico.add(solicitud);
+		}
+		return solicitud;
+		
+	}
 
 }

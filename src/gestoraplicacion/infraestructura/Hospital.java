@@ -2,11 +2,13 @@ package gestoraplicacion.infraestructura;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import basedatos.BDDriver;
 import gestoraplicacion.usuarios.Administrador;
 import gestoraplicacion.usuarios.Medico;
 import gestoraplicacion.usuarios.Paciente;
+import gestoraplicacion.usuarios.Persona;
 
 public class Hospital implements Serializable {
 	/**
@@ -33,10 +35,10 @@ public class Hospital implements Serializable {
 	}
 
 	/*
-	 * Método totalCostosPorPaciente() es parte de Funcionalidad de
-	 * "Consultar deudas de un paciente para ver si está a paz y salvo". Recorre
+	 * Mï¿½todo totalCostosPorPaciente() es parte de Funcionalidad de
+	 * "Consultar deudas de un paciente para ver si estï¿½ a paz y salvo". Recorre
 	 * todos los pacientes en busca del id, y cuando lo encuentra hace llamado del
-	 * método valorTotaldeProcediminetos() de la clase Paciente.
+	 * mï¿½todo valorTotaldeProcediminetos() de la clase Paciente.
 	 * 
 	 * Ruta de Clases accesadas:Administrador-->Hospital-->Paciente-->HistoriaClinica-->Procedimiento.
 	 */
@@ -115,5 +117,109 @@ public class Hospital implements Serializable {
 	public void setRooms(ArrayList<Room> rooms) {
 		this.rooms = rooms;
 	}
+	
+	/*
+	 * Obtener historial retorna el numero de de pacientes y doctores,
+	 * Luego retorna una lista de pacientes, cada paciente tiene asociada una lista de doctores
+	 * y una lista de doctores, cada doctor tiene asociada una lista de pacientes,
+	 * ademas una lista de habitaciones con sus pacientes
+	 */
+	public ReporteHistorial obtenerHistorial() {
+		ReporteHistorial reporte = new ReporteHistorial();
+		for(Paciente paciente: pacientes) {
+			// TODO obtener los medicos de cada paciente
+			ListaUnoAMuchos<Paciente, Medico> pacientesMedicos = new ListaUnoAMuchos(paciente, pacienteListaMedicos);
+			reporte.getPacientesMedicos().add(pacientesMedicos);
+		}
+		
+		for(Medico medico: medicos) {
+			// TODO obtener los pacientes de cada medico
+			ListaUnoAMuchos<Medico, Paciente> medicoPacientes = new ListaUnoAMuchos(medico, pacientesLista);
+			reporte.getMedicoPacientes().add(medicoPacientes);
+		}
+		reporte.setNumPacientes(reporte.getPacientesMedicos().size());
+		reporte.setNumDoctores(reporte.getMedicoPacientes().size());
+		reporte.setHabitaciones(rooms);
+		return reporte; 
+	}
 
+}
+
+class ListaUnoAMuchos<E, T extends Persona> {
+	private E persona;
+	private LinkedList<T> personas;
+	
+	public ListaUnoAMuchos(E persona, LinkedList<T> personas) {
+		this.persona = persona;
+		this.personas = personas;
+	}
+
+	public E getPersona() {
+		return persona;
+	}
+
+	public void setPersona(E persona) {
+		this.persona = persona;
+	}
+
+	public LinkedList<T> getPersonas() {
+		return personas;
+	}
+
+	public void setPersonas(LinkedList<T> personas) {
+		this.personas = personas;
+	}
+	
+	
+
+}
+
+class ReporteHistorial {
+	private int numPacientes;
+	private int numDoctores;
+	private ArrayList<ListaUnoAMuchos<Paciente, Medico>> pacientesMedicos;
+	private ArrayList<ListaUnoAMuchos<Medico, Paciente>> medicoPacientes;
+	private ArrayList<Room> habitaciones;
+	
+	public ReporteHistorial() {
+		pacientesMedicos = new ArrayList<ListaUnoAMuchos<Paciente,Medico>>();
+		medicoPacientes = new ArrayList<ListaUnoAMuchos<Medico,Paciente>>();
+		habitaciones = new ArrayList<Room>();
+	}
+	
+	public int getNumPacientes() {
+		return numPacientes;
+	}
+	public void setNumPacientes(int numPacientes) {
+		this.numPacientes = numPacientes;
+	}
+	public int getNumDoctores() {
+		return numDoctores;
+	}
+	public void setNumDoctores(int numDoctores) {
+		this.numDoctores = numDoctores;
+	}
+	public ArrayList<ListaUnoAMuchos<Paciente, Medico>> getPacientesMedicos() {
+		return pacientesMedicos;
+	}
+	public void setPacientesMedicos(ArrayList<ListaUnoAMuchos<Paciente, Medico>> pacientesMedicos) {
+		this.pacientesMedicos = pacientesMedicos;
+	}
+	public ArrayList<ListaUnoAMuchos<Medico, Paciente>> getMedicoPacientes() {
+		return medicoPacientes;
+	}
+	public void setMedicoPacientes(ArrayList<ListaUnoAMuchos<Medico, Paciente>> medicoPacientes) {
+		this.medicoPacientes = medicoPacientes;
+	}
+
+	public ArrayList<Room> getHabitaciones() {
+		return habitaciones;
+	}
+
+	public void setHabitaciones(ArrayList<Room> habitaciones) {
+		this.habitaciones = habitaciones;
+	}
+
+	
+	
 }
