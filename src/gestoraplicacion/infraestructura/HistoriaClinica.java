@@ -45,7 +45,20 @@ public class HistoriaClinica implements Serializable{
 		return total;
 	}
 	
-
+	/*
+	 * Metodo medico() parte de la funcionalidad de
+	 * "Consultar lista de medicos que han atendido al paciente". Accede a 
+	 * los procedimientos que tiene asignada la HistoriaClinica de determinado 
+	 * paciente y muetra el Medico asociado en cada procedimiento.
+	 * 
+	 * Ruta de Clases accesadas:Administrador-->Paciente-->HistoriaClinica-->Procedimiento-->Medico.
+	 */
+	
+	public void medicos() {
+		for(Procedimiento proced:procedimientos) {
+			System.out.println(proced.getMedico());
+		}
+	}
 
 	public String getCodigo() {
 		return codigo;

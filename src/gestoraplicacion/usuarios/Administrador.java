@@ -45,6 +45,17 @@ public class Administrador extends Persona {
 	public double consultarDeudasDePaciente(String id) {
 		return hospital.totalCostosPorPaciente(id);
 	}
+
+	/*
+	 * Metodo consultarMedicosDePaciente() es parate de la Funcionalidad de
+	 * "consultar lista de medicos que han atendido al paciente"
+	 *Ruta de Clases accesadas:Administrador-->Paciente-->HistoriaClinica-->Procedimiento-->Medico.
+	 * */
+
+	public void consultarMedicosDePaciente(Paciente paciente) {
+		HistoriaClinica historiaClinica = paciente.getHistoriaClinica();
+		historiaClinica.medicos();
+	}
 	
 	
 	public String getCargo() {
