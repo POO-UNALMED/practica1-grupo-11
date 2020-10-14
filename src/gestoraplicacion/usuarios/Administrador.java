@@ -89,5 +89,11 @@ public class Administrador extends Persona {
 	 * si el solicitante es un paciente o un doctor.
 	 */
 	
+	
+	//Ver detalle solicitud --> Recorrer lisa de solicitudes de la clase administrador y mostrar detalle.
+	// bastaba con poner solo el toString en solicitud??? 
+
+	
+	
 
 }

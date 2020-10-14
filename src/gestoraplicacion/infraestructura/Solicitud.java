@@ -48,5 +48,9 @@ public class Solicitud implements Serializable{
 		this.aprobado = aprobado;
 	}
 	
+	//Metodo sobreescrito para funcionalidad de " Mostrar detalle de solicitud". 
+	public String toString() {
+		return "Codigo: " + codigo + "\nSolicitante: " + solicitante.getNombre() + "\nDetalle: " + solicitud + "\nAprobado: " + aprobado;
+	}
 	
 }
