@@ -60,8 +60,8 @@ public class Procedimiento implements Serializable{
 	}
 	
 	/*
-	 * Método getCosto() parte de Funcionalidad de
-	 * "Consultar deudas de un paciente para ver si está a paz y salvo".
+	 * Mï¿½todo getCosto() parte de Funcionalidad de
+	 * "Consultar deudas de un paciente para ver si estï¿½ a paz y salvo".
 	 * 
 	 * Ruta de Clases accesadas:Administrador-->Hospital-->Paciente-->HistoriaClinica-->Procedimiento.
 	 */
@@ -96,7 +96,9 @@ public class Procedimiento implements Serializable{
 		this.completado = completado;
 	}
 	
-	
+	public String toString() {
+		return "Tipo " + tipoProcedimiento + " a cargo de: " + medico + ", tiene un valor de: " + costo;
+	}
 	
 	
 

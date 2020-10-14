@@ -90,8 +90,13 @@ public class Administrador extends Persona {
 	 */
 	
 	
-	//Ver detalle solicitud --> Recorrer lisa de solicitudes de la clase administrador y mostrar detalle.
-	// bastaba con poner solo el toString en solicitud??? 
+	//Ver detalle solicitud --> Recorrer lisa de solicitudes de la clase administrador y mostrar detalle de cada solicitud.
+	//llama metodo toString de la clase solicitud. Imprime en detalle el valor de los atributos de cada solicitud.
+	public void detalleSolicitud() {
+		for (Solicitud elemento: solicitudes) {
+			System.out.println(elemento);
+		}
+	}
 
 	
 	
