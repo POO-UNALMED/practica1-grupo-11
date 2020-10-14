@@ -22,9 +22,7 @@ public class Solicitud implements Serializable{
 		this.solicitud = solicitud;
 		this.aprobado = aprobado;
 	}
-
-
-
+	
 	public String getCodigo() {
 		return codigo;
 	}

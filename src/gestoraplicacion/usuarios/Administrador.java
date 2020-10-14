@@ -3,6 +3,7 @@ package gestoraplicacion.usuarios;
 import java.util.ArrayList;
 import java.util.Date;
 
+import basedatos.BDDriver;
 import gestoraplicacion.infraestructura.HistoriaClinica;
 import gestoraplicacion.infraestructura.Hospital;
 import gestoraplicacion.infraestructura.Procedimiento;
@@ -18,20 +19,22 @@ public class Administrador extends Persona {
 	 */
 	private static final long serialVersionUID = 6389465017650662973L;
 	private String cargo;
-	private ArrayList<Solicitud> solicitudesPaciente= new ArrayList<Solicitud>();
-	private Hospital hospital;
-	private ArrayList<Solicitud> solicitudesMedico = new ArrayList<Solicitud>();
+	private ArrayList<Solicitud> solicitudes= BDDriver.solicitudes; 
+	private Hospital hospital= BDDriver.hospitales.get(0);
+	//private ArrayList<Solicitud> solicitudesMedico = new ArrayList<Solicitud>();
 
 	public Administrador() {
 		super();
 
 	}
+	
+	
 
 	public Administrador(String nombre, String id, Date fechaNacimiento, String telefono, String direccion,
 			String cargo, ArrayList<Solicitud> solicitudesPaciente, ArrayList<Solicitud> solicitudesMedico) {
 		super(nombre, id, fechaNacimiento, telefono, direccion);
 		this.cargo = cargo;
-		this.solicitudesPaciente = solicitudesPaciente;
+		this.solicitudes = solicitudesPaciente;
 		//this.solicitudesMedico = solicitudesMedico;
 	}
 	
@@ -45,7 +48,6 @@ public class Administrador extends Persona {
 	public double consultarDeudasDePaciente(String id) {
 		return hospital.totalCostosPorPaciente(id);
 	}
-
 	/*
 	 * Metodo consultarMedicosDePaciente() es parate de la Funcionalidad de
 	 * "consultar lista de medicos que han atendido al paciente"
@@ -66,12 +68,12 @@ public class Administrador extends Persona {
 		this.cargo = cargo;
 	}
 
-	public ArrayList<Solicitud> getSolicitudesPaciente() {
-		return solicitudesPaciente;
+	public ArrayList<Solicitud> getSolicitudes() {
+		return solicitudes;
 	}
 
-	public void setSolicitudesPaciente(ArrayList<Solicitud> solicitudesPaciente) {
-		this.solicitudesPaciente = solicitudesPaciente;
+	public void setSolicitudes(ArrayList<Solicitud> solicitudes) {
+		this.solicitudes = solicitudes;
 	}
 
 //	public Solicitud[] getSolicitudesMedico() {
@@ -86,15 +88,6 @@ public class Administrador extends Persona {
 	 * Crea una nueva solicitud y la agregamos a una lista de elementos dependiendo
 	 * si el solicitante es un paciente o un doctor.
 	 */
-	public Solicitud crearSolicitud(String codigo, Persona solicitante, Procedimiento procedimiento, boolean aprobado) {
-		Solicitud solicitud =  new Solicitud(codigo, solicitante, procedimiento, aprobado);
-		if (Paciente.class.isInstance(solicitante)) {
-			solicitudesPaciente.add(solicitud);
-		} else if (Medico.class.isInstance(solicitante)) {
-			solicitudesMedico.add(solicitud);
-		}
-		return solicitud;
-		
-	}
+	
 
 }
