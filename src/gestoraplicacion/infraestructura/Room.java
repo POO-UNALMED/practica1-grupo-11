@@ -5,32 +5,34 @@ import java.io.Serializable;
 import gestoraplicacion.usuarios.Paciente;
 
 public class Room implements Serializable{
-	/**
+	/*
+	 *Atributos
 	 * 
 	 */
 	private static final long serialVersionUID = 594910417039129492L;
-	private String codigo;
+	private int codigo;
 	private Paciente paciente;
-	private boolean ocupado;
+	private boolean ocupado= false;
 	private Procedimiento procedimiento;
-	private String inventario[];
 	
+	/*
+	 * Constructores
+	 */
 	public Room() {}
 	
-	public Room(String codigo, Paciente paciente, boolean ocupado, Procedimiento procedimiento, String[] inventario) {
+	public Room(int codigo) {
 		this.codigo = codigo;
-		this.paciente = paciente;
-		this.ocupado = ocupado;
-		this.procedimiento = procedimiento;
-		this.inventario = inventario;
+		
 	}
-
-
-
-	public String getCodigo() {
+	
+	
+	/*
+	 * Getters y Setters
+	 */
+	public int getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(String codigo) {
+	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
 	public Paciente getPaciente() {
@@ -51,12 +53,7 @@ public class Room implements Serializable{
 	public void setProcedimiento(Procedimiento procedimiento) {
 		this.procedimiento = procedimiento;
 	}
-	public String[] getInventario() {
-		return inventario;
-	}
-	public void setInventario(String[] inventario) {
-		this.inventario = inventario;
-	}
+	
 	
 
 }

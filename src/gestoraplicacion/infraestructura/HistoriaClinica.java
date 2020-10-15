@@ -7,26 +7,53 @@ import gestoraplicacion.usuarios.Paciente;
 
 public class HistoriaClinica implements Serializable{
 	
-	/**
-	 * 
+	/*
+	 *Atributos 
 	 */
 	private static final long serialVersionUID = 7221419680251132944L;
 	private String codigo;
 	private Paciente paciente;
 	private ArrayList<Procedimiento> procedimientos= new ArrayList<Procedimiento>();
 	
+	/*
+	 * Constructores
+	 */
 	public HistoriaClinica() {
-		
 	}
 
-	
-	public HistoriaClinica(String codigo, Paciente paciente, ArrayList<Procedimiento> procedimientos) {
+	public HistoriaClinica(String codigo, Paciente paciente) {
 		
 		this.codigo = codigo;
 		this.paciente = paciente;
+	}
+	
+	
+	/*
+	 * Getters y Setters
+	 */
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+	public Paciente getPaciente() {
+		return paciente;
+	}
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+	public ArrayList<Procedimiento> getProcedimientos() {
+		return procedimientos;
+	}
+	public void setProcedimientos(ArrayList<Procedimiento> procedimientos) {
 		this.procedimientos = procedimientos;
 	}
 	
+	
+	/*
+	 * Metodos
+	 */
 	
 	/*
 	 * Método totalCostos() parte de Funcionalidad de
@@ -58,25 +85,6 @@ public class HistoriaClinica implements Serializable{
 		for(Procedimiento proced:procedimientos) {
 			System.out.println(proced.getMedico());
 		}
-	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
-	public Paciente getPaciente() {
-		return paciente;
-	}
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
-	}
-	public ArrayList<Procedimiento> getProcedimientos() {
-		return procedimientos;
-	}
-	public void setProcedimientos(ArrayList<Procedimiento> procedimientos) {
-		this.procedimientos = procedimientos;
 	}
 	
 }
