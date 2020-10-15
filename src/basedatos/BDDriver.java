@@ -26,7 +26,10 @@ public class BDDriver {
 	public static ArrayList<Administrador> administradores = new ArrayList<Administrador>();
 	public static ArrayList<Medico> medicos = new ArrayList<Medico>();
 	public static ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
-
+	
+	
+	
+	
 	/*
 	 * Está pendiente añadir métodos estáticos de fábrica para crear objetos, y ponerles condiciones para que:
 	 *  

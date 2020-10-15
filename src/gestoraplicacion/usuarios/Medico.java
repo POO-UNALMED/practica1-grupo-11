@@ -1,43 +1,41 @@
 package gestoraplicacion.usuarios;
 
-import java.util.Date;
+import java.util.ArrayList;
 
+
+import basedatos.BDDriver;
+import gestoraplicacion.infraestructura.Actividad;
 import gestoraplicacion.infraestructura.Hospital;
 import gestoraplicacion.infraestructura.Procedimiento;
-import gestoraplicacion.infraestructura.Solicitud;
+
 
 public class Medico extends Persona{
-	/**
-	 * 
+	/*
+	 *Atributos 
 	 */
 	private static final long serialVersionUID = 6361786807611231845L;
 	private int especialidad;
-	private boolean[] horario;
-	private Procedimiento[] procedAsignados;
-	private Hospital hospital;
-	private Solicitud[] estadoSolicitudes;
+	private ArrayList<Procedimiento> procedAsignados=new ArrayList<Procedimiento>();
+	private Hospital hospital=BDDriver.hospitales.get(0);
 	private int estadoCuenta;
 	
-	
+	/*
+	 * Constructores
+	 */
 	public Medico() {
 		super();
 		
 	}
 	
-	
-	public Medico(String nombre, String id, Date fechaNacimiento, String telefono, String direccion, int especialidad,
-			boolean[] horario, Procedimiento[] procedAsignados, Hospital hospital, Solicitud[] estadoSolicitudes,
-			int estadoCuenta) {
-		super(nombre, id, fechaNacimiento, telefono, direccion);
+	public Medico(String nombre, int id, int especialidad) {
+		super(nombre, id);
 		this.especialidad = especialidad;
-		this.horario = horario;
-		this.procedAsignados = procedAsignados;
-		this.hospital = hospital;
-		this.estadoSolicitudes = estadoSolicitudes;
-		this.estadoCuenta = estadoCuenta;
+		BDDriver.medicos.add(this);
 	}
-
-
+	
+	/*
+	 * Getters y Setters
+	 */
 	public int getEspecialidad() {
 		return especialidad;
 	}
@@ -48,22 +46,12 @@ public class Medico extends Persona{
 	}
 
 
-	public boolean[] getHorario() {
-		return horario;
-	}
-
-
-	public void setHorario(boolean[] horario) {
-		this.horario = horario;
-	}
-
-
-	public Procedimiento[] getProcedAsignados() {
+	public ArrayList<Procedimiento> getProcedAsignados() {
 		return procedAsignados;
 	}
 
 
-	public void setProcedAsignados(Procedimiento[] procedAsignados) {
+	public void setProcedAsignados(ArrayList<Procedimiento> procedAsignados) {
 		this.procedAsignados = procedAsignados;
 	}
 
@@ -78,16 +66,6 @@ public class Medico extends Persona{
 	}
 
 
-	public Solicitud[] getEstadoSolicitudes() {
-		return estadoSolicitudes;
-	}
-
-
-	public void setEstadoSolicitudes(Solicitud[] estadoSolicitudes) {
-		this.estadoSolicitudes = estadoSolicitudes;
-	}
-
-
 	public int getEstadoCuenta() {
 		return estadoCuenta;
 	}
@@ -95,6 +73,21 @@ public class Medico extends Persona{
 
 	public void setEstadoCuenta(int estadoCuenta) {
 		this.estadoCuenta = estadoCuenta;
+	}
+
+	
+	/*
+	 * Metodos:
+	 */
+	
+	
+	/*
+	 * Método que implementa ligadura dinámica
+	 */
+	@Override
+	public void asignarActividad(Actividad actividad) {
+		procedAsignados.add((Procedimiento) actividad);
+		
 	}
 	
 	

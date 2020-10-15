@@ -2,31 +2,48 @@ package gestoraplicacion.infraestructura;
 
 import java.io.Serializable;
 
+import basedatos.BDDriver;
 import gestoraplicacion.usuarios.Persona;
 
-public class Solicitud implements Serializable{
-	/**
-	 * 
+public class Solicitud implements Serializable,  Actividad{
+	
+	/*
+	 * Atributos
 	 */
 	private static final long serialVersionUID = -8336027985146111782L;
-	private String codigo;
+	private static int cantidadTotal;
+	private int codigo;
 	private Persona solicitante;
 	private Procedimiento solicitud;
-	private boolean aprobado;
+	private boolean aprobado=false;
 	
-	public Solicitud() {};
 	
-	public Solicitud(String codigo, Persona solicitante, Procedimiento solicitud, boolean aprobado) {
-		this.codigo = codigo;
+	/*
+	 * Constructores
+	 */
+	public Solicitud() {
+		cantidadTotal++;
+		codigo=cantidadTotal;
+	};
+	
+	
+	
+	private Solicitud(Persona solicitante) {
 		this.solicitante = solicitante;
-		this.solicitud = solicitud;
-		this.aprobado = aprobado;
+		cantidadTotal++;
+		codigo=cantidadTotal;
+		BDDriver.solicitudes.add(this);
 	}
 	
-	public String getCodigo() {
+	
+	/*
+	 * Getters y Setters
+	 */
+	
+	public int getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(String codigo) {
+	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
 	public Persona getSolicitante() {
@@ -48,10 +65,47 @@ public class Solicitud implements Serializable{
 		this.aprobado = aprobado;
 	}
 	
-	//Metodo toString sobreescrito para funcionalidad de " Mostrar detalle de solicitud". 
-	//llama toString de la clase procedimiento, imprime detalle de los principales atributos del procedimiento.
+	
+	/*
+	 * Metodos:
+	 */
+	
+	
+	
+	/*
+	 * Metodo toString sobreescrito para funcionalidad de " Mostrar detalle de solicitud". 
+	 * llama toString de la clase procedimiento, imprime detalle de los principales atributos del procedimiento.
+	 * 
+	 */
 	public String toString() {
 		return "Codigo: " + codigo + "\nSolicitante: " + solicitante.getNombre() + "\nDetalle procedimiento: " + solicitud + "\nAprobado: " + aprobado;
 	}
+	
+	
+	
+	/*
+	 * En este método se aplica la ligadura dinámica al llamar al método asignarSolicitud() de Persona. 
+	 * 
+	 */
+	public static Solicitud crearActividad(Persona persona) {
+		Solicitud solicitud= new Solicitud(persona);
+		persona.asignarActividad((Actividad) solicitud);
+		
+		return solicitud;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

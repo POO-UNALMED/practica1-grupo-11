@@ -1,64 +1,40 @@
 package gestoraplicacion.usuarios;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import basedatos.BDDriver;
+import gestoraplicacion.infraestructura.Actividad;
 import gestoraplicacion.infraestructura.HistoriaClinica;
 import gestoraplicacion.infraestructura.Hospital;
-import gestoraplicacion.infraestructura.Procedimiento;
-import gestoraplicacion.infraestructura.Room;
 import gestoraplicacion.infraestructura.Solicitud;
-
-import gestoraplicacion.usuarios.*;
 
 public class Administrador extends Persona {
 
-	/**
-	 * 
+	/*
+	 * Atributos
 	 */
 	private static final long serialVersionUID = 6389465017650662973L;
 	private String cargo;
-	private ArrayList<Solicitud> solicitudes= BDDriver.solicitudes; 
-	private Hospital hospital= BDDriver.hospitales.get(0);
-	//private ArrayList<Solicitud> solicitudesMedico = new ArrayList<Solicitud>();
+	private ArrayList<Solicitud> solicitudes = BDDriver.solicitudes;
+	private Hospital hospital = BDDriver.hospitales.get(0);
 
+	/*
+	 * Constructores
+	 */
 	public Administrador() {
 		super();
 
 	}
-	
-	
 
-	public Administrador(String nombre, String id, Date fechaNacimiento, String telefono, String direccion,
-			String cargo, ArrayList<Solicitud> solicitudesPaciente, ArrayList<Solicitud> solicitudesMedico) {
-		super(nombre, id, fechaNacimiento, telefono, direccion);
-		this.cargo = cargo;
-		this.solicitudes = solicitudesPaciente;
-		//this.solicitudesMedico = solicitudesMedico;
+	public Administrador(String nombre, int id) {
+		super(nombre, id);
+		// this.solicitudesMedico = solicitudesMedico;
 	}
-	
+
 	
 	/*
-	 * Mï¿½todo consultarDeudasDePaciente() es parte de Funcionalidad de
-	 * "Consultar deudas de un paciente para ver si estï¿½ a paz y salvo".
-	 * 
-	 *Ruta de Clases accesadas:Administrador-->Hospital-->Paciente-->HistoriaClinica-->Procedimiento.
+	 * Getters y Setters
 	 */
-	public double consultarDeudasDePaciente(String id) {
-		return hospital.totalCostosPorPaciente(id);
-	}
-	/*
-	 * Metodo consultarMedicosDePaciente() es parate de la Funcionalidad de
-	 * "consultar lista de medicos que han atendido al paciente"
-	 *Ruta de Clases accesadas:Administrador-->Paciente-->HistoriaClinica-->Procedimiento-->Medico.
-	 * */
-
-	public void consultarMedicosDePaciente(Paciente paciente) {
-		HistoriaClinica historiaClinica = paciente.getHistoriaClinica();
-		historiaClinica.medicos();
-	}
-	
 	
 	public String getCargo() {
 		return cargo;
@@ -76,29 +52,77 @@ public class Administrador extends Persona {
 		this.solicitudes = solicitudes;
 	}
 
-//	public Solicitud[] getSolicitudesMedico() {
-//		return solicitudesMedico;
-//	}
-//
-//	public void setSolicitudesMedico(Solicitud[] solicitudesMedico) {
-//		this.solicitudesMedico = solicitudesMedico;
-//	}
 	
 	/*
-	 * Crea una nueva solicitud y la agregamos a una lista de elementos dependiendo
-	 * si el solicitante es un paciente o un doctor.
+	 * Metodos:
 	 */
 	
 	
-	//Ver detalle solicitud --> Recorrer lisa de solicitudes de la clase administrador y mostrar detalle de cada solicitud.
-	//llama metodo toString de la clase solicitud. Imprime en detalle el valor de los atributos de cada solicitud.
+	/*
+	 * Ver detalle solicitud --> Recorrer lisa de solicitudes de la clase
+	 * administrador y mostrar detalle de cada solicitud. llama metodo toString de
+	 * la clase solicitud. Imprime en detalle el valor de los atributos de cada
+	 * solicitud.
+	 * 
+	 */
 	public void detalleSolicitud() {
-		for (Solicitud elemento: solicitudes) {
+		for (Solicitud elemento : solicitudes) {
 			System.out.println(elemento);
 		}
 	}
 
-	
-	
+	/*
+	 * Metodo consultarDeudasDePaciente() es parte de Funcionalidad de
+	 * "Consultar deudas de un paciente para ver si esta a paz y salvo".
+	 * 
+	 * Ruta de Clases
+	 * accesadas:Administrador-->Hospital-->Paciente-->HistoriaClinica-->
+	 * Procedimiento.
+	 */
+	public double consultarDeudasDePaciente(int id) {
+		return hospital.totalCostosPorPaciente(id);
+	}
+
+	/* Método Crear solicitud() */
+
+	public Solicitud crearActividad(int idPaciente) {
+		Paciente pacienteAux = null;
+
+		for (Paciente p : hospital.getPacientes()) {
+			if (p.getId() == idPaciente) {
+				pacienteAux = p;
+				break;
+			}
+
+		}
+		if (pacienteAux.equals(null)) {
+			System.out.println("El paciente con la identificacion ingresada no existe");
+			return null;
+		} else {
+			return Solicitud.crearActividad(pacienteAux);
+		}
+
+	}
+
+	/*
+	 * Hay ligadura dinamica
+	 * 
+	 */
+	@Override
+	public void asignarActividad(Actividad actividad) {
+		solicitudes.add((Solicitud) actividad);
+	}
+
+	/*
+	 * Metodo consultarMedicosDePaciente() es parate de la Funcionalidad de
+	 * "consultar lista de medicos que han atendido al paciente" Ruta de Clases
+	 * accesadas:Administrador-->Paciente-->HistoriaClinica-->Procedimiento-->
+	 * Medico.
+	 */
+
+	public void consultarMedicosDePaciente(Paciente paciente) {
+		HistoriaClinica historiaClinica = paciente.getHistoriaClinica();
+		historiaClinica.medicos();
+	}
 
 }

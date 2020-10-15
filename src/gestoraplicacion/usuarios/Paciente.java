@@ -1,68 +1,47 @@
 package gestoraplicacion.usuarios;
 
 import java.util.ArrayList;
-import java.util.Date;
 
+import basedatos.BDDriver;
+import gestoraplicacion.infraestructura.Actividad;
 import gestoraplicacion.infraestructura.HistoriaClinica;
 import gestoraplicacion.infraestructura.Room;
 import gestoraplicacion.infraestructura.Solicitud;
 
 public class Paciente extends Persona {
-	/**
-	 * 
+
+	/*
+	 * Atributos
 	 */
 	private static final long serialVersionUID = 2109574389975012203L;
-	private String[] patologia;
 	private HistoriaClinica historiaClinica;
-	private String eps;
-	private boolean deAlta;
+	private boolean deAlta = true;
 	private Room habitacion;
 	private ArrayList<Solicitud> solicitudes = new ArrayList<Solicitud>();
 
+	/*
+	 * Constructores
+	 */
 	public Paciente() {
 		super();
 	}
 
-	public Paciente(String nombre, String id, Date fechaNacimiento, String telefono, String direccion,
-			String[] patologia, HistoriaClinica historiaClinica, String eps, boolean deAlta, Room habitacion) {
-		super(nombre, id, fechaNacimiento, telefono, direccion);
-		this.patologia = patologia;
+	public Paciente(String nombre, int id, HistoriaClinica historiaClinica) {
+		super(nombre, id);
 		this.historiaClinica = historiaClinica;
-		this.eps = eps;
-		this.deAlta = deAlta;
-		this.habitacion = habitacion;
+		BDDriver.pacientes.add(this);
 
 	}
 
 	/*
-	 * Método valorTotalProcedimientos() es parte de Funcionalidad de
-	 * "Consultar deudas de un paciente para ver si está a paz y salvo". Este método
-	 * accede al atributo historiaClinica de su propia clase Paciente para acceder
-	 * al método totalCostos() de la clase HistoriaClinica.
-	 * 
-	 * 
-	 *Ruta de Clases accesadas:Administrador-->Hospital-->Paciente-->HistoriaClinica-->Procedimiento.
+	 * Getters y Setters
 	 */
-	public double valorTotaldeProcedimientos() {
-		return historiaClinica.totalCostos();
-	}
-	
-	
-
 	public HistoriaClinica getHistoriaClinica() {
 		return historiaClinica;
 	}
 
 	public void setHistoriaClinica(HistoriaClinica historiaClinica) {
 		this.historiaClinica = historiaClinica;
-	}
-
-	public String getEps() {
-		return eps;
-	}
-
-	public void setEps(String eps) {
-		this.eps = eps;
 	}
 
 	public boolean isDeAlta() {
@@ -81,20 +60,45 @@ public class Paciente extends Persona {
 		this.habitacion = habitacion;
 	}
 
-	public String[] getPatologia() {
-		return patologia;
-	}
-
-	public void setPatologia(String[] patologia) {
-		this.patologia = patologia;
-	}
-
 	public ArrayList<Solicitud> getSolicitudes() {
 		return solicitudes;
 	}
 
 	public void setSolicitudes(ArrayList<Solicitud> solicitudes) {
 		this.solicitudes = solicitudes;
+	}
+	
+	
+	
+	
+	/*
+	 * Metodos:
+	 */
+	
+
+	/*
+	 * Metodo valorTotalProcedimientos() es parte de Funcionalidad de
+	 * "Consultar deudas de un paciente para ver si esta a paz y salvo". Este metodo
+	 * accede al atributo historiaClinica de su propia clase Paciente para acceder
+	 * al metodo totalCostos() de la clase HistoriaClinica.
+	 * 
+	 * 
+	 * Ruta de Clases
+	 * accesadas:Administrador-->Hospital-->Paciente-->HistoriaClinica-->
+	 * Procedimiento.
+	 */
+	public double valorTotaldeProcedimientos() {
+		return historiaClinica.totalCostos();
+	}
+	
+	
+
+	/*
+	 * Metodo para ligadura dinamica.
+	 */
+	@Override
+	public void asignarActividad(Actividad actividad) {
+		solicitudes.add((Solicitud) actividad);
 	}
 
 }
