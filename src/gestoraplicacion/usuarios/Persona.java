@@ -54,15 +54,14 @@ public abstract class Persona implements Serializable {
 	 */
 	
 	/*
-	 * Metodo abstracto que implementaran las clases Medico, Paciente y Solicitud,
+	 * Metodo abstracto que implementaran las clases Medico,Paciente y Administrador.
 	 * lo que hará será asignar a sus respectivas listas de solicitudes, (en el caso
-	 * de Medico seria a su lista de procedimientos), la respectiva Solicitud o
-	 * Procedimiento que le sea pasada, desde el Metodo crearSolicitud() de la clase
-	 * Administrador o desde el método
+	 * de Medico seria a su lista de procedimientos), la Solicitud o
+	 * Procedimiento que le sea pasada como parametro.
 	 * 
 	 * 
 	 */
-	public abstract void asignarActividad(Actividad actividad);
+	public abstract void agregarActividad(Actividad actividad);
 
 	
 }

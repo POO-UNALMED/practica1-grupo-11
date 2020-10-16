@@ -23,7 +23,7 @@ public class Medico extends Persona{
 	 * Constructores
 	 */
 	public Medico() {
-		super();
+		BDDriver.medicos.add(this);
 		
 	}
 	
@@ -85,7 +85,7 @@ public class Medico extends Persona{
 	 * Método que implementa ligadura dinámica
 	 */
 	@Override
-	public void asignarActividad(Actividad actividad) {
+	public void agregarActividad(Actividad actividad) {
 		procedAsignados.add((Procedimiento) actividad);
 		
 	}

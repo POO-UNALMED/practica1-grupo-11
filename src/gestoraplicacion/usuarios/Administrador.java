@@ -70,7 +70,29 @@ public class Administrador extends Persona {
 			System.out.println(elemento);
 		}
 	}
-
+	/*
+	 * Metodo sobrecargado. Para ver detalle de las solicitudes por filtros: A=aprobado, N=No aprobado.
+	 */
+	public void detalleSolicitud(String param) {
+		if(param.equalsIgnoreCase("A")) {
+			for (Solicitud elemento : solicitudes) {
+				if(elemento.isAprobado()==true) {
+					System.out.println(elemento);
+				}
+			}
+		}
+		else if(param.equalsIgnoreCase("N")) {
+			for (Solicitud elemento : solicitudes) {
+				if(elemento.isAprobado()==false) {
+					System.out.println(elemento);
+				}	
+			}
+		}
+		else {
+			System.out.println("Parametro no valido");
+		}
+	}
+	
 	/*
 	 * Metodo consultarDeudasDePaciente() es parte de Funcionalidad de
 	 * "Consultar deudas de un paciente para ver si esta a paz y salvo".
@@ -83,9 +105,9 @@ public class Administrador extends Persona {
 		return hospital.totalCostosPorPaciente(id);
 	}
 
-	/* Método Crear solicitud() */
+	/* Método que crea una nueva solicitud */
 
-	public Solicitud crearActividad(int idPaciente) {
+	public Solicitud crearSolicitud(int idPaciente) {
 		Paciente pacienteAux = null;
 
 		for (Paciente p : hospital.getPacientes()) {
@@ -99,17 +121,19 @@ public class Administrador extends Persona {
 			System.out.println("El paciente con la identificacion ingresada no existe");
 			return null;
 		} else {
-			return Solicitud.crearActividad(pacienteAux);
+			Solicitud nuevaSolicitud= Solicitud.crearSolicitud(pacienteAux);
+			this.agregarActividad(nuevaSolicitud);
+			return nuevaSolicitud;
 		}
 
 	}
 
 	/*
-	 * Hay ligadura dinamica
+	 * Hay ligadura dinamica e implementa el método abstracto heredado.
 	 * 
 	 */
 	@Override
-	public void asignarActividad(Actividad actividad) {
+	public void agregarActividad(Actividad actividad) {
 		solicitudes.add((Solicitud) actividad);
 	}
 

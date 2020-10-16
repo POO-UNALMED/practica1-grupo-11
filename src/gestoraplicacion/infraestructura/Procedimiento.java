@@ -1,6 +1,7 @@
 package gestoraplicacion.infraestructura;
 import java.io.Serializable;
 
+import basedatos.BDDriver;
 import gestoraplicacion.usuarios.Medico;
 
 public class Procedimiento implements Serializable, Actividad{
@@ -8,6 +9,9 @@ public class Procedimiento implements Serializable, Actividad{
 	 *Atributos 
 	 */
 	private static final long serialVersionUID = 7092617778020316714L;
+	
+	private int id;
+	private static int totalProcedimientos;
 	private String descripcionProcedimiento;
 	private Medico medico;
 	private HistoriaClinica historiaClinica;
@@ -16,10 +20,14 @@ public class Procedimiento implements Serializable, Actividad{
 	private Room habitacion;
 	private boolean completado=false;
 	
+	
+	
 	/*
 	 * Constructores
 	 */
-	public Procedimiento(){}
+	public Procedimiento(){
+		BDDriver.procedimientos.add(this);
+	}
 	
 	public Procedimiento(String descripcionProcedimiento, Medico medico, HistoriaClinica historiaClinica, double costo,Room habitacion) {
 		
@@ -28,6 +36,7 @@ public class Procedimiento implements Serializable, Actividad{
 		this.historiaClinica = historiaClinica;
 		this.costo = costo;
 		this.habitacion = habitacion;
+		BDDriver.procedimientos.add(this);
 		
 	}
 
@@ -97,6 +106,7 @@ public class Procedimiento implements Serializable, Actividad{
 	
 	/*
 	 * Metodos:
+	 * 
 	 */
 	@Override
 	public String toString() {

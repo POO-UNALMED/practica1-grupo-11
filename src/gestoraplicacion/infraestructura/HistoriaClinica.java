@@ -2,6 +2,7 @@ package gestoraplicacion.infraestructura;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import basedatos.BDDriver;
 import gestoraplicacion.usuarios.Paciente;
 
 
@@ -19,12 +20,14 @@ public class HistoriaClinica implements Serializable{
 	 * Constructores
 	 */
 	public HistoriaClinica() {
+		BDDriver.historiasClinicas.add(this);
 	}
 
 	public HistoriaClinica(String codigo, Paciente paciente) {
 		
 		this.codigo = codigo;
 		this.paciente = paciente;
+		BDDriver.historiasClinicas.add(this);
 	}
 	
 	

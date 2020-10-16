@@ -23,7 +23,7 @@ public class Paciente extends Persona {
 	 * Constructores
 	 */
 	public Paciente() {
-		super();
+		BDDriver.pacientes.add(this);
 	}
 
 	public Paciente(String nombre, int id, HistoriaClinica historiaClinica) {
@@ -97,7 +97,7 @@ public class Paciente extends Persona {
 	 * Metodo para ligadura dinamica.
 	 */
 	@Override
-	public void asignarActividad(Actividad actividad) {
+	public void agregarActividad(Actividad actividad) {
 		solicitudes.add((Solicitud) actividad);
 	}
 

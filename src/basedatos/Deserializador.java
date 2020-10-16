@@ -37,6 +37,7 @@ public class Deserializador {
 	 * 
 	 */
 
+	@SuppressWarnings("unchecked")
 	public static void deserializar() {
 		File[] docs = rutaTemp.listFiles();
 		FileInputStream fis;
