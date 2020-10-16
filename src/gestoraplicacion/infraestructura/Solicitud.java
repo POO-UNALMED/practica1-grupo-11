@@ -12,7 +12,7 @@ public class Solicitud implements Serializable, Actividad {
 	 * Atributos
 	 */
 	private static final long serialVersionUID = -8336027985146111782L;
-	private static int cantidadTotal;
+	private static int cantidadTotal=BDDriver.solicitudes.size();
 	private int codigo;
 	private Persona solicitante;
 	private Procedimiento solicitud;

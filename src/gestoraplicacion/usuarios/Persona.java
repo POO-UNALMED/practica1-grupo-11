@@ -2,6 +2,7 @@ package gestoraplicacion.usuarios;
 
 import java.io.Serializable;
 
+import basedatos.BDDriver;
 import gestoraplicacion.infraestructura.Actividad;
 
 public abstract class Persona implements Serializable {
@@ -11,10 +12,9 @@ public abstract class Persona implements Serializable {
 	 * Atributos
 	 */
 	private static final long serialVersionUID = -735928645591952061L;
-	private static int totalPersonas;
+	private static int totalPersonas=BDDriver.administradores.size()+BDDriver.medicos.size()+BDDriver.pacientes.size();
 	private String nombre;
 	private int id;
-
 	
 	/*
 	 * Constructores

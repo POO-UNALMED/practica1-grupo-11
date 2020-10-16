@@ -14,16 +14,16 @@ public class Medico extends Persona{
 	 *Atributos 
 	 */
 	private static final long serialVersionUID = 6361786807611231845L;
-	private int especialidad;
+	private String especialidad;
 	private ArrayList<Procedimiento> procedAsignados=new ArrayList<Procedimiento>();
-	private Hospital hospital=BDDriver.hospitales.get(0);
+	private Hospital hospital;
 	private int estadoCuenta;
 	
 	/*
 	 * Constructores
 	 */
 	
-	public Medico(String nombre,int especialidad) {
+	public Medico(String nombre,String especialidad) {
 		super(nombre);
 		this.especialidad = especialidad;
 		BDDriver.medicos.add(this);
@@ -32,12 +32,12 @@ public class Medico extends Persona{
 	/*
 	 * Getters y Setters
 	 */
-	public int getEspecialidad() {
+	public String getEspecialidad() {
 		return especialidad;
 	}
 
 
-	public void setEspecialidad(int especialidad) {
+	public void setEspecialidad(String especialidad) {
 		this.especialidad = especialidad;
 	}
 

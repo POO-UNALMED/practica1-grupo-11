@@ -13,7 +13,7 @@ public class Procedimiento implements Serializable, Actividad{
 	
 
 	private int id;
-	private static int totalProcedimientos;
+	private static int totalProcedimientos=BDDriver.procedimientos.size();
 	private String descripcionProcedimiento;
 	private Medico medico;
 	private HistoriaClinica historiaClinica;

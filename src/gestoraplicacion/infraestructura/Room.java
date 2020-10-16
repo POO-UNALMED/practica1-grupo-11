@@ -11,7 +11,7 @@ public class Room implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 594910417039129492L;
-	private static int totalRooms;
+	private static int totalRooms=BDDriver.rooms.size();
 	private int codigo;
 	private Paciente paciente;
 	private boolean ocupado= false;
@@ -21,9 +21,9 @@ public class Room implements Serializable{
 	 * Constructores
 	 */
 	public Room() {
+		BDDriver.rooms.add(this);
 		totalRooms++;
 		this.codigo=totalRooms;
-		BDDriver.rooms.add(this);
 	}
 	
 	

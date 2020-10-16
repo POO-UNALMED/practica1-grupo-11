@@ -16,7 +16,7 @@ public class Administrador extends Persona {
 	private static final long serialVersionUID = 6389465017650662973L;
 	private String cargo;
 	private ArrayList<Solicitud> solicitudes = BDDriver.solicitudes;
-	private Hospital hospital = BDDriver.hospitales.get(0);
+	private Hospital hospital;
 
 	/*
 	 * Constructores
@@ -48,12 +48,23 @@ public class Administrador extends Persona {
 		this.solicitudes = solicitudes;
 	}
 
+	public Hospital getHospital() {
+		return hospital;
+	}
+
+
+	public void setHospital(Hospital hospital) {
+		this.hospital = hospital;
+	}
 	
 	/*
 	 * Metodos:
 	 */
 	
 	
+	
+
+
 	/*
 	 * Ver detalle solicitud --> Recorrer lisa de solicitudes de la clase
 	 * administrador y mostrar detalle de cada solicitud. llama metodo toString de
