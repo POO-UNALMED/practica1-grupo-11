@@ -10,6 +10,8 @@ public class Procedimiento implements Serializable, Actividad{
 	 */
 	private static final long serialVersionUID = 7092617778020316714L;
 	
+	
+
 	private int id;
 	private static int totalProcedimientos;
 	private String descripcionProcedimiento;
@@ -26,11 +28,12 @@ public class Procedimiento implements Serializable, Actividad{
 	 * Constructores
 	 */
 	public Procedimiento(){
-		BDDriver.procedimientos.add(this);
+		totalProcedimientos++;
+		this.id=totalProcedimientos;
 	}
 	
 	public Procedimiento(String descripcionProcedimiento, Medico medico, HistoriaClinica historiaClinica, double costo,Room habitacion) {
-		
+		this();
 		this.descripcionProcedimiento = descripcionProcedimiento;
 		this.medico = medico;
 		this.historiaClinica = historiaClinica;
@@ -44,13 +47,21 @@ public class Procedimiento implements Serializable, Actividad{
 	/*
 	 * Getters y Setters
 	 */
-	public String getTipoProcedimiento() {
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getDescripcionProcedimiento() {
 		return descripcionProcedimiento;
 	}
-	public void setTipoProcedimiento(String tipoProcedimiento) {
-		this.descripcionProcedimiento = tipoProcedimiento;
+
+	public void setDescripcionProcedimiento(String descripcionProcedimiento) {
+		this.descripcionProcedimiento = descripcionProcedimiento;
 	}
-	
 	
 	public Medico getMedico() {
 		return medico;

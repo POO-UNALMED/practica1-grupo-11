@@ -24,14 +24,12 @@ public class Solicitud implements Serializable, Actividad {
 	public Solicitud() {
 		cantidadTotal++;
 		this.codigo = cantidadTotal;
-		BDDriver.solicitudes.add(this);
 	}
 	
 	
 	private Solicitud(Persona solicitante) {
+		this();
 		this.solicitante = solicitante;
-		cantidadTotal++;
-		this.codigo = cantidadTotal;
 		BDDriver.solicitudes.add(this);
 	}
 

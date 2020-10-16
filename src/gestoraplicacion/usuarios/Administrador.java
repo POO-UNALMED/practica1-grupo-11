@@ -21,14 +21,10 @@ public class Administrador extends Persona {
 	/*
 	 * Constructores
 	 */
-	public Administrador() {
-		super();
 
-	}
-
-	public Administrador(String nombre, int id) {
-		super(nombre, id);
-		// this.solicitudesMedico = solicitudesMedico;
+	public Administrador(String nombre) {
+		super(nombre);
+		BDDriver.administradores.add(this);
 	}
 
 	

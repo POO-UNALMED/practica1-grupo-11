@@ -22,13 +22,9 @@ public class Medico extends Persona{
 	/*
 	 * Constructores
 	 */
-	public Medico() {
-		BDDriver.medicos.add(this);
-		
-	}
 	
-	public Medico(String nombre, int id, int especialidad) {
-		super(nombre, id);
+	public Medico(String nombre,int especialidad) {
+		super(nombre);
 		this.especialidad = especialidad;
 		BDDriver.medicos.add(this);
 	}

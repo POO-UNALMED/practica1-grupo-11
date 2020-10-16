@@ -12,20 +12,17 @@ public class HistoriaClinica implements Serializable{
 	 *Atributos 
 	 */
 	private static final long serialVersionUID = 7221419680251132944L;
-	private String codigo;
 	private Paciente paciente;
+	private int codigo;
 	private ArrayList<Procedimiento> procedimientos= new ArrayList<Procedimiento>();
 	
 	/*
 	 * Constructores
 	 */
-	public HistoriaClinica() {
-		BDDriver.historiasClinicas.add(this);
-	}
 
-	public HistoriaClinica(String codigo, Paciente paciente) {
+	public HistoriaClinica(Paciente paciente) {
 		
-		this.codigo = codigo;
+		this.codigo = paciente.getId();
 		this.paciente = paciente;
 		BDDriver.historiasClinicas.add(this);
 	}
@@ -34,10 +31,10 @@ public class HistoriaClinica implements Serializable{
 	/*
 	 * Getters y Setters
 	 */
-	public String getCodigo() {
+	public int getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(String codigo) {
+	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
 	public Paciente getPaciente() {

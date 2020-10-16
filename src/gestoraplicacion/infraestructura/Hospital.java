@@ -17,7 +17,7 @@ public class Hospital implements Serializable {
 	 * Atributos
 	 */
 	private static final long serialVersionUID = 8558031300117756825L;
-	private String nit;
+	private final int nit;
 	private String nombre;
 	private static final int camasDisponibles = 15;
 	private Administrador administrador = BDDriver.administradores.get(0);
@@ -28,13 +28,11 @@ public class Hospital implements Serializable {
 	/*
 	 * Constructores
 	 */
-	public Hospital() {
 
-	}
-
-	public Hospital(String nit, String nombre) {
-		this.nit = nit;
+	public Hospital(String nombre) {
+		nit=123456789;
 		this.nombre = nombre;
+		BDDriver.hospitales.add(this);
 
 	}
 	
@@ -42,12 +40,8 @@ public class Hospital implements Serializable {
 	 * Getters y Setters
 	 */
 
-	public String getNit() {
+	public int getNit() {
 		return nit;
-	}
-
-	public void setNit(String nit) {
-		this.nit = nit;
 	}
 
 	public String getNombre() {

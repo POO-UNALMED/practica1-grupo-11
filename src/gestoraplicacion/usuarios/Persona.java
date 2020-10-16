@@ -11,6 +11,7 @@ public abstract class Persona implements Serializable {
 	 * Atributos
 	 */
 	private static final long serialVersionUID = -735928645591952061L;
+	private static int totalPersonas;
 	private String nombre;
 	private int id;
 
@@ -20,11 +21,13 @@ public abstract class Persona implements Serializable {
 	 * 
 	 */
 	public Persona() {
+		totalPersonas++;
+		this.id=totalPersonas;
 	}
-
-	public Persona(String nombre, int id) {
+	
+	public Persona(String nombre) {
+		this();
 		this.nombre = nombre;
-		this.id = id;
 	}
 
 	

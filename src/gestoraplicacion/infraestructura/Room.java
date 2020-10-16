@@ -2,6 +2,7 @@ package gestoraplicacion.infraestructura;
 
 import java.io.Serializable;
 
+import basedatos.BDDriver;
 import gestoraplicacion.usuarios.Paciente;
 
 public class Room implements Serializable{
@@ -10,6 +11,7 @@ public class Room implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 594910417039129492L;
+	private static int totalRooms;
 	private int codigo;
 	private Paciente paciente;
 	private boolean ocupado= false;
@@ -18,11 +20,10 @@ public class Room implements Serializable{
 	/*
 	 * Constructores
 	 */
-	public Room() {}
-	
-	public Room(int codigo) {
-		this.codigo = codigo;
-		
+	public Room() {
+		totalRooms++;
+		this.codigo=totalRooms;
+		BDDriver.rooms.add(this);
 	}
 	
 	

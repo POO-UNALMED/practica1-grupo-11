@@ -15,22 +15,18 @@ public class Paciente extends Persona {
 	 */
 	private static final long serialVersionUID = 2109574389975012203L;
 	private HistoriaClinica historiaClinica;
-	private boolean deAlta = true;
+	private boolean deAlta = false;
 	private Room habitacion;
 	private ArrayList<Solicitud> solicitudes = new ArrayList<Solicitud>();
 
 	/*
 	 * Constructores
 	 */
-	public Paciente() {
-		BDDriver.pacientes.add(this);
-	}
 
-	public Paciente(String nombre, int id, HistoriaClinica historiaClinica) {
-		super(nombre, id);
-		this.historiaClinica = historiaClinica;
+	
+	public Paciente(String nombre) {
+		super(nombre);
 		BDDriver.pacientes.add(this);
-
 	}
 
 	/*
