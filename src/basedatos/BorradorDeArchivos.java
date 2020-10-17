@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+
+/*
+ * Clase de utilidad durante el desarrollo de la aplicacion, no agrega ningun tipo de valor a la misma. 
+ */
 public class BorradorDeArchivos {
 
 	private static File rutaTemp = new File("src\\basedatos\\temp");
