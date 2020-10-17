@@ -1,6 +1,7 @@
 package gestoraplicacion.infraestructura;
 
 import java.io.Serializable;
+import java.util.stream.Stream;
 
 import basedatos.BDDriver;
 import gestoraplicacion.usuarios.Paciente;
@@ -85,7 +86,7 @@ public class Solicitud implements Serializable, Actividad {
 	}
 
 	/*
-	 * En este metodo se aplica la ligadura dinámica al llamar al metodo
+	 * En este metodo se aplica la ligadura dinï¿½mica al llamar al metodo
 	 * asignarSolicitud() de Persona. Es un metodo estatico de fabrica que se
 	 * encarga de crear una Solicitud accediendo a su propio constructor. Ademas
 	 * tambien asigna a la persona que se paso como parametro, la solicitud mediante
@@ -99,6 +100,11 @@ public class Solicitud implements Serializable, Actividad {
 		
 
 		return solicitud;
+	}
+	
+	public static Solicitud getSolucitudByProcedimiento(Procedimiento procedimiento) {
+		Stream<Solicitud> solicitudes = BDDriver.solicitudes.stream().filter(solicitud -> solicitud.getSolicitud() == procedimiento);
+		return solicitudes.findFirst().get();
 	}
 
 }

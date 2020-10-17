@@ -1,11 +1,13 @@
 package gestoraplicacion.usuarios;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import basedatos.BDDriver;
 import gestoraplicacion.infraestructura.Actividad;
 import gestoraplicacion.infraestructura.HistoriaClinica;
 import gestoraplicacion.infraestructura.Hospital;
+import gestoraplicacion.infraestructura.Procedimiento;
 import gestoraplicacion.infraestructura.Solicitud;
 
 public class Administrador extends Persona {
@@ -61,7 +63,41 @@ public class Administrador extends Persona {
 	 * Metodos:
 	 */
 	
-	
+	/*
+	 * Retorna un String con la siguiente forma
+	 * Paciente:
+	 *  id:...
+	 *	  nombre:...
+	 *	  habitacion:...
+	 *    pazYSalvo: verdadero | falso
+	 *	  estadoSolicitudes:
+	 *	     Aprobado:...
+	 *	     Finalizado:...
+	 * basado en id del paciente que recibe como atributo
+	 */
+	public String verDetallesPaciente(int id) {
+		Optional<Paciente> pacienteOptional =  Paciente.getPacienteById(id);
+		Paciente paciente = pacienteOptional.get();
+		String salida;
+		salida = "Paciente\n";
+		salida += "  id: " + paciente.getId() + "\n";
+		salida += "  habitacion: " + paciente.getHabitacion().getCodigo() + "\n";
+		salida += "  paz y salvo: " + (paciente.valorTotaldeProcedimientos() == 0 ? "Verdadero" : "Falso") + "\n";
+		salida += "  Estado solicitudes: \n";
+		HistoriaClinica historiaClinica = paciente.getHistoriaClinica();
+		ArrayList<Procedimiento> procedimientos = historiaClinica.getProcedimientos();
+		for (Procedimiento procedimiento : procedimientos) {
+			Solicitud solicitud = Solicitud.getSolucitudByProcedimiento(procedimiento);
+			salida += "    codigo: " + solicitud.getCodigo() + "\n";
+			salida += "    Aprobado: " + (solicitud.isAprobado() ? "Si" : "No") + "\n";
+			salida += "    Finalizado: " + (procedimiento.isCompletado() ? "Si" : "No") + "\n";
+			salida += "==================";
+		}
+		if(procedimientos.size() == 0) {
+			salida += "    No hay solicitudes asociadas a este paciente. :(";
+		}
+		return salida;
+	}
 	
 
 
@@ -112,7 +148,7 @@ public class Administrador extends Persona {
 		return hospital.totalCostosPorPaciente(id);
 	}
 
-	/* Método que crea una nueva solicitud */
+	/* Mï¿½todo que crea una nueva solicitud */
 
 	public Solicitud crearSolicitud(int idPaciente) {
 		Paciente pacienteAux = null;
@@ -136,7 +172,7 @@ public class Administrador extends Persona {
 	}
 
 	/*
-	 * Hay ligadura dinamica e implementa el método abstracto heredado.
+	 * Hay ligadura dinamica e implementa el mï¿½todo abstracto heredado.
 	 * 
 	 */
 	@Override

@@ -1,6 +1,8 @@
 package gestoraplicacion.usuarios;
 
 import java.util.ArrayList;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 import basedatos.BDDriver;
 import gestoraplicacion.infraestructura.Actividad;
@@ -95,6 +97,11 @@ public class Paciente extends Persona {
 	@Override
 	public void agregarActividad(Actividad actividad) {
 		solicitudes.add((Solicitud) actividad);
+	}
+	
+	public static Optional<Paciente> getPacienteById(int id) {
+		Stream<Paciente> pacienteID = BDDriver.pacientes.stream().filter(paciente -> paciente.getId() == id);
+		return pacienteID.findFirst();
 	}
 
 }
