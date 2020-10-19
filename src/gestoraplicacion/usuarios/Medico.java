@@ -71,6 +71,10 @@ public class Medico extends Persona{
 	public void setEstadoCuenta(int estadoCuenta) {
 		this.estadoCuenta = estadoCuenta;
 	}
+	
+	public String ToString() {
+		return "Dr. " + super.getNombre();
+	}
 
 	
 	/*
@@ -86,7 +90,7 @@ public class Medico extends Persona{
 	
 	
 	/*
-	 * Método que implementa ligadura dinámica
+	 * Mï¿½todo que implementa ligadura dinï¿½mica
 	 */
 	@Override
 	public void agregarActividad(Actividad actividad) {
