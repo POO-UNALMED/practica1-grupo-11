@@ -7,6 +7,7 @@ import basedatos.BDDriver;
 import gestoraplicacion.infraestructura.Actividad;
 import gestoraplicacion.infraestructura.Hospital;
 import gestoraplicacion.infraestructura.Procedimiento;
+import gestoraplicacion.infraestructura.Room;
 
 
 public class Medico extends Persona{
@@ -75,6 +76,13 @@ public class Medico extends Persona{
 	/*
 	 * Metodos:
 	 */
+	public void darDeAlta(int idPaciente, int idProcedimiento) {
+		for(Procedimiento p : procedAsignados) {
+			if(p.getId() == idProcedimiento) {
+				p.setCompletado(true);
+			}
+		}
+	}
 	
 	
 	/*
