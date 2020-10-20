@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import basedatos.BDDriver;
 import gestoraplicacion.infraestructura.Actividad;
+import gestoraplicacion.infraestructura.HistoriaClinica;
 import gestoraplicacion.infraestructura.Hospital;
 import gestoraplicacion.infraestructura.Procedimiento;
 import gestoraplicacion.infraestructura.Room;
@@ -84,6 +85,12 @@ public class Medico extends Persona{
 		for(Procedimiento p : procedAsignados) {
 			if(p.getId() == idProcedimiento) {
 				p.setCompletado(true);
+				HistoriaClinica auxHC = p.getHistoriaClinica();
+				Paciente auxP = auxHC.getPaciente();
+				if(auxP.getId() == idPaciente) {
+					auxP.setDeAlta(true);
+				}
+				
 			}
 		}
 	}
