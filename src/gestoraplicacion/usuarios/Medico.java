@@ -87,8 +87,11 @@ public class Medico extends Persona{
 				p.setCompletado(true);
 				HistoriaClinica auxHC = p.getHistoriaClinica();
 				Paciente auxP = auxHC.getPaciente();
+				
 				if(auxP.getId() == idPaciente) {
 					auxP.setDeAlta(true);
+					Room auxR = auxP.getHabitacion();
+					auxR.setOcupado(false);
 				}
 				
 			}
