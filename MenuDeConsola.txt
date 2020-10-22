@@ -1,0 +1,58 @@
+
+Hola Administrador, Bienvenido al Software HealthTech para administrar su hospital:
+Aquí está su menú:
+
+
+/*
+   Funcionalidades básicas para el funcionamiento del sistema
+*/
+
+Ingrese 1 para:
+  -->Ingresar Paciente al sistema
+
+Ingrese 2 para:
+  -->Crear Solicitud para determinado paciente:
+
+
+/*
+   Funcionalidades interesantes
+*/
+Ingrese 3 para:
+  -->Aprobar Solicitud (Sujeto a disponibilidad de habitaciones)
+    (Mostramos lista de solicitudes pendientes por aprobar y detalle ocupación del hospital(Habitaciones libres))
+    "Si no hay disponibilidad es posibe que quiera darle de alta a algún paciente".
+
+Ingrese 4 para :
+  -->Pagar deudas de paciente.
+     (Mostrar pacientes deudores (id de paciente,nombre paciente) con sus deudas asociadas a los procedimientos respectivos (id procedimiento,patologia),
+      y el total de lo que deben (de mayor deuda total a menorcdeuda total))
+              1.Pagar procedimiento especifico.
+              2.Pagar todas las deudas existentes.
+Ingrese 5 para:
+  -->Finalizar procedimiento
+     "Sólo pude finalizar procedimiento aquellos pacientes que esten a paz y salvo en el respectivo procedimiento"
+     (Mostramos pacientes(nombre y id) con procedimientos asociados(id de cada uno y patologia)).
+
+Ingrese 6 para: 
+  -->Dar de Alta 
+     (Mostrar pacientes aptos(id) para dar de alta).
+
+Ingresar 7 para:
+  -->Ver procedimientos asignados a un Médico y detalles extra: 
+     (Médicos con más procedimientos asignados y más procedimientos completados)
+     (Mostrar lista de médicos(nombre y id))
+     (Recibir id y mostrar detalle de procedimientos asignados).
+
+Ingrese 8 para salir del sistema:
+    (Se invoca BDDriver.Serializar() y luego un Sytem.exit(0))
+
+
+//Opcional.
+Ingrese 8 para:
+  -->Ver los medicos que ha tenido un paciente en su historia clínica.
+
+
+
+
+
+

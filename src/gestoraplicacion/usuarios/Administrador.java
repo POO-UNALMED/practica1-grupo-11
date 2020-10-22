@@ -29,11 +29,10 @@ public class Administrador extends Persona {
 		BDDriver.administradores.add(this);
 	}
 
-	
 	/*
 	 * Getters y Setters
 	 */
-	
+
 	public String getCargo() {
 		return cargo;
 	}
@@ -54,29 +53,21 @@ public class Administrador extends Persona {
 		return hospital;
 	}
 
-
 	public void setHospital(Hospital hospital) {
 		this.hospital = hospital;
 	}
-	
+
 	/*
 	 * Metodos:
 	 */
-	
+
 	/*
-	 * Retorna un String con la siguiente forma
-	 * Paciente:
-	 *  id:...
-	 *	  nombre:...
-	 *	  habitacion:...
-	 *    pazYSalvo: verdadero | falso
-	 *	  estadoSolicitudes:
-	 *	     Aprobado:...
-	 *	     Finalizado:...
-	 * basado en id del paciente que recibe como atributo
+	 * Retorna un String con la siguiente forma Paciente: id:... nombre:...
+	 * habitacion:... pazYSalvo: verdadero | falso estadoSolicitudes: Aprobado:...
+	 * Finalizado:... basado en id del paciente que recibe como atributo
 	 */
 	public String verDetallesPaciente(int id) {
-		Optional<Paciente> pacienteOptional =  Paciente.getPacienteById(id);
+		Optional<Paciente> pacienteOptional = Paciente.getPacienteById(id);
 		Paciente paciente = pacienteOptional.get();
 		String salida;
 		salida = "Paciente\n";
@@ -93,13 +84,11 @@ public class Administrador extends Persona {
 			salida += "    Finalizado: " + (procedimiento.isCompletado() ? "Si" : "No") + "\n";
 			salida += "==================";
 		}
-		if(procedimientos.size() == 0) {
+		if (procedimientos.size() == 0) {
 			salida += "    No hay solicitudes asociadas a este paciente. :(";
 		}
 		return salida;
 	}
-	
-
 
 	/*
 	 * Ver detalle solicitud --> Recorrer lisa de solicitudes de la clase
@@ -113,29 +102,29 @@ public class Administrador extends Persona {
 			System.out.println(elemento);
 		}
 	}
+
 	/*
-	 * Metodo sobrecargado. Para ver detalle de las solicitudes por filtros: A=aprobado, N=No aprobado.
+	 * Metodo sobrecargado. Para ver detalle de las solicitudes por filtros:
+	 * A=aprobado, N=No aprobado.
 	 */
 	public void detalleSolicitud(String param) {
-		if(param.equalsIgnoreCase("A")) {
+		if (param.equalsIgnoreCase("A")) {
 			for (Solicitud elemento : solicitudes) {
-				if(elemento.isAprobado()==true) {
+				if (elemento.isAprobado() == true) {
 					System.out.println(elemento);
 				}
 			}
-		}
-		else if(param.equalsIgnoreCase("N")) {
+		} else if (param.equalsIgnoreCase("N")) {
 			for (Solicitud elemento : solicitudes) {
-				if(elemento.isAprobado()==false) {
+				if (elemento.isAprobado() == false) {
 					System.out.println(elemento);
-				}	
+				}
 			}
-		}
-		else {
+		} else {
 			System.out.println("Parametro no valido");
 		}
 	}
-	
+
 	/*
 	 * Metodo consultarDeudasDePaciente() es parte de Funcionalidad de
 	 * "Consultar deudas de un paciente para ver si esta a paz y salvo".
@@ -164,7 +153,7 @@ public class Administrador extends Persona {
 			System.out.println("El paciente con la identificacion ingresada no existe");
 			return null;
 		} else {
-			Solicitud nuevaSolicitud= Solicitud.crearSolicitud(pacienteAux);
+			Solicitud nuevaSolicitud = Solicitud.crearSolicitud(pacienteAux);
 			this.agregarActividad(nuevaSolicitud);
 			return nuevaSolicitud;
 		}

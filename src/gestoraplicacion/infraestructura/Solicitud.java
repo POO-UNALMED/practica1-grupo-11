@@ -16,7 +16,7 @@ public class Solicitud implements Serializable, Actividad {
 	private static int cantidadTotal=BDDriver.solicitudes.size();
 	private int codigo;
 	private Persona solicitante;
-	private Procedimiento solicitud;
+	private Procedimiento procedimeinto;
 	private boolean aprobado = false;
 
 	/*
@@ -54,12 +54,12 @@ public class Solicitud implements Serializable, Actividad {
 		this.solicitante = solicitante;
 	}
 
-	public Procedimiento getSolicitud() {
-		return solicitud;
+	public Procedimiento getProcedimeinto() {
+		return procedimeinto;
 	}
 
-	public void setSolicitud(Procedimiento solicitud) {
-		this.solicitud = solicitud;
+	public void setProcedimiento(Procedimiento procedimiento) {
+		this.procedimeinto=procedimiento;
 	}
 
 	public boolean isAprobado() {
@@ -82,7 +82,7 @@ public class Solicitud implements Serializable, Actividad {
 	 */
 	public String toString() {
 		return "Codigo: " + codigo + "\nSolicitante: " + solicitante.getNombre() + "\nDetalle procedimiento: "
-				+ solicitud + "\nAprobado: " + aprobado;
+				+ procedimeinto + "\nAprobado: " + aprobado;
 	}
 
 	/*
@@ -103,7 +103,7 @@ public class Solicitud implements Serializable, Actividad {
 	}
 	
 	public static Solicitud getSolucitudByProcedimiento(Procedimiento procedimiento) {
-		Stream<Solicitud> solicitudes = BDDriver.solicitudes.stream().filter(solicitud -> solicitud.getSolicitud() == procedimiento);
+		Stream<Solicitud> solicitudes = BDDriver.solicitudes.stream().filter(solicitud -> solicitud.getProcedimeinto() == procedimiento);
 		return solicitudes.findFirst().get();
 	}
 
