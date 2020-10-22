@@ -1,6 +1,7 @@
 
-Hola Administrador, Bienvenido al Software HealthTech para administrar su hospital:
-Aquí está su menú:
+¡Hola Administrador Jaime Alberto Guzman Luna!. Bienvenido al Software HealthTech para Administrar el Hospital Universitario
+Aquí está su menu:
+
 
 
 /*

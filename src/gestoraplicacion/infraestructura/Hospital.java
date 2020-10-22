@@ -21,7 +21,7 @@ public class Hospital implements Serializable {
 	private String nombre;
 	private static final int camasDisponibles = 15;
 	private Administrador administrador;
-	private ArrayList<Paciente> pacientes = BDDriver.pacientes;
+	private ArrayList<Paciente> pacientes = BDDriver.getPacientes();
 	private ArrayList<Medico> medicos = BDDriver.medicos;
 	private ArrayList<Room> rooms = BDDriver.rooms;
 

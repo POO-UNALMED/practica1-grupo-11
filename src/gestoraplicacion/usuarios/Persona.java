@@ -12,7 +12,6 @@ public abstract class Persona implements Serializable {
 	 * Atributos
 	 */
 	private static final long serialVersionUID = -735928645591952061L;
-	private static int totalPersonas=BDDriver.administradores.size()+BDDriver.medicos.size()+BDDriver.pacientes.size();
 	private String nombre;
 	private int id;
 	
@@ -21,8 +20,7 @@ public abstract class Persona implements Serializable {
 	 * 
 	 */
 	public Persona() {
-		totalPersonas++;
-		this.id=totalPersonas;
+		this.id=BDDriver.totalPersonas()+1;
 	}
 	
 	public Persona(String nombre) {

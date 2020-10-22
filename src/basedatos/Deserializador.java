@@ -170,7 +170,7 @@ public class Deserializador {
 					fis = new FileInputStream(file);
 					ois = new ObjectInputStream(fis);
 
-					BDDriver.pacientes = (ArrayList<Paciente>) ois.readObject();
+					BDDriver.setPacientes((ArrayList<Paciente>) ois.readObject());
 
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block

@@ -139,7 +139,7 @@ public class Serializador {
 				try {
 					fos = new FileOutputStream(file);
 					oos = new ObjectOutputStream(fos);
-					oos.writeObject(BDDriver.pacientes);
+					oos.writeObject(BDDriver.getPacientes());
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

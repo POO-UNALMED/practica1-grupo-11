@@ -28,7 +28,7 @@ public class Paciente extends Persona {
 	
 	public Paciente(String nombre) {
 		super(nombre);
-		BDDriver.pacientes.add(this);
+		BDDriver.agregarPaciente(this);
 	}
 
 	/*
@@ -100,7 +100,7 @@ public class Paciente extends Persona {
 	}
 	
 	public static Optional<Paciente> getPacienteById(int id) {
-		Stream<Paciente> pacienteID = BDDriver.pacientes.stream().filter(paciente -> paciente.getId() == id);
+		Stream<Paciente> pacienteID = BDDriver.getPacientes().stream().filter(paciente -> paciente.getId() == id);
 		return pacienteID.findFirst();
 	}
 

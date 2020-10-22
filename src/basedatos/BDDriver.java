@@ -25,7 +25,29 @@ public class BDDriver {
 	public static ArrayList<Solicitud> solicitudes = new ArrayList<Solicitud>();
 	public static ArrayList<Administrador> administradores = new ArrayList<Administrador>();
 	public static ArrayList<Medico> medicos = new ArrayList<Medico>();
-	public static ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
+	private static ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
+	
+	
+	public static void agregarPaciente(Paciente paciente) {
+		pacientes.add(paciente);
+		hospitales.get(0).setPacientes(BDDriver.getPacientes());
+	}
+	
+	public static int totalPersonas() {
+		return pacientes.size()+medicos.size()+administradores.size();
+	}
+
+
+	public static ArrayList<Paciente> getPacientes() {
+		return pacientes;
+	}
+
+
+	public static void setPacientes(ArrayList<Paciente> pacientes) {
+		BDDriver.pacientes = pacientes;
+	}
+	
+	
 	
 	
 	
