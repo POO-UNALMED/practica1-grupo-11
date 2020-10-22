@@ -5,8 +5,10 @@ import java.util.ArrayList;
 
 import basedatos.BDDriver;
 import gestoraplicacion.infraestructura.Actividad;
+import gestoraplicacion.infraestructura.HistoriaClinica;
 import gestoraplicacion.infraestructura.Hospital;
 import gestoraplicacion.infraestructura.Procedimiento;
+import gestoraplicacion.infraestructura.Room;
 
 
 public class Medico extends Persona{
@@ -70,15 +72,35 @@ public class Medico extends Persona{
 	public void setEstadoCuenta(int estadoCuenta) {
 		this.estadoCuenta = estadoCuenta;
 	}
+	
+	public String ToString() {
+		return "Dr. " + super.getNombre();
+	}
 
 	
 	/*
 	 * Metodos:
 	 */
+	public void darDeAlta(int idPaciente, int idProcedimiento) {
+		for(Procedimiento p : procedAsignados) {
+			if(p.getId() == idProcedimiento) {
+				p.setCompletado(true);
+				HistoriaClinica auxHC = p.getHistoriaClinica();
+				Paciente auxP = auxHC.getPaciente();
+				
+				if(auxP.getId() == idPaciente) {
+					auxP.setDeAlta(true);
+					Room auxR = auxP.getHabitacion();
+					auxR.setOcupado(false);
+				}
+				
+			}
+		}
+	}
 	
 	
 	/*
-	 * Método que implementa ligadura dinámica
+	 * Mï¿½todo que implementa ligadura dinï¿½mica
 	 */
 	@Override
 	public void agregarActividad(Actividad actividad) {

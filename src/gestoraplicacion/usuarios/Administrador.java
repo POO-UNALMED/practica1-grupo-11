@@ -176,9 +176,21 @@ public class Administrador extends Persona {
 	 * Medico.
 	 */
 
-	public void consultarMedicosDePaciente(Paciente paciente) {
+	public void consultarMedicosDePaciente(int idPaciente) {
+		/*
 		HistoriaClinica historiaClinica = paciente.getHistoriaClinica();
 		historiaClinica.medicos();
+		*/
+		
+		for(Paciente p : hospital.getPacientes()) {
+			if(p.getId() == idPaciente) {
+				HistoriaClinica auxHC = p.getHistoriaClinica();
+				ArrayList<Procedimiento> procedAux = auxHC.getProcedimientos();
+				for(Procedimiento proced : procedAux) {
+					Medico medico = proced.getMedico();
+				}
+			}
+		}
 	}
 
 }
