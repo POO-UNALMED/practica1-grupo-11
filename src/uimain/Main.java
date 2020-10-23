@@ -5,6 +5,7 @@ import gestoraplicacion.infraestructura.Room;
 import gestoraplicacion.usuarios.Administrador;
 import gestoraplicacion.usuarios.Medico;
 import gestoraplicacion.usuarios.Paciente;
+import gestoraplicacion.usuarios.Persona;
 
 import java.util.Scanner;
 
@@ -22,8 +23,8 @@ public class Main {
 		 * ya que no necesitamos que se ejecute cada vez que se inicia la aplicacion.
 		 */
 //		Hospital h1= new Hospital("Hospital Universitario");
-//		Administrador a1= new Administrador("Jaime Alberto Guzman Luna");
-//		h1.setAdministradores(a1);
+//		Persona a1= new Administrador("Jaime Alberto Guzman Luna");
+//		h1.setAdministrador(a1);
 //		a1.setHospital(h1);
 //		
 //		Room r1 = new Room();
@@ -53,17 +54,23 @@ public class Main {
 //		Room r25 = new Room();
 //		
 //		
-//		Medico m1 = new Medico("Carlos Mejía","Oncologia");
-//		Medico m2 = new Medico("Jorge Mario Ramírez","Pediatria");
-//		Medico m3 = new Medico("Julian Moreno","Urologia");
-//		Medico m4 = new Medico("Jose Manuel Gomez","Oftalmologia");
-//		Medico m5 = new Medico("Hugo Mesa","Cardiologia");
-//		Medico m6 = new Medico("Alejandro Piedrahita","Neurologia");
-//		Medico m7 = new Medico("Bibiana Lopez","Nefrologia");
-//		Medico m8 = new Medico("Francisco Javier Diaz","Dermatologia");
-//		Medico m9 = new Medico("Claudia Jimenez","Psiquiatria");
-//		Medico m10 = new Medico("Blanca Cardona","Ginecologia");
+//		Persona m1 = new Medico("Carlos Mejía","Oncologia");
+//		Persona m2 = new Medico("Jorge Ramírez","Pediatria");
+//		Persona m3 = new Medico("Julian Moreno","Urologia");
+//		Persona m4 = new Medico("Jose Gomez","Oftalmologia");
+//		Persona m5 = new Medico("Hugo Restrepo","Cardiologia");
+//		Persona m6 = new Medico("Alejandro Henao","Neurologia");
+//		Persona m7 = new Medico("Bibiana Lopez","Nefrologia");
+//		Persona m8 = new Medico("Francisco Diaz","Dermatologia");
+//		Persona m9 = new Medico("Claudia Jimenez","Psiquiatria");
+//		Persona m10 = new Medico("Blanca Cardona","Ginecologia");
 //		Serializador.serializar();
+		
+		
+		
+		/*
+		 * Este codigo se ejecuta desde el inicio de la aplicaicon
+		 */
 
 		Deserializador.deserializar();
 
@@ -111,11 +118,20 @@ public class Main {
 		System.out.println();
 		System.out.println();
 		
-
+	
 		int opcion = entrada.nextInt();
+		entrada.nextLine();
 
 		switch (opcion) {
+		case 0:
+			System.out.println(administrador.detallesHospital());
+			break;
 		case 1:
+			System.out.println("Ingrese el nombre del paciente que desea ingresar");
+			String nombre= entrada.nextLine();
+			Persona paciente=administrador.ingresarPaciente(nombre);
+			System.out.println("El paciente que acaba de ingresar se llama "+paciente.getNombre()+"\n"
+					+"y tiene el id "+paciente.getId());
 			break;
 		case 2:
 			break;

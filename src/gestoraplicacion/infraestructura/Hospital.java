@@ -8,9 +8,6 @@ import gestoraplicacion.usuarios.Administrador;
 import gestoraplicacion.usuarios.Medico;
 import gestoraplicacion.usuarios.Paciente;
 
-
-
-
 public class Hospital implements Serializable {
 
 	/*
@@ -19,7 +16,7 @@ public class Hospital implements Serializable {
 	private static final long serialVersionUID = 8558031300117756825L;
 	private final int nit;
 	private String nombre;
-	private static final int camasDisponibles = 15;
+	private static final int habitacionesTotales = 25;
 	private Administrador administrador;
 	private ArrayList<Paciente> pacientes = BDDriver.getPacientes();
 	private ArrayList<Medico> medicos = BDDriver.medicos;
@@ -30,12 +27,12 @@ public class Hospital implements Serializable {
 	 */
 
 	public Hospital(String nombre) {
-		nit=123456789;
+		nit = 123456789;
 		this.nombre = nombre;
 		BDDriver.hospitales.add(this);
 
 	}
-	
+
 	/*
 	 * Getters y Setters
 	 */
@@ -52,16 +49,12 @@ public class Hospital implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public int getCamasDisponibles() {
-		return camasDisponibles;
-	}
 
-
-	public Administrador getAdministradores() {
+	public Administrador getAdministrador() {
 		return administrador;
 	}
 
-	public void setAdministradores(Administrador administrador) {
+	public void setAdministrador(Administrador administrador) {
 		this.administrador = administrador;
 	}
 
@@ -89,13 +82,48 @@ public class Hospital implements Serializable {
 		this.rooms = rooms;
 	}
 
+	public static int getHabitacionesTotales() {
+		return habitacionesTotales;
+	}
+
+	// =========================================================================
+	// =========================================================================
+	public String detallesHospital() {
+		return "Nombre del hospital: " + this.getNombre() + "\n\n" + "Nombre del administrador: "
+				+ this.getAdministrador().getNombre() + "\n" + "Habitaciones totales: "+getHabitacionesTotales()+"\n\n"
+				+"Habitaciones desocupadas: "+this.habitacionesDisponibles()+"\n\n"
+				+"Cantidad de pacientes en el sistema: "+this.pacientes.size()+"\n\n"
+				+"Detalle de medicos: \n"+this.detalleMedicos();
+	}
 	
+	public int habitacionesDisponibles() {
+		int count=0;
+		for(Room room:rooms) {
+			if(room.isOcupado()==false) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	String detalleMedicos() {
+		String detalle="Id    Nombre            Especialidad\n"
+				     + "===== ================ ================\n";
+		for(Medico medico:medicos) {
+			detalle+=medico.getId()+"   "+medico.getNombre()+"           "+medico.getEspecialidad()+"\n";
+		}
+		return detalle;
+	}
+	
+	
+
+	// ==========================================================================
+	// ==========================================================================
+
 	/*
 	 * Metodos
 	 */
 
-	
-	
 	/*
 	 * Metodo totalCostosPorPaciente() es parte de Funcionalidad de
 	 * "Consultar deudas de un paciente para ver si esta a paz y salvo". Recorre
@@ -103,11 +131,10 @@ public class Hospital implements Serializable {
 	 * metodo valorTotaldeProcediminetos() de la clase Paciente.
 	 * 
 	 * Ruta de Clases
-	 * accesadas:Administrador-->Hospital-->Paciente-->HistoriaClinica-->Procedimiento.
+	 * accesadas:Administrador-->Hospital-->Paciente-->HistoriaClinica-->
+	 * Procedimiento.
 	 */
-	
-	
-	
+
 	public double totalCostosPorPaciente(int id) {
 		boolean existePaciente = false;
 		Paciente pacienteAux = null;
@@ -125,11 +152,5 @@ public class Hospital implements Serializable {
 			return 0.0;
 		}
 	}
-	
-	
-
 
 }
-
-
-

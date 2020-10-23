@@ -25,7 +25,6 @@ public class Paciente extends Persona {
 	 * Constructores
 	 */
 
-	
 	public Paciente(String nombre) {
 		super(nombre);
 		BDDriver.agregarPaciente(this);
@@ -65,14 +64,18 @@ public class Paciente extends Persona {
 	public void setSolicitudes(ArrayList<Solicitud> solicitudes) {
 		this.solicitudes = solicitudes;
 	}
+
+	// =========================================================================
+	// =========================================================================
+
 	
 	
-	
-	
+	// =========================================================================
+	// =========================================================================
+
 	/*
 	 * Metodos:
 	 */
-	
 
 	/*
 	 * Metodo valorTotalProcedimientos() es parte de Funcionalidad de
@@ -88,8 +91,6 @@ public class Paciente extends Persona {
 	public double valorTotaldeProcedimientos() {
 		return historiaClinica.totalCostos();
 	}
-	
-	
 
 	/*
 	 * Metodo para ligadura dinamica.
@@ -98,7 +99,7 @@ public class Paciente extends Persona {
 	public void agregarActividad(Actividad actividad) {
 		solicitudes.add((Solicitud) actividad);
 	}
-	
+
 	public static Optional<Paciente> getPacienteById(int id) {
 		Stream<Paciente> pacienteID = BDDriver.getPacientes().stream().filter(paciente -> paciente.getId() == id);
 		return pacienteID.findFirst();

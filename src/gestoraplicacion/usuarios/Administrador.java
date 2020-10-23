@@ -56,6 +56,24 @@ public class Administrador extends Persona {
 	public void setHospital(Hospital hospital) {
 		this.hospital = hospital;
 	}
+	
+	//=========================================================================
+	//=========================================================================
+	public String detallesHospital() {
+		return this.getHospital().detallesHospital();
+	}
+	
+	public Paciente ingresarPaciente(String nombre) {
+		Persona paciente= new Paciente(nombre);
+		return (Paciente) paciente;
+	}
+	
+	
+	
+	
+	
+	//==========================================================================
+	//==========================================================================
 
 	/*
 	 * Metodos:
