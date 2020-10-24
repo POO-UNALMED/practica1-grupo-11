@@ -63,6 +63,8 @@ public abstract class Persona implements Serializable {
 	 * 
 	 */
 	public abstract void agregarActividad(Actividad actividad);
+	
+	
 
 	
 }

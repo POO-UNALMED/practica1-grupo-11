@@ -8,6 +8,9 @@ Aquí está su menu:
    Funcionalidades básicas para el funcionamiento del sistema
 */
 
+Ingrese 0 para:
+  -->Mostras detalles básicos del hospital (Nombre del hospital, nombre del administrador, Habitaciones totales y disponibles, cantidad de pacientes en el sistema, detalle de medicos	)
+
 Ingrese 1 para:
   -->Ingresar Paciente al sistema
 
@@ -44,15 +47,65 @@ Ingresar 7 para:
      (Mostrar lista de médicos(nombre y id))
      (Recibir id y mostrar detalle de procedimientos asignados).
 
+Ingrese 8 para:
+  -->Ver detalle de pacientes
+     (Mostrar pacientes solamente ingresados, mostrar paciente con solicitudes sin aprobar,
+      mostrar pacientes con procedimientos en proceso, mostrar pacientes dados de alta.)
+
+
 Ingrese 8 para salir del sistema:
     (Se invoca BDDriver.Serializar() y luego un Sytem.exit(0))
 
 
 //Opcional.
-Ingrese 8 para:
+Ingrese 9 para:
   -->Ver los medicos que ha tenido un paciente en su historia clínica.
 
 
+================================================================================================
+¡Hola Administrador Jaime Alberto Guzman Luna!.
+Bienvenido al Software HealthTech para Administrar el Hospital Universitario
+
+Aquí está su menu:
+======================================================================
+Ingrese 0 para:
+	-->Mostras detalles básicos del hospital
+======================================================================
+Ingrese 1 para:
+	-->Ingresar Paciente al sistema
+======================================================================
+Ingrese 2 para:
+	-->Crear Solicitud de aprobación de procedimineto para paciente existente
+======================================================================
+Ingrese 3 para:
+	-->Aprobar solicitud (Sujeto a disponibilidad de habitaciones)
+
+ 	Si no hay disponibilidad es posibe que quiera darle de alta a algún paciente con la opción 6
+======================================================================
+Ingrese 4 para:
+	-->Pagar deudas de paciente.
+======================================================================
+Ingrese 5 para:
+	-->Finalizar procedimiento
+
+ 	Recuerde que sólo pueden finalizar procedimiento aquellos pacientes que esten a paz y salvo en el respectivo procedimiento,
+	para ello posiblemente quiera hacer uso de la opción 4
+======================================================================
+Ingrese 6 para:
+	-->Dar de alta
+
+	Recuerde que para dar de alta al paciente, debe haber finalizado todos los procedimientos que tenga pendientes,
+	para ello tal vez quiera hacer uso de la opción 5.
+======================================================================
+Ingrese 7 para:
+	-->Ver procedimientos asignados a un médico
+======================================================================
+Ingrese 8 para:
+	-->Ver detalles de pacientes
+======================================================================
+Ingrese 9 para:
+	-->Salir del sistema de forma segura
+======================================================================
 
 
 

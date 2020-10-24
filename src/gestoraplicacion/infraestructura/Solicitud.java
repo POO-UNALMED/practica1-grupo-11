@@ -13,7 +13,7 @@ public class Solicitud implements Serializable, Actividad {
 	 * Atributos
 	 */
 	private static final long serialVersionUID = -8336027985146111782L;
-	private static int cantidadTotal=BDDriver.solicitudes.size();
+	private static int cantidadTotal = BDDriver.solicitudes.size();
 	private int codigo;
 	private Persona solicitante;
 	private Procedimiento procedimeinto;
@@ -26,8 +26,7 @@ public class Solicitud implements Serializable, Actividad {
 		cantidadTotal++;
 		this.codigo = cantidadTotal;
 	}
-	
-	
+
 	private Solicitud(Persona solicitante) {
 		this();
 		this.solicitante = solicitante;
@@ -59,7 +58,7 @@ public class Solicitud implements Serializable, Actividad {
 	}
 
 	public void setProcedimiento(Procedimiento procedimiento) {
-		this.procedimeinto=procedimiento;
+		this.procedimeinto = procedimiento;
 	}
 
 	public boolean isAprobado() {
@@ -69,6 +68,25 @@ public class Solicitud implements Serializable, Actividad {
 	public void setAprobado(boolean aprobado) {
 		this.aprobado = aprobado;
 	}
+
+	// =========================================================================
+	// =========================================================================
+	/*
+	 * En este metodo se aplica la ligadura dinamica al llamar al metodo
+	 * asignarSolicitud() de Persona. Es un metodo estatico de fabrica que se
+	 * encarga de crear una Solicitud accediendo a su propio constructor. Ademas
+	 * tambien asigna a la persona que se paso como parametro, la solicitud mediante
+	 * el metodo heredado de Persona asignarActividad();
+	 * 
+	 */
+
+	public static Solicitud crearSolicitud(Persona persona) {
+		Actividad solicitud = new Solicitud(persona);
+		persona.agregarActividad(solicitud);
+		return (Solicitud) solicitud;
+	}
+	// =========================================================================
+	// =========================================================================
 
 	/*
 	 * Metodos:
@@ -85,25 +103,9 @@ public class Solicitud implements Serializable, Actividad {
 				+ procedimeinto + "\nAprobado: " + aprobado;
 	}
 
-	/*
-	 * En este metodo se aplica la ligadura din�mica al llamar al metodo
-	 * asignarSolicitud() de Persona. Es un metodo estatico de fabrica que se
-	 * encarga de crear una Solicitud accediendo a su propio constructor. Ademas
-	 * tambien asigna a la persona que se paso como parametro, la solicitud mediante
-	 * el metodo heredado de Persona asignarActividad();
-	 * 
-	 */
-	
-	public static Solicitud crearSolicitud(Persona persona) {
-		Solicitud solicitud = new Solicitud(persona);
-		persona.agregarActividad((Actividad) solicitud);
-		
-
-		return solicitud;
-	}
-	
 	public static Solicitud getSolucitudByProcedimiento(Procedimiento procedimiento) {
-		Stream<Solicitud> solicitudes = BDDriver.solicitudes.stream().filter(solicitud -> solicitud.getProcedimeinto() == procedimiento);
+		Stream<Solicitud> solicitudes = BDDriver.solicitudes.stream()
+				.filter(solicitud -> solicitud.getProcedimeinto() == procedimiento);
 		return solicitudes.findFirst().get();
 	}
 

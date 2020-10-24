@@ -56,24 +56,71 @@ public class Administrador extends Persona {
 	public void setHospital(Hospital hospital) {
 		this.hospital = hospital;
 	}
-	
-	//=========================================================================
-	//=========================================================================
+
+	// =========================================================================
+	// =========================================================================
 	public String detallesHospital() {
 		return this.getHospital().detallesHospital();
 	}
-	
+
 	public Paciente ingresarPaciente(String nombre) {
-		Persona paciente= new Paciente(nombre);
+		Persona paciente = new Paciente(nombre);
 		return (Paciente) paciente;
 	}
+	/* Metodo que crea una nueva solicitud */
+
+	public Solicitud crearSolicitud(int idPaciente) {
+		Paciente pacienteAux = null;
+
+		// Este for busca si el paciente existe
+		for (Paciente p : hospital.getPacientes()) {
+			if (p.getId() == idPaciente) {
+				pacienteAux = p;
+				break;
+			}
+
+		}
+		if (pacienteAux.equals(null)) {
+			//System.out.println("El paciente con la identificacion ingresada no existe");
+			return null;
+		} else {
+			Solicitud nuevaSolicitud = Solicitud.crearSolicitud(pacienteAux);
+			this.agregarActividad(nuevaSolicitud);
+			return nuevaSolicitud;
+		}
+	}
+
+	/*
+	 * Hay ligadura dinamica e implementa el metodo abstracto heredado.
+	 * 
+	 */
+	@Override
+	public void agregarActividad(Actividad actividad) {
+		solicitudes.add((Solicitud) actividad);
+	}
 	
+	public String detalleSimplePacientes() {
+		String detalle="";
+		for(Paciente paciente:this.hospital.getPacientes()) {
+			detalle+=paciente.getNombre()+"     "+paciente.getId()+"\n";
+		}
+		return "NOMBRE               ID\n"
+			+  "==============      ========\n"
+			+ detalle;
+	}
 	
-	
-	
-	
-	//==========================================================================
-	//==========================================================================
+	public Paciente consultarPacienteByID(int id) {
+		Paciente paciente=null;
+		for(Paciente p:this.hospital.getPacientes()) {
+			if(p.getId()==id) {
+				paciente=p;
+			}
+		}
+		return paciente;
+	}
+
+	// ==========================================================================
+	// ==========================================================================
 
 	/*
 	 * Metodos:
@@ -155,38 +202,6 @@ public class Administrador extends Persona {
 		return hospital.totalCostosPorPaciente(id);
 	}
 
-	/* M�todo que crea una nueva solicitud */
-
-	public Solicitud crearSolicitud(int idPaciente) {
-		Paciente pacienteAux = null;
-
-		for (Paciente p : hospital.getPacientes()) {
-			if (p.getId() == idPaciente) {
-				pacienteAux = p;
-				break;
-			}
-
-		}
-		if (pacienteAux.equals(null)) {
-			System.out.println("El paciente con la identificacion ingresada no existe");
-			return null;
-		} else {
-			Solicitud nuevaSolicitud = Solicitud.crearSolicitud(pacienteAux);
-			this.agregarActividad(nuevaSolicitud);
-			return nuevaSolicitud;
-		}
-
-	}
-
-	/*
-	 * Hay ligadura dinamica e implementa el m�todo abstracto heredado.
-	 * 
-	 */
-	@Override
-	public void agregarActividad(Actividad actividad) {
-		solicitudes.add((Solicitud) actividad);
-	}
-
 	/*
 	 * Metodo consultarMedicosDePaciente() es parate de la Funcionalidad de
 	 * "consultar lista de medicos que han atendido al paciente" Ruta de Clases
@@ -196,15 +211,15 @@ public class Administrador extends Persona {
 
 	public void consultarMedicosDePaciente(int idPaciente) {
 		/*
-		HistoriaClinica historiaClinica = paciente.getHistoriaClinica();
-		historiaClinica.medicos();
-		*/
-		
-		for(Paciente p : hospital.getPacientes()) {
-			if(p.getId() == idPaciente) {
+		 * HistoriaClinica historiaClinica = paciente.getHistoriaClinica();
+		 * historiaClinica.medicos();
+		 */
+
+		for (Paciente p : hospital.getPacientes()) {
+			if (p.getId() == idPaciente) {
 				HistoriaClinica auxHC = p.getHistoriaClinica();
 				ArrayList<Procedimiento> procedAux = auxHC.getProcedimientos();
-				for(Procedimiento proced : procedAux) {
+				for (Procedimiento proced : procedAux) {
 					Medico medico = proced.getMedico();
 				}
 			}
