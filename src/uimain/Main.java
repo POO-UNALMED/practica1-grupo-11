@@ -56,8 +56,8 @@ public class Main {
 //		Room r25 = new Room();
 //		
 //		
-//		Persona m1 = new Medico("Carlos Mejía","Oncologia");
-//		Persona m2 = new Medico("Jorge Ramírez","Pediatria");
+//		Persona m1 = new Medico("Carlos Mejï¿½a","Oncologia");
+//		Persona m2 = new Medico("Jorge Ramï¿½rez","Pediatria");
 //		Persona m3 = new Medico("Julian Moreno","Urologia");
 //		Persona m4 = new Medico("Jose Gomez","Oftalmologia");
 //		Persona m5 = new Medico("Hugo Restrepo","Cardiologia");
@@ -84,49 +84,49 @@ public class Main {
 //		Paciente p3= new Paciente("Ronaldinho Gaucho");
 //		Paciente p4= new Paciente("Neymar Junior");
 
-		System.out.println("¡Hola Administrador " + administrador.getNombre() + "!.\n"
+		System.out.println("ï¿½Hola Administrador " + administrador.getNombre() + "!.\n"
 				+ "Bienvenido al Software HealthTech para Administrar el " + hospital.getNombre());
 		System.out.println();
 
-		System.out.println("Aquí está su menu:");
+		System.out.println("Aquï¿½ estï¿½ su menu:");
 		System.out.println();
 		int opcion;
 
 		do {
 
-			System.out.println("MENÚ:");
+			System.out.println("MENï¿½:");
 			System.out.println();
 
 			System.out.println("======================================================================");
-			System.out.println("Ingrese 0 para:\n	-->Mostras detalles básicos del hospital");
+			System.out.println("Ingrese 0 para:\n	-->Mostras detalles bï¿½sicos del hospital");
 			System.out.println("======================================================================");
 			System.out.println("Ingrese 1 para:\n	-->Ingresar Paciente al sistema");
 			System.out.println("======================================================================");
 			System.out.println(
-					"Ingrese 2 para:\n	-->Crear Solicitud de aprobación de procedimineto para paciente existente");
+					"Ingrese 2 para:\n	-->Crear Solicitud de aprobaciï¿½n de procedimineto para paciente existente");
 			System.out.println("	Recuerde que el paciente debe estar registrado en nuestra base de datos");
 			System.out.println("======================================================================");
 			System.out.println(
 					"Ingrese 3 para:\n" + "	-->Aprobar solicitud (Sujeto a disponibilidad de habitaciones)");
 			System.out.println();
 			System.out.println(
-					" 	Si no hay disponibilidad es posibe que quiera darle de alta a algún paciente con la opción 6");
+					" 	Si no hay disponibilidad es posibe que quiera darle de alta a algï¿½n paciente con la opciï¿½n 6");
 			System.out.println("======================================================================");
 			System.out.println("Ingrese 4 para:\n	-->Pagar deudas de paciente.");
 			System.out.println("======================================================================");
 			System.out.println("Ingrese 5 para:\n	-->Finalizar procedimiento");
 			System.out.println();
 			System.out.println(
-					" 	Recuerde que sólo pueden finalizar procedimiento aquellos pacientes que esten a paz y salvo en el respectivo procedimiento,");
-			System.out.println("	para ello posiblemente quiera hacer uso de la opción 4");
+					" 	Recuerde que sï¿½lo pueden finalizar procedimiento aquellos pacientes que esten a paz y salvo en el respectivo procedimiento,");
+			System.out.println("	para ello posiblemente quiera hacer uso de la opciï¿½n 4");
 			System.out.println("======================================================================");
 			System.out.println("Ingrese 6 para:\n	-->Dar de alta");
 			System.out.println();
 			System.out.println(
 					"	Recuerde que para dar de alta al paciente, debe haber finalizado todos los procedimientos que tenga pendientes,");
-			System.out.println("	para ello tal vez quiera hacer uso de la opción 5.");
+			System.out.println("	para ello tal vez quiera hacer uso de la opciï¿½n 5.");
 			System.out.println("======================================================================");
-			System.out.println("Ingrese 7 para:\n	-->Ver procedimientos asignados a un médico");
+			System.out.println("Ingrese 7 para:\n	-->Ver procedimientos asignados a un mï¿½dico");
 			System.out.println("======================================================================");
 			System.out.println("Ingrese 8 para:\n	-->Ver detalles de pacientes");
 			System.out.println("======================================================================");
@@ -134,7 +134,7 @@ public class Main {
 			System.out.println("======================================================================");
 			System.out.println();
 			System.out.println();
-			System.out.println("Ingrese su opción:");
+			System.out.println("Ingrese su opciï¿½n:");
 
 			opcion = entrada.nextInt();
 			entrada.nextLine();
@@ -153,7 +153,7 @@ public class Main {
 				System.out.println();
 //				Thread.sleep(2500);
 				System.out.println(
-						"Si dese volver al menú principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 8");
+						"Si dese volver al menï¿½ principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 8");
 				opcion = entrada.nextInt();
 				if (opcion == 8) {
 					salirDelsistema();
@@ -176,6 +176,28 @@ public class Main {
 
 				break;
 			case 3:
+				System.out.println(
+						"Aqui esta la lista de las solicitudes sin aprobar, elija uno codigo: ");
+				System.out.println(administrador.detalleSolicitudes());
+				System.out.println();
+				System.out.println("Ingrese el codigo de la solicitud que desea aprobar: ");
+				int codigoSolicitud = entrada.nextInt();
+				System.out.println("Medicos disponibles: ");
+				System.out.println("Ingrese el id del mÃ©dico a asignar en el procedimiento: ");
+				System.out.println(administrador.getHospital().detalleMedicos());
+				int idMedico = entrada.nextInt();
+				System.out.println("Habitaciones disponibles: ");
+				System.out.println("Ingrese el codigo de la habitaciÃ³n a asingar: ");
+				System.out.println(administrador.getHospital().detalleHabitaciones());
+				int codigoHabitacion = entrada.nextInt();
+				System.out.println("Ingrese el Costo del procedimiento a realizar: ");
+				int costo = entrada.nextInt();
+				
+				
+				administrador.aprobarSolicitud(codigoSolicitud, idMedico, costo, codigoHabitacion);
+				
+
+				
 
 				break;
 			case 4:
@@ -190,7 +212,7 @@ public class Main {
 				salirDelsistema();
 				break;
 			default:
-				System.out.println("Ingrese una opción válida");
+				System.out.println("Ingrese una opciï¿½n vï¿½lida");
 				Thread.sleep(2000);
 			}
 		} while (opcion != 8);

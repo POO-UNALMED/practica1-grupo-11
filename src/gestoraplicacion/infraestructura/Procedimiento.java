@@ -14,7 +14,9 @@ public class Procedimiento implements Serializable, Actividad{
 
 	private int id;
 	private static int totalProcedimientos=BDDriver.procedimientos.size();
+
 	//los tipos de actividades están definidos como constantes en la interfaz Actividad.
+
 	private String tipoActividad;
 	private Medico medico;
 	private HistoriaClinica historiaClinica;
@@ -33,16 +35,19 @@ public class Procedimiento implements Serializable, Actividad{
 		this.id=totalProcedimientos;
 	}
 	
-	public Procedimiento(String tipoActividad, Medico medico, HistoriaClinica historiaClinica, double costo,Room habitacion) {
+
+	public Procedimiento(String tipoActividad, Medico medico, double costo, Room habitacion) {
+
 		this();
 		this.tipoActividad = tipoActividad;
 		this.medico = medico;
-		this.historiaClinica = historiaClinica;
 		this.costo = costo;
 		this.habitacion = habitacion;
 		BDDriver.procedimientos.add(this);
 		
+		
 	}
+
 
 
 	/*

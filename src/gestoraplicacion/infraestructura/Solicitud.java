@@ -14,11 +14,12 @@ public class Solicitud implements Serializable, Actividad {
 	 */
 	private static final long serialVersionUID = -8336027985146111782L;
 	private static int cantidadTotal = BDDriver.solicitudes.size();
-	private String tipoActividad;
+	
 	private int codigo;
 	private Persona solicitante;
-	private Procedimiento procedimeinto;
+	private Procedimiento procedimiento;
 	private boolean aprobado = false;
+	private String tipoActividad;
 
 	/*
 	 * Constructores
@@ -55,11 +56,12 @@ public class Solicitud implements Serializable, Actividad {
 	}
 
 	public Procedimiento getProcedimeinto() {
-		return procedimeinto;
+		return procedimiento;
 	}
 
 	public void setProcedimiento(Procedimiento procedimiento) {
-		this.procedimeinto = procedimiento;
+		this.procedimiento = procedimiento;
+		System.out.println("Procedimiento asignado, exitosamente");
 	}
 
 	public boolean isAprobado() {
@@ -78,7 +80,6 @@ public class Solicitud implements Serializable, Actividad {
 		this.tipoActividad = tipoActividad;
 	}
 
-	
 
 	// =========================================================================
 	// =========================================================================
@@ -112,7 +113,7 @@ public class Solicitud implements Serializable, Actividad {
 	 */
 	public String toString() {
 		return "Codigo: " + codigo + "\nSolicitante: " + solicitante.getNombre() + "\nDetalle procedimiento: "
-				+ procedimeinto + "\nAprobado: " + aprobado;
+				+ procedimiento + "\nEstado: " + aprobado;
 	}
 
 	public static Solicitud getSolucitudByProcedimiento(Procedimiento procedimiento) {
