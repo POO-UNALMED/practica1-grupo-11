@@ -34,8 +34,8 @@ Ingrese 4 para :
               2.Pagar todas las deudas existentes.
 Ingrese 5 para:
   -->Finalizar procedimiento
-     "Sólo pude finalizar procedimiento aquellos pacientes que esten a paz y salvo en el respectivo procedimiento"
-     (Mostramos pacientes(nombre y id) con procedimientos asociados(id de cada uno y patologia)).
+     "Sólo puede finalizar procedimiento aquellos pacientes que esten a paz y salvo en el respectivo procedimiento"
+     (Mostramos pacientes(nombre y id) con procedimientos asociados(id de cada uno y tipoActividad)).
 
 Ingrese 6 para: 
   -->Dar de Alta 
