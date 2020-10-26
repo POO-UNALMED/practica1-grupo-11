@@ -56,20 +56,33 @@ public class HistoriaClinica implements Serializable{
 	 */
 	
 	/*
-	 * Método totalCostos() parte de Funcionalidad de
-	 * "Consultar deudas de un paciente para ver si está a paz y salvo". Accede a
+	 * Mï¿½todo totalCostos() parte de Funcionalidad de
+	 * "Consultar deudas de un paciente para ver si estï¿½ a paz y salvo". Accede a
 	 * los procedimientos que tiene asignada la HistoriaClinica de determinado
 	 * paciente y suma el total de los costos de cada procedimiento
 	 * 
 	 * Ruta de Clases accesadas:Administrador-->Hospital-->Paciente-->HistoriaClinica-->Procedimiento.
 	 * 
 	 */
+	
+	//calcula los costos de todos los procedimientos.
 	public double totalCostos() {
 		double total=0;
 		for(Procedimiento proced:procedimientos) {
 			total+=proced.getCosto();
 		}
 		return total;
+	}
+	
+	//Pago especifico de cada procedimiento. 
+	public void pagarDeudas() {
+		for (Procedimiento proced:procedimientos) {
+			proced.setPazYSalvo(true);
+			
+		}
+		
+		System.out.println("PAZ Y SALVO TOTAL");
+		
 	}
 	
 	/*

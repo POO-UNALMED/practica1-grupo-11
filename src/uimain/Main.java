@@ -190,6 +190,14 @@ public class Main {
 
 				break;
 			case 4:
+				System.out.println("Aqui esta la lista de pacientes con deudas: ");
+				System.out.println(administrador.getHospital().pacientesConDeudas());
+				System.out.println();
+				System.out.println("Ingrese el id del paciente que quiere pagar: ");
+				int idDeudor = entrada.nextInt();
+				
+				administrador.getHospital().pagarDeudaPaciente(idDeudor);
+				
 				break;
 			case 5:
 				System.out.println("Esta es la lista de pacientes que pueden finalizar procedimeintos asociados: ");
