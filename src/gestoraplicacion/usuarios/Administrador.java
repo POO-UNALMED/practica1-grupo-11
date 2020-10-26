@@ -245,6 +245,7 @@ public class Administrador extends Persona {
 		+ detalle;
 	}
 	
+	
 	public void finalizarProcedimiento(int idPaciente, int idProcedimiento) {
 
 		for(Paciente paciente : this.hospital.getPacientes()) {
