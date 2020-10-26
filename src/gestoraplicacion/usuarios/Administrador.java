@@ -225,5 +225,41 @@ public class Administrador extends Persona {
 			}
 		}
 	}
+	
+	
+	public String listfinalizarProcedimiento() {
+		String detalle = "";
+		for(Paciente paciente : this.hospital.getPacientes()) {
+			HistoriaClinica auxHc = paciente.getHistoriaClinica();
+			ArrayList<Procedimiento> procedAux = auxHc.getProcedimientos();
+			for(Procedimiento proced : procedAux) {
+				if(proced.isPazYSalvo() == true) {
+					detalle+=paciente.getNombre()+"           "+paciente.getId()+""
+							+ ""+proced.getDescripcionProcedimiento()+"    "+proced.getId();
+				}
+			}
+		}
+		
+		return "NOMBRE               ID                   PROCEDIMIENTO      ID\n"
+		+  "==============      ========              ===============   =======\n"
+		+ detalle;
+	}
+	
+	public void finalizarProcedimiento(int idPaciente, int idProcedimiento) {
+
+		for(Paciente paciente : this.hospital.getPacientes()) {
+			if(paciente.getId() == idPaciente) {
+				HistoriaClinica auxHc = paciente.getHistoriaClinica();
+				ArrayList<Procedimiento> procedAux = auxHc.getProcedimientos();
+				for(Procedimiento proced : procedAux) {
+					if(proced.getId() == idProcedimiento) {
+						if(proced.isPazYSalvo()) {
+							proced.setCompletado(true);
+						}
+					}
+				}
+			}
+		}
+	}
 
 }
