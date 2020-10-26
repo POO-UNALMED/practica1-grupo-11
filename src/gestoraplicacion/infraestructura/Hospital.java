@@ -106,11 +106,35 @@ public class Hospital implements Serializable {
 		return count;
 	}
 	
-	String detalleMedicos() {
+	//Detalle de las habitaciones y su disponibilidad. 
+	public String detalleHabitaciones() {
+		String detalle="Id    Habitacion            Numero#\n"
+			     + "===== ================ ================\n";
+		for(Room room:rooms) {
+			detalle+=room.getCodigo()+"   "+room.isOcupado()+"\n";
+	}
+	return detalle;
+		
+	}
+	
+	public String detalleMedicos() {
 		String detalle="Id    Nombre            Especialidad\n"
 				     + "===== ================ ================\n";
 		for(Medico medico:medicos) {
 			detalle+=medico.getId()+"   "+medico.getNombre()+"           "+medico.getEspecialidad()+"\n";
+		}
+		return detalle;
+	}
+	
+	// metodo sobrecargado para detalle medicos por especialidad (Se podria usar para mostrar una lista especifica de medicos para aprobar solicitud)
+	public String detalleMedicos(String tipoActividad) {
+		String detalle="Id    Nombre            Especialidad\n"
+				     + "===== ================ ================\n";
+		for(Medico medico:medicos) {
+			if (medico.getEspecialidad()==tipoActividad) {
+				detalle+=medico.getId()+"   "+medico.getNombre()+"           "+medico.getEspecialidad()+"\n";
+			}
+			
 		}
 		return detalle;
 	}

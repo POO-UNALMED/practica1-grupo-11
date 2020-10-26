@@ -14,7 +14,7 @@ public class Procedimiento implements Serializable, Actividad{
 
 	private int id;
 	private static int totalProcedimientos=BDDriver.procedimientos.size();
-	private String descripcionProcedimiento;
+	private String tipoActividad;
 	private Medico medico;
 	private HistoriaClinica historiaClinica;
 	private double costo;
@@ -32,16 +32,17 @@ public class Procedimiento implements Serializable, Actividad{
 		this.id=totalProcedimientos;
 	}
 	
-	public Procedimiento(String descripcionProcedimiento, Medico medico, HistoriaClinica historiaClinica, double costo,Room habitacion) {
+	public Procedimiento(String tipoActividad, Medico medico, double costo, Room habitacion) {
 		this();
-		this.descripcionProcedimiento = descripcionProcedimiento;
+		this.tipoActividad = tipoActividad;
 		this.medico = medico;
-		this.historiaClinica = historiaClinica;
 		this.costo = costo;
 		this.habitacion = habitacion;
 		BDDriver.procedimientos.add(this);
 		
+		
 	}
+
 
 
 	/*
@@ -56,11 +57,11 @@ public class Procedimiento implements Serializable, Actividad{
 	}
 
 	public String getDescripcionProcedimiento() {
-		return descripcionProcedimiento;
+		return tipoActividad;
 	}
 
 	public void setDescripcionProcedimiento(String descripcionProcedimiento) {
-		this.descripcionProcedimiento = descripcionProcedimiento;
+		this.tipoActividad = descripcionProcedimiento;
 	}
 	
 	public Medico getMedico() {
@@ -121,7 +122,7 @@ public class Procedimiento implements Serializable, Actividad{
 	 */
 	@Override
 	public String toString() {
-		return "Tipo " + descripcionProcedimiento + " a cargo de: " + medico + ", tiene un valor de: " + costo;
+		return "Tipo " + tipoActividad + " a cargo de: " + medico + ", tiene un valor de: " + costo;
 	}
 	
 	

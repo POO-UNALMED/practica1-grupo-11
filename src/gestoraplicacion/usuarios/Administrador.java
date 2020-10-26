@@ -8,6 +8,7 @@ import gestoraplicacion.infraestructura.Actividad;
 import gestoraplicacion.infraestructura.HistoriaClinica;
 import gestoraplicacion.infraestructura.Hospital;
 import gestoraplicacion.infraestructura.Procedimiento;
+import gestoraplicacion.infraestructura.Room;
 import gestoraplicacion.infraestructura.Solicitud;
 
 public class Administrador extends Persona {
@@ -158,14 +159,41 @@ public class Administrador extends Persona {
 	/*
 	 * Ver detalle solicitud --> Recorrer lisa de solicitudes de la clase
 	 * administrador y mostrar detalle de cada solicitud. llama metodo toString de
-	 * la clase solicitud. Imprime en detalle el valor de los atributos de cada
-	 * solicitud.
+	 * la clase solicitud. Retorna un string con todas las solicitudes con salto de linea. 
 	 * 
 	 */
-	public void detalleSolicitud() {
+	public String detalleSolicitudes() {
+		String detalle = "";
 		for (Solicitud elemento : solicitudes) {
-			System.out.println(elemento);
+			detalle+=elemento+"\n";
 		}
+		return detalle;
+	}
+	
+	//Recibe el codigo de una solicitud, se busca en el arreglo de solicitudes y se cambia atributo aprobado a true:
+	public void aprobarSolicitud(int codigoSolicitud, int idMedico, int costo, int codigoHabitacion) {
+		
+		for (Solicitud solicitud : solicitudes){
+			if (solicitud.getCodigo() == codigoSolicitud){ // verifica si hay habitaciones disponibles. 
+				if (hospital.habitacionesDisponibles()>0) {
+					Procedimiento procedimiento = new Procedimiento(solicitud.getTipoActividad(), hospital.getMedicos().get(0), costo, hospital.getRooms().get(0)); //temporalmente estoy creando todos los procedimientos con el mismo medico y el mismo room.
+					
+					solicitud.setProcedimiento(procedimiento); //asigno procedimiento.
+					
+					solicitud.setAprobado(true); //se cambia a true el atributo Aprobado.
+					
+				}
+				else {
+					System.out.println("No hay habitaciones disponibles, no se puede aprobar solicitud");
+				}
+				
+				
+			}
+				
+			}
+		
+		
+		
 	}
 
 	/*
