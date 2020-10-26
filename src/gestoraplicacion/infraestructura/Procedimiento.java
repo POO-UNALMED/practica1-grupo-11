@@ -44,9 +44,13 @@ public class Procedimiento implements Serializable, Actividad{
 		this.costo = costo;
 		this.habitacion = habitacion;
 		BDDriver.procedimientos.add(this);
-		
-		
 	}
+	
+	
+	
+	
+	
+	
 
 
 

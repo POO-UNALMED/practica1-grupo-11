@@ -178,18 +178,26 @@ public class Administrador extends Persona {
 	public String detalleSolicitudes() {
 		String detalle = "";
 		for (Solicitud elemento : solicitudes) {
-			detalle+=elemento+"\n";
+			if(elemento.isAprobado()==false) {
+				detalle+=elemento+"\n";
+			}
+			
 		}
 		return detalle;
 	}
 	
 	//Recibe el codigo de una solicitud, se busca en el arreglo de solicitudes y se cambia atributo aprobado a true:
-	public void aprobarSolicitud(int codigoSolicitud, int idMedico, int costo, int codigoHabitacion) {
+	public void aprobarSolicitud(int codigoSolicitud, int costo) {
 		
 		for (Solicitud solicitud : solicitudes){
-			if (solicitud.getCodigo() == codigoSolicitud){ // verifica si hay habitaciones disponibles. 
-				if (hospital.habitacionesDisponibles()>0) {
-					Procedimiento procedimiento = new Procedimiento(solicitud.getTipoActividad(), hospital.getMedicos().get(0), costo, hospital.getRooms().get(0)); //temporalmente estoy creando todos los procedimientos con el mismo medico y el mismo room.
+			if (solicitud.getCodigo() == codigoSolicitud){ 
+				// verifica si hay habitaciones disponibles. 
+				if (this.hospital.habitacionesDisponibles()>0) {
+					
+					
+					
+					Procedimiento procedimiento = new Procedimiento(solicitud.getTipoActividad(), 
+							hospital.consultarMedicoByEspecialidad(solicitud.getTipoActividad() ), costo, hospital.habitacionByVacia()); //temporalmente estoy creando todos los procedimientos con el mismo medico y el mismo room.
 					
 					solicitud.setProcedimiento(procedimiento); //asigno procedimiento.
 					

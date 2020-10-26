@@ -111,9 +111,11 @@ public class Solicitud implements Serializable, Actividad {
 	 * imprime detalle de los principales atributos del procedimiento.
 	 * 
 	 */
-	public String toString() {
-		return "Codigo: " + codigo + "\nSolicitante: " + solicitante.getNombre() + "\nDetalle procedimiento: "
-				+ procedimiento + "\nEstado: " + aprobado;
+	
+	@Override
+	public  String toString() {
+		return "Codigo: " + codigo + "\nSolicitante: " + solicitante.getNombre() + "\nTipo Procedimiento: "
+				+ procedimiento + "\nAprobado: " + aprobado;
 	}
 
 	public static Solicitud getSolucitudByProcedimiento(Procedimiento procedimiento) {

@@ -159,14 +159,15 @@ public class Main {
 					salirDelsistema();
 				}
 				break;
-				
-				//corregir case 2 para verificar nulidad de retorno
+
+			// corregir case 2 para verificar nulidad de retorno
 			case 2:
 				System.out.println(
 						"Aqui esta la lista de pacientes ingresados en el sistema para que elija uno de sus IDs: ");
 				System.out.println(administrador.detalleSimplePacientes());
 				System.out.println();
-				System.out.println("Ingrese el id del paciente al cual le desea crear una solicitud y el tipo de Procedimiento: ");
+				System.out.println(
+						"Ingrese el id del paciente al cual le desea crear una solicitud y el tipo de Procedimiento: ");
 				int idPaciente = entrada.nextInt();
 				Actividad solicitud = administrador.crearSolicitud(idPaciente);
 				System.out.println("Acaba de crear una solicitud para el paciente: ");
@@ -176,28 +177,16 @@ public class Main {
 
 				break;
 			case 3:
-				System.out.println(
-						"Aqui esta la lista de las solicitudes sin aprobar, elija uno codigo: ");
+				System.out.println("Aqui esta la lista de las solicitudes sin aprobar, elija uno codigo: ");
 				System.out.println(administrador.detalleSolicitudes());
 				System.out.println();
 				System.out.println("Ingrese el codigo de la solicitud que desea aprobar: ");
-				int codigoSolicitud = entrada.nextInt();
-				System.out.println("Medicos disponibles: ");
-				System.out.println("Ingrese el id del médico a asignar en el procedimiento: ");
-				System.out.println(administrador.getHospital().detalleMedicos());
-				int idMedico = entrada.nextInt();
-				System.out.println("Habitaciones disponibles: ");
-				System.out.println("Ingrese el codigo de la habitación a asingar: ");
-				System.out.println(administrador.getHospital().detalleHabitaciones());
-				int codigoHabitacion = entrada.nextInt();
+				int codigoSolicitud = entrada.nextInt();	
+				System.out.println();
 				System.out.println("Ingrese el Costo del procedimiento a realizar: ");
 				int costo = entrada.nextInt();
-				
-				
-				administrador.aprobarSolicitud(codigoSolicitud, idMedico, costo, codigoHabitacion);
-				
 
-				
+				administrador.aprobarSolicitud(codigoSolicitud, costo);
 
 				break;
 			case 4:
