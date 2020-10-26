@@ -59,10 +59,14 @@ public class Administrador extends Persona {
 
 	// =========================================================================
 	// =========================================================================
+	
+	//Metodo que muestra la informacion basica del hospital, como su nombre, el nombre del administrador,
+	//Numero de habitaciones, numero de habitaciones disponibles, numero de pacientes en el sistema. 
 	public String detallesHospital() {
 		return this.getHospital().detallesHospital();
 	}
 
+	//Metodo que ingresa un nuevo paciente al sistema (crea un objeto paciente)
 	public Paciente ingresarPaciente(String nombre) {
 		Persona paciente = new Paciente(nombre);
 		return (Paciente) paciente;
@@ -98,7 +102,7 @@ public class Administrador extends Persona {
 	public void agregarActividad(Actividad actividad) {
 		solicitudes.add((Solicitud) actividad);
 	}
-	
+	//Metodo que retorna una lista con el nombre y el id del paciente. 
 	public String detalleSimplePacientes() {
 		String detalle="";
 		for(Paciente paciente:this.hospital.getPacientes()) {
@@ -108,7 +112,7 @@ public class Administrador extends Persona {
 			+  "==============      ========\n"
 			+ detalle;
 	}
-	
+	//Consulta y retorna el paciente segun su id.
 	public Paciente consultarPacienteByID(int id) {
 		Paciente paciente=null;
 		for(Paciente p:this.hospital.getPacientes()) {
@@ -117,6 +121,15 @@ public class Administrador extends Persona {
 			}
 		}
 		return paciente;
+	}
+	
+	public String detalleTipoActividad(){
+		String actividades="Tipo de procedimientos posibles\n"
+				         + "=================================";
+		for(Medico m:this.hospital.getMedicos()) {
+			actividades+=m.getEspecialidad();
+		}
+		return actividades;
 	}
 
 	// ==========================================================================

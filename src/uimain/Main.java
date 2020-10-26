@@ -166,7 +166,7 @@ public class Main {
 						"Aqui esta la lista de pacientes ingresados en el sistema para que elija uno de sus IDs: ");
 				System.out.println(administrador.detalleSimplePacientes());
 				System.out.println();
-				System.out.println("Ingrese el id del paciente al cual le desea crear una solicitud: ");
+				System.out.println("Ingrese el id del paciente al cual le desea crear una solicitud y el tipo de Procedimiento: ");
 				int idPaciente = entrada.nextInt();
 				Actividad solicitud = administrador.crearSolicitud(idPaciente);
 				System.out.println("Acaba de crear una solicitud para el paciente: ");

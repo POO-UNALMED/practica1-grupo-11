@@ -14,6 +14,7 @@ public class Solicitud implements Serializable, Actividad {
 	 */
 	private static final long serialVersionUID = -8336027985146111782L;
 	private static int cantidadTotal = BDDriver.solicitudes.size();
+	private String tipoActividad;
 	private int codigo;
 	private Persona solicitante;
 	private Procedimiento procedimeinto;
@@ -68,6 +69,16 @@ public class Solicitud implements Serializable, Actividad {
 	public void setAprobado(boolean aprobado) {
 		this.aprobado = aprobado;
 	}
+	
+	public String getTipoActividad() {
+		return tipoActividad;
+	}
+
+	public void setTipoActividad(String tipoActividad) {
+		this.tipoActividad = tipoActividad;
+	}
+
+	
 
 	// =========================================================================
 	// =========================================================================
@@ -80,6 +91,7 @@ public class Solicitud implements Serializable, Actividad {
 	 * 
 	 */
 
+	
 	public static Solicitud crearSolicitud(Persona persona) {
 		Actividad solicitud = new Solicitud(persona);
 		persona.agregarActividad(solicitud);

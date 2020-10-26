@@ -9,7 +9,7 @@ Aquí está su menu:
 */
 
 Ingrese 0 para:
-  -->Mostras detalles básicos del hospital (Nombre del hospital, nombre del administrador, Habitaciones totales y disponibles, cantidad de pacientes en el sistema, detalle de medicos	)
+  -->Mostras detalles básicos del hospital (Nombre del hospital, nombre del administrador, Habitaciones totales y disponibles, cantidad de pacientes en el sistema, detalle de medicos)
 
 Ingrese 1 para:
   -->Ingresar Paciente al sistema
