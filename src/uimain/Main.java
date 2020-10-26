@@ -84,49 +84,49 @@ public class Main {
 //		Paciente p3= new Paciente("Ronaldinho Gaucho");
 //		Paciente p4= new Paciente("Neymar Junior");
 
-		System.out.println("�Hola Administrador " + administrador.getNombre() + "!.\n"
+		System.out.println("Hola Administrador " + administrador.getNombre() + "!.\n"
 				+ "Bienvenido al Software HealthTech para Administrar el " + hospital.getNombre());
 		System.out.println();
 
-		System.out.println("Aqu� est� su menu:");
+		System.out.println("Aqui esta su menu:");
 		System.out.println();
 		int opcion;
 
 		do {
 
-			System.out.println("MEN�:");
+			System.out.println("MENU:");
 			System.out.println();
 
 			System.out.println("======================================================================");
-			System.out.println("Ingrese 0 para:\n	-->Mostras detalles b�sicos del hospital");
+			System.out.println("Ingrese 0 para:\n	-->Mostras detalles basicos del hospital");
 			System.out.println("======================================================================");
 			System.out.println("Ingrese 1 para:\n	-->Ingresar Paciente al sistema");
 			System.out.println("======================================================================");
 			System.out.println(
-					"Ingrese 2 para:\n	-->Crear Solicitud de aprobaci�n de procedimineto para paciente existente");
+					"Ingrese 2 para:\n	-->Crear Solicitud de aprobacion de procedimineto para paciente existente");
 			System.out.println("	Recuerde que el paciente debe estar registrado en nuestra base de datos");
 			System.out.println("======================================================================");
 			System.out.println(
 					"Ingrese 3 para:\n" + "	-->Aprobar solicitud (Sujeto a disponibilidad de habitaciones)");
 			System.out.println();
 			System.out.println(
-					" 	Si no hay disponibilidad es posibe que quiera darle de alta a alg�n paciente con la opci�n 6");
+					" 	Si no hay disponibilidad es posibe que quiera darle de alta a algun paciente con la opcion 6");
 			System.out.println("======================================================================");
 			System.out.println("Ingrese 4 para:\n	-->Pagar deudas de paciente.");
 			System.out.println("======================================================================");
 			System.out.println("Ingrese 5 para:\n	-->Finalizar procedimiento");
 			System.out.println();
 			System.out.println(
-					" 	Recuerde que s�lo pueden finalizar procedimiento aquellos pacientes que esten a paz y salvo en el respectivo procedimiento,");
-			System.out.println("	para ello posiblemente quiera hacer uso de la opci�n 4");
+					" 	Recuerde que solo pueden finalizar procedimiento aquellos pacientes que esten a paz y salvo en el respectivo procedimiento,");
+			System.out.println("	para ello posiblemente quiera hacer uso de la opcion 4");
 			System.out.println("======================================================================");
 			System.out.println("Ingrese 6 para:\n	-->Dar de alta");
 			System.out.println();
 			System.out.println(
 					"	Recuerde que para dar de alta al paciente, debe haber finalizado todos los procedimientos que tenga pendientes,");
-			System.out.println("	para ello tal vez quiera hacer uso de la opci�n 5.");
+			System.out.println("	para ello tal vez quiera hacer uso de la opcion 5.");
 			System.out.println("======================================================================");
-			System.out.println("Ingrese 7 para:\n	-->Ver procedimientos asignados a un m�dico");
+			System.out.println("Ingrese 7 para:\n	-->Ver procedimientos asignados a un medico");
 			System.out.println("======================================================================");
 			System.out.println("Ingrese 8 para:\n	-->Ver detalles de pacientes");
 			System.out.println("======================================================================");
@@ -134,7 +134,7 @@ public class Main {
 			System.out.println("======================================================================");
 			System.out.println();
 			System.out.println();
-			System.out.println("Ingrese su opci�n:");
+			System.out.println("Ingrese su opcion:");
 
 			opcion = entrada.nextInt();
 			entrada.nextLine();
@@ -142,6 +142,12 @@ public class Main {
 			switch (opcion) {
 			case 0:
 				System.out.println(administrador.detallesHospital());
+				System.out.println(
+						"Si dese volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9");
+				opcion = entrada.nextInt();
+				if (opcion == 9) {
+					salirDelsistema();
+				}
 				break;
 			case 1:
 				System.out.println("Ingrese el nombre del paciente que desea ingresar");
@@ -153,9 +159,9 @@ public class Main {
 				System.out.println();
 //				Thread.sleep(2500);
 				System.out.println(
-						"Si dese volver al men� principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 8");
+						"Si dese volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9");
 				opcion = entrada.nextInt();
-				if (opcion == 8) {
+				if (opcion == 9) {
 					salirDelsistema();
 				}
 				break;
@@ -174,6 +180,12 @@ public class Main {
 				System.out.println(administrador.consultarPacienteByID(idPaciente).getNombre());
 				System.out.println("Con el id: ");
 				System.out.println(administrador.consultarPacienteByID(idPaciente).getId());
+				System.out.println(
+						"Si dese volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9");
+				opcion = entrada.nextInt();
+				if (opcion == 9) {
+					salirDelsistema();
+				}
 
 				break;
 			case 3:
@@ -181,12 +193,18 @@ public class Main {
 				System.out.println(administrador.detalleSolicitudes());
 				System.out.println();
 				System.out.println("Ingrese el codigo de la solicitud que desea aprobar: ");
-				int codigoSolicitud = entrada.nextInt();	
+				int codigoSolicitud = entrada.nextInt();
 				System.out.println();
 				System.out.println("Ingrese el Costo del procedimiento a realizar: ");
 				int costo = entrada.nextInt();
 
 				administrador.aprobarSolicitud(codigoSolicitud, costo);
+				System.out.println(
+						"Si dese volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9");
+				opcion = entrada.nextInt();
+				if (opcion == 9) {
+					salirDelsistema();
+				}
 
 				break;
 			case 4:
@@ -195,26 +213,66 @@ public class Main {
 				System.out.println();
 				System.out.println("Ingrese el id del paciente que quiere pagar: ");
 				int idDeudor = entrada.nextInt();
-				
+
 				administrador.getHospital().pagarDeudaPaciente(idDeudor);
-				
+				System.out.println(
+						"Si dese volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9");
+				opcion = entrada.nextInt();
+				if (opcion == 9) {
+					salirDelsistema();
+				}
+
 				break;
 			case 5:
 				System.out.println("Esta es la lista de pacientes que pueden finalizar procedimeintos asociados: ");
 				administrador.listfinalizarProcedimiento();
+				System.out.println(
+						"Si dese volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9");
+				opcion = entrada.nextInt();
+				if (opcion == 9) {
+					salirDelsistema();
+				}
 				break;
 			case 6:
+				System.out.println(
+						"Si dese volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9");
+				opcion = entrada.nextInt();
+				if (opcion == 9) {
+					salirDelsistema();
+				}
 				break;
+				
 			case 7:
+				System.out.println(
+						"Si dese volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9");
+				opcion = entrada.nextInt();
+				if (opcion == 9) {
+					salirDelsistema();
+				}
 				break;
 			case 8:
+				System.out.println(
+						"Si dese volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9");
+				opcion = entrada.nextInt();
+				if (opcion == 9) {
+					salirDelsistema();
+				}
+
+				break;
+			case 9:
 				salirDelsistema();
 				break;
 			default:
 				System.out.println("Ingrese una opcion valida");
-				Thread.sleep(2000);
+				//Thread.sleep(2000);
+				System.out.println(
+						"Si dese volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9");
+				opcion = entrada.nextInt();
+				if (opcion == 9) {
+					salirDelsistema();
+				}
 			}
-		} while (opcion != 8);
+		} while (opcion != 9);
 
 //		BorradorDeArchivos.borrarContArchivos();
 
