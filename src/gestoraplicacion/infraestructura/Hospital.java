@@ -162,6 +162,26 @@ public class Hospital implements Serializable {
 		return room;
 	}
 	
+	public String pacientesConDeudas() {
+		String salida = "";
+		for (Paciente paciente: pacientes) {
+			if (paciente.getHistoriaClinica().totalCostos()>0) {
+				salida+=paciente+" "+paciente.getHistoriaClinica().totalCostos();
+			}
+		}
+		return salida;
+	}
+	
+	//Pago de todas las deudas del paciente. 
+	public void pagarDeudaPaciente(int idDeudor) {
+		for (Paciente paciente: pacientes) {
+			if (paciente.getId()==idDeudor) {
+				paciente.getHistoriaClinica().pagarDeudas();
+			}
+		}
+		
+	}
+	
 
 	// ==========================================================================
 	// ==========================================================================

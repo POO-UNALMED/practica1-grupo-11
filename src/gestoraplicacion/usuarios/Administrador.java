@@ -168,6 +168,8 @@ public class Administrador extends Persona {
 		}
 		return salida;
 	}
+	
+	public 
 
 	/*
 	 * Ver detalle solicitud --> Recorrer lisa de solicitudes de la clase
