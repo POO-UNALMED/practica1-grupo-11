@@ -13,14 +13,13 @@ Ingrese 0 para:
 
 Ingrese 1 para:
   -->Ingresar Paciente al sistema
-
+/*
+   Funcionalidades interesantes
+*/
 Ingrese 2 para:
   -->Crear Solicitud para determinado paciente:
 
 
-/*
-   Funcionalidades interesantes
-*/
 Ingrese 3 para:
   -->Aprobar Solicitud (Sujeto a disponibilidad de habitaciones)
     (Mostramos lista de solicitudes pendientes por aprobar y detalle ocupación del hospital(Habitaciones libres))
@@ -35,7 +34,7 @@ Ingrese 4 para :
 Ingrese 5 para:
   -->Finalizar procedimiento
      "Sólo puede finalizar procedimiento aquellos pacientes que esten a paz y salvo en el respectivo procedimiento"
-     (Mostramos pacientes(nombre y id) con procedimientos asociados(id de cada uno y tipoActividad)).
+     (Mostramos pacientes(nombre y id) con procedimientos asociados(id de cada uno y tipoActividad) y que pueden finalizar procedimeinto).
 
 Ingrese 6 para: 
   -->Dar de Alta 

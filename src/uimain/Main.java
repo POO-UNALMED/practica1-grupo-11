@@ -192,6 +192,8 @@ public class Main {
 			case 4:
 				break;
 			case 5:
+				System.out.println("Esta es la lista de pacientes que pueden finalizar procedimeintos asociados: ");
+				administrador.listfinalizarProcedimiento();
 				break;
 			case 6:
 				break;
@@ -201,7 +203,7 @@ public class Main {
 				salirDelsistema();
 				break;
 			default:
-				System.out.println("Ingrese una opci�n v�lida");
+				System.out.println("Ingrese una opcion valida");
 				Thread.sleep(2000);
 			}
 		} while (opcion != 8);

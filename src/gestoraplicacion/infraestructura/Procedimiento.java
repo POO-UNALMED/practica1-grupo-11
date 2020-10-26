@@ -65,13 +65,6 @@ public class Procedimiento implements Serializable, Actividad{
 		this.id = id;
 	}
 
-	public String getDescripcionProcedimiento() {
-		return tipoActividad;
-	}
-
-	public void setDescripcionProcedimiento(String descripcionProcedimiento) {
-		this.tipoActividad = descripcionProcedimiento;
-	}
 	
 	public Medico getMedico() {
 		return medico;
