@@ -80,8 +80,8 @@ public class Administrador extends Persona {
 			}
 
 		}
-		if (pacienteAux.equals(null)) {
-			//System.out.println("El paciente con la identificacion ingresada no existe");
+		if (pacienteAux==null) {
+			System.out.println("El paciente con la identificacion ingresada no existe");
 			return null;
 		} else {
 			Solicitud nuevaSolicitud = Solicitud.crearSolicitud(pacienteAux);
@@ -102,7 +102,7 @@ public class Administrador extends Persona {
 	public String detalleSimplePacientes() {
 		String detalle="";
 		for(Paciente paciente:this.hospital.getPacientes()) {
-			detalle+=paciente.getNombre()+"     "+paciente.getId()+"\n";
+			detalle+=paciente.getNombre()+"           "+paciente.getId()+"\n";
 		}
 		return "NOMBRE               ID\n"
 			+  "==============      ========\n"

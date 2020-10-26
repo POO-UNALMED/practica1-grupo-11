@@ -30,8 +30,9 @@ public class BDDriver {
 	
 	public static void agregarPaciente(Paciente paciente) {
 		pacientes.add(paciente);
-		hospitales.get(0).setPacientes(BDDriver.getPacientes());
-		administradores.get(0).setHospital(hospitales.get(0));
+//		hospitales.get(0).setPacientes(BDDriver.getPacientes());
+//		administradores.get(0).setHospital(hospitales.get(0));
+		administradores.get(0).getHospital().setPacientes(pacientes);
 	}
 	
 	public static int totalPersonas() {

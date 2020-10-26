@@ -147,17 +147,26 @@ public class Main {
 				System.out.println("Ingrese el nombre del paciente que desea ingresar");
 				String nombre = entrada.nextLine();
 				Persona paciente = administrador.ingresarPaciente(nombre);
-				System.out.println("El paciente que acaba de ingresar se llama " + paciente.getNombre() + "\n"
-						+ "y tiene el id " + paciente.getId());
+				System.out.println("El paciente que acaba de ingresar se llama " + paciente.getNombre()
+						+ " y tiene el id " + paciente.getId());
 				System.out.println();
 				System.out.println();
-				Thread.sleep(2500);
+//				Thread.sleep(2500);
+				System.out.println(
+						"Si dese volver al menú principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 8");
+				opcion = entrada.nextInt();
+				if (opcion == 8) {
+					salirDelsistema();
+				}
 				break;
+				
+				//corregir case 2 para verificar nulidad de retorno
 			case 2:
 				System.out.println(
 						"Aqui esta la lista de pacientes ingresados en el sistema para que elija uno de sus IDs: ");
 				System.out.println(administrador.detalleSimplePacientes());
-
+				System.out.println();
+				System.out.println("Ingrese el id del paciente al cual le desea crear una solicitud: ");
 				int idPaciente = entrada.nextInt();
 				Actividad solicitud = administrador.crearSolicitud(idPaciente);
 				System.out.println("Acaba de crear una solicitud para el paciente: ");
@@ -178,12 +187,11 @@ public class Main {
 			case 7:
 				break;
 			case 8:
-				System.out.println("Vuelva pronto");
-				System.exit(0);
+				salirDelsistema();
 				break;
 			default:
 				System.out.println("Ingrese una opción válida");
-				Thread.sleep(1500);
+				Thread.sleep(2000);
 			}
 		} while (opcion != 8);
 
@@ -191,7 +199,9 @@ public class Main {
 
 	}
 
-	private static void showMenu() {
-
+	private static void salirDelsistema() {
+		System.out.println("Vuelva pronto");
+		// Serializador.serializar();
+		System.exit(0);
 	}
 }
