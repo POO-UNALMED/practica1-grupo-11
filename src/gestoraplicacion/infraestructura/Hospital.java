@@ -95,7 +95,7 @@ public class Hospital implements Serializable {
 				+"Cantidad de pacientes en el sistema: "+this.pacientes.size()+"\n\n"
 				+"Detalle de medicos: \n"+this.detalleMedicos();
 	}
-	
+	 //devuelve el numero de habitaciones disponibles
 	public int habitacionesDisponibles() {
 		int count=0;
 		for(Room room:rooms) {
@@ -106,7 +106,19 @@ public class Hospital implements Serializable {
 		return count;
 	}
 	
-	String detalleMedicos() {
+	//UNUSED YET
+	//Detalle de las habitaciones y su disponibilidad.
+	public String detalleHabitaciones() {
+		String detalle="Id    Habitacion            Numero#\n"
+			     + "===== ================ ================\n";
+		for(Room room:rooms) {
+			detalle+=room.getCodigo()+"   "+room.isOcupado()+"\n";
+	}
+	return detalle;
+		
+	}
+	
+	public String detalleMedicos() {
 		String detalle="Id    Nombre            Especialidad\n"
 				     + "===== ================ ================\n";
 		for(Medico medico:medicos) {
@@ -115,6 +127,40 @@ public class Hospital implements Serializable {
 		return detalle;
 	}
 	
+	// metodo sobrecargado para detalle medicos por especialidad (Se podria usar para mostrar una lista especifica de medicos para aprobar solicitud)
+	public String detalleMedicos(String tipoActividad) {
+		String detalle="Id    Nombre            Especialidad\n"
+				     + "===== ================ ================\n";
+		for(Medico medico:medicos) {
+			if (medico.getEspecialidad()==tipoActividad) {
+				detalle+=medico.getId()+"   "+medico.getNombre()+"           "+medico.getEspecialidad()+"\n";
+			}
+			
+		}
+		return detalle;
+	}
+	
+	//consultar medico por especalidad
+	public Medico consultarMedicoByEspecialidad (String especialidad) {
+		Medico medico=null;
+		for(Medico m:this.medicos) {
+			if(m.getEspecialidad()==especialidad) {
+				medico=m;
+			}
+		}
+		return medico;
+	}
+	
+	public Room habitacionByVacia() {
+		Room room=null;
+		for(Room habitacion:rooms) {
+			if(habitacion.isOcupado()==false) {
+				room=habitacion;
+				break;
+			}
+		}
+		return room;
+	}
 	
 
 	// ==========================================================================

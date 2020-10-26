@@ -8,6 +8,7 @@ import gestoraplicacion.infraestructura.Actividad;
 import gestoraplicacion.infraestructura.HistoriaClinica;
 import gestoraplicacion.infraestructura.Hospital;
 import gestoraplicacion.infraestructura.Procedimiento;
+import gestoraplicacion.infraestructura.Room;
 import gestoraplicacion.infraestructura.Solicitud;
 
 public class Administrador extends Persona {
@@ -59,10 +60,14 @@ public class Administrador extends Persona {
 
 	// =========================================================================
 	// =========================================================================
+	
+	//Metodo que muestra la informacion basica del hospital, como su nombre, el nombre del administrador,
+	//Numero de habitaciones, numero de habitaciones disponibles, numero de pacientes en el sistema. 
 	public String detallesHospital() {
 		return this.getHospital().detallesHospital();
 	}
 
+	//Metodo que ingresa un nuevo paciente al sistema (crea un objeto paciente)
 	public Paciente ingresarPaciente(String nombre) {
 		Persona paciente = new Paciente(nombre);
 		return (Paciente) paciente;
@@ -98,7 +103,7 @@ public class Administrador extends Persona {
 	public void agregarActividad(Actividad actividad) {
 		solicitudes.add((Solicitud) actividad);
 	}
-	
+	//Metodo que retorna una lista con el nombre y el id del paciente. 
 	public String detalleSimplePacientes() {
 		String detalle="";
 		for(Paciente paciente:this.hospital.getPacientes()) {
@@ -108,7 +113,7 @@ public class Administrador extends Persona {
 			+  "==============      ========\n"
 			+ detalle;
 	}
-	
+	//Consulta y retorna el paciente segun su id.
 	public Paciente consultarPacienteByID(int id) {
 		Paciente paciente=null;
 		for(Paciente p:this.hospital.getPacientes()) {
@@ -117,6 +122,15 @@ public class Administrador extends Persona {
 			}
 		}
 		return paciente;
+	}
+	
+	public String detalleTipoActividad(){
+		String actividades="Tipo de procedimientos posibles\n"
+				         + "=================================";
+		for(Medico m:this.hospital.getMedicos()) {
+			actividades+=m.getEspecialidad();
+		}
+		return actividades;
 	}
 
 	// ==========================================================================
@@ -158,14 +172,49 @@ public class Administrador extends Persona {
 	/*
 	 * Ver detalle solicitud --> Recorrer lisa de solicitudes de la clase
 	 * administrador y mostrar detalle de cada solicitud. llama metodo toString de
-	 * la clase solicitud. Imprime en detalle el valor de los atributos de cada
-	 * solicitud.
+	 * la clase solicitud. Retorna un string con todas las solicitudes con salto de linea. 
 	 * 
 	 */
-	public void detalleSolicitud() {
+	public String detalleSolicitudes() {
+		String detalle = "";
 		for (Solicitud elemento : solicitudes) {
-			System.out.println(elemento);
+			if(elemento.isAprobado()==false) {
+				detalle+=elemento+"\n";
+			}
+			
 		}
+		return detalle;
+	}
+	
+	//Recibe el codigo de una solicitud, se busca en el arreglo de solicitudes y se cambia atributo aprobado a true:
+	public void aprobarSolicitud(int codigoSolicitud, int costo) {
+		
+		for (Solicitud solicitud : solicitudes){
+			if (solicitud.getCodigo() == codigoSolicitud){ 
+				// verifica si hay habitaciones disponibles. 
+				if (this.hospital.habitacionesDisponibles()>0) {
+					
+					
+					
+					Procedimiento procedimiento = new Procedimiento(solicitud.getTipoActividad(), 
+							hospital.consultarMedicoByEspecialidad(solicitud.getTipoActividad() ), costo, hospital.habitacionByVacia()); //temporalmente estoy creando todos los procedimientos con el mismo medico y el mismo room.
+					
+					solicitud.setProcedimiento(procedimiento); //asigno procedimiento.
+					
+					solicitud.setAprobado(true); //se cambia a true el atributo Aprobado.
+					
+				}
+				else {
+					System.out.println("No hay habitaciones disponibles, no se puede aprobar solicitud");
+				}
+				
+				
+			}
+				
+			}
+		
+		
+		
 	}
 
 	/*

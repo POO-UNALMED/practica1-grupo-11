@@ -16,6 +16,7 @@ public class Medico extends Persona{
 	 *Atributos 
 	 */
 	private static final long serialVersionUID = 6361786807611231845L;
+	//la especialidad es en realidad un tipodeActividad que realiza el hospital
 	private String especialidad;
 	private ArrayList<Procedimiento> procedAsignados=new ArrayList<Procedimiento>();
 	private Hospital hospital;

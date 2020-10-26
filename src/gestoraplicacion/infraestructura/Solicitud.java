@@ -14,10 +14,12 @@ public class Solicitud implements Serializable, Actividad {
 	 */
 	private static final long serialVersionUID = -8336027985146111782L;
 	private static int cantidadTotal = BDDriver.solicitudes.size();
+	
 	private int codigo;
 	private Persona solicitante;
-	private Procedimiento procedimeinto;
+	private Procedimiento procedimiento;
 	private boolean aprobado = false;
+	private String tipoActividad;
 
 	/*
 	 * Constructores
@@ -54,11 +56,12 @@ public class Solicitud implements Serializable, Actividad {
 	}
 
 	public Procedimiento getProcedimeinto() {
-		return procedimeinto;
+		return procedimiento;
 	}
 
 	public void setProcedimiento(Procedimiento procedimiento) {
-		this.procedimeinto = procedimiento;
+		this.procedimiento = procedimiento;
+		System.out.println("Procedimiento asignado, exitosamente");
 	}
 
 	public boolean isAprobado() {
@@ -68,6 +71,15 @@ public class Solicitud implements Serializable, Actividad {
 	public void setAprobado(boolean aprobado) {
 		this.aprobado = aprobado;
 	}
+	
+	public String getTipoActividad() {
+		return tipoActividad;
+	}
+
+	public void setTipoActividad(String tipoActividad) {
+		this.tipoActividad = tipoActividad;
+	}
+
 
 	// =========================================================================
 	// =========================================================================
@@ -80,6 +92,7 @@ public class Solicitud implements Serializable, Actividad {
 	 * 
 	 */
 
+	
 	public static Solicitud crearSolicitud(Persona persona) {
 		Actividad solicitud = new Solicitud(persona);
 		persona.agregarActividad(solicitud);
@@ -98,9 +111,11 @@ public class Solicitud implements Serializable, Actividad {
 	 * imprime detalle de los principales atributos del procedimiento.
 	 * 
 	 */
-	public String toString() {
-		return "Codigo: " + codigo + "\nSolicitante: " + solicitante.getNombre() + "\nDetalle procedimiento: "
-				+ procedimeinto + "\nAprobado: " + aprobado;
+	
+	@Override
+	public  String toString() {
+		return "Codigo: " + codigo + "\nSolicitante: " + solicitante.getNombre() + "\nTipo Procedimiento: "
+				+ procedimiento + "\nAprobado: " + aprobado;
 	}
 
 	public static Solicitud getSolucitudByProcedimiento(Procedimiento procedimiento) {
