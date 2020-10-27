@@ -72,11 +72,13 @@ public class Administrador extends Persona {
 	// Metodo que ingresa un nuevo paciente al sistema (crea un objeto paciente)
 	public Paciente ingresarPaciente(String nombre) {
 		Persona paciente = new Paciente(nombre);
+		HistoriaClinica historiaClinica = new HistoriaClinica((Paciente) paciente);
+		((Paciente) paciente).setHistoriaClinica(historiaClinica);
 		return (Paciente) paciente;
 	}
 	/* Metodo que crea una nueva solicitud */
 
-	public Solicitud crearSolicitud(int idPaciente) {
+	public Solicitud crearSolicitud(int idPaciente, String tipoActividad) {
 		Paciente pacienteAux = null;
 
 		// Este for busca si el paciente existe
@@ -90,8 +92,10 @@ public class Administrador extends Persona {
 		if (pacienteAux == null) {
 			System.out.println("El paciente con la identificacion ingresada no existe");
 			return null;
+
 		} else {
 			Solicitud nuevaSolicitud = Solicitud.crearSolicitud(pacienteAux);
+			nuevaSolicitud.setTipoActividad(tipoActividad);
 			this.agregarActividad(nuevaSolicitud);
 			return nuevaSolicitud;
 		}
@@ -112,7 +116,12 @@ public class Administrador extends Persona {
 		for (Paciente paciente : this.hospital.getPacientes()) {
 			detalle += paciente.getNombre() + "           " + paciente.getId() + "\n";
 		}
-		return "NOMBRE               ID\n" + "==============      ========\n" + detalle;
+		if (detalle.length() == 0) {
+			return "NOMBRE               ID\n" + "==============      ========\n" + "No hay pacientes en el sistema";
+		} else {
+
+			return "NOMBRE               ID\n" + "==============      ========\n" + detalle;
+		}
 	}
 
 	// Consulta y retorna el paciente segun su id.
@@ -127,11 +136,16 @@ public class Administrador extends Persona {
 	}
 
 	public String detalleTipoActividad() {
-		String actividades = "Tipo de procedimientos posibles\n" + "=================================";
+		String actividades = "TIPO DE PROCEDIMEINTOS POSIBLES\n" + "=================================\n";
 		for (Medico m : this.hospital.getMedicos()) {
-			actividades += m.getEspecialidad();
+			actividades += m.getEspecialidad() + "\n";
 		}
-		return actividades;
+		if (this.hospital.getPacientes().size() == 0) {
+			return "TIPO DE PROCEDIMIENTOS POSIBLES\n" + "=================================\n"
+					+ "No puede elegir ningun tipo procedimiento porque no hay pacientes\n";
+		} else {
+			return actividades;
+		}
 	}
 
 	// ==========================================================================
@@ -169,8 +183,6 @@ public class Administrador extends Persona {
 		}
 		return salida;
 	}
-	
- 
 
 	/*
 	 * Ver detalle solicitud --> Recorrer lisa de solicitudes de la clase
@@ -199,14 +211,13 @@ public class Administrador extends Persona {
 				// verifica si hay habitaciones disponibles.
 				if (this.hospital.habitacionesDisponibles() > 0) {
 
-					Procedimiento procedimiento = new Procedimiento(solicitud.getTipoActividad(),
+					Procedimiento procedimiento = new Procedimiento(
 							hospital.consultarMedicoByEspecialidad(solicitud.getTipoActividad()), costo,
-							hospital.habitacionByVacia()); // temporalmente estoy creando todos los procedimientos con
-															// el mismo medico y el mismo room.
+							hospital.habitacionByVacia(), solicitud);
 
 					solicitud.setProcedimiento(procedimiento); // asigno procedimiento.
 
-					solicitud.setAprobado(true); // se cambia a true el atributo Aprobado.
+					solicitud.setAprobado(true); // se cambia a true el atributo aprobado.
 
 				} else {
 					System.out.println("No hay habitaciones disponibles, no se puede aprobar solicitud");
@@ -280,17 +291,16 @@ public class Administrador extends Persona {
 		String detalle = "";
 		for (Paciente paciente : this.hospital.getPacientes()) {
 			HistoriaClinica auxHc = paciente.getHistoriaClinica();
-			
+
 			ArrayList<Procedimiento> procedAux = auxHc.getProcedimientos();
 			for (Procedimiento proced : procedAux) {
 				if (proced.isPazYSalvo() == true) {
-					detalle += paciente.getNombre() + "           " + paciente.getId() +"\n"+ "" + ""
-							+ proced.getTipoActividad()+ "    " + proced.getId();
+					detalle += paciente.getNombre() + "           " + paciente.getId() + "\n" + "" + ""
+							+ proced.getTipoActividad() + "    " + proced.getId();
 				}
-				
+
 			}
 		}
-		
 
 		return "NOMBRE               ID                   PROCEDIMIENTO      ID\n"
 				+ "==============      ========              ===============   =======\n" + detalle;

@@ -8,11 +8,13 @@ Aquí está su menu:
    Funcionalidades básicas para el funcionamiento del sistema
 */
 
-Ingrese 0 para:
+Ingrese 0 para: Listo
   -->Mostras detalles básicos del hospital (Nombre del hospital, nombre del administrador, Habitaciones totales y disponibles, cantidad de pacientes en el sistema, detalle de medicos)
 
-Ingrese 1 para:
+Ingrese 1 para:Listo
   -->Ingresar Paciente al sistema
+  (La historia clinica se crea de forma automatica)
+
 /*
    Funcionalidades interesantes
 */
@@ -52,12 +54,12 @@ Ingrese 8 para:
       mostrar pacientes con procedimientos en proceso, mostrar pacientes dados de alta.)
 
 
-Ingrese 8 para salir del sistema:
+Ingrese 9 para salir del sistema:
     (Se invoca BDDriver.Serializar() y luego un Sytem.exit(0))
 
 
 //Opcional.
-Ingrese 9 para:
+Ingrese 10 para:
   -->Ver los medicos que ha tenido un paciente en su historia clínica.
 
 
@@ -106,6 +108,6 @@ Ingrese 9 para:
 	-->Salir del sistema de forma segura
 ======================================================================
 
-
+hacer uno de solicitudes más apetecidas
 
 

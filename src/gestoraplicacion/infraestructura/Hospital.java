@@ -90,7 +90,7 @@ public class Hospital implements Serializable {
 	// =========================================================================
 	public String detallesHospital() {
 		return "Nombre del hospital: " + this.getNombre() + "\n\n" + "Nombre del administrador: "
-				+ this.getAdministrador().getNombre() + "\n" + "Habitaciones totales: "+getHabitacionesTotales()+"\n\n"
+				+ this.getAdministrador().getNombre() + "\n\n" + "Habitaciones totales: "+getHabitacionesTotales()+"\n\n"
 				+"Habitaciones desocupadas: "+this.habitacionesDisponibles()+"\n\n"
 				+"Cantidad de pacientes en el sistema: "+this.pacientes.size()+"\n\n"
 				+"Detalle de medicos: \n"+this.detalleMedicos();

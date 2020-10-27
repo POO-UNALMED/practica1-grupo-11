@@ -3,6 +3,7 @@ import java.io.Serializable;
 
 import basedatos.BDDriver;
 import gestoraplicacion.usuarios.Medico;
+import gestoraplicacion.usuarios.Paciente;
 
 public class Procedimiento implements Serializable, Actividad{
 	/*
@@ -24,6 +25,7 @@ public class Procedimiento implements Serializable, Actividad{
 	private boolean pazYSalvo=false;
 	private Room habitacion;
 	private boolean completado=false;
+	private Solicitud solicitud;
 	
 	
 	
@@ -31,18 +33,28 @@ public class Procedimiento implements Serializable, Actividad{
 	 * Constructores
 	 */
 	public Procedimiento(){
-		totalProcedimientos++;
+		totalProcedimientos=BDDriver.procedimientos.size()+1;
 		this.id=totalProcedimientos;
 	}
 	
 
-	public Procedimiento(String tipoActividad, Medico medico, double costo, Room habitacion) {
+	public Procedimiento( Medico medico, double costo, Room habitacion,Solicitud solicitud) {
 
 		this();
-		this.tipoActividad = tipoActividad;
+		tipoActividad = solicitud.getTipoActividad();
+		//Las siguientes dos lineas asocian el procedimiento al medico y viceversa. 
 		this.medico = medico;
+		medico.agregarActividad(solicitud);
 		this.costo = costo;
+		//Asocio la habitacion con el procedimiento y viceversa
 		this.habitacion = habitacion;
+		habitacion.setOcupado(true);
+		habitacion.setPaciente((Paciente) solicitud.getSolicitante());
+		habitacion.setProcedimiento(this);
+		this.solicitud=solicitud;
+		//Asocio el procedimiento con la historia clinica y viceversa
+		historiaClinica=((Paciente)(solicitud.getSolicitante())).getHistoriaClinica();
+		((Paciente)(solicitud.getSolicitante())).getHistoriaClinica().getProcedimientos().add(this);
 		BDDriver.procedimientos.add(this);
 	}
 	
@@ -126,6 +138,18 @@ public class Procedimiento implements Serializable, Actividad{
 	public void setTipoActividad(String tipoActividad) {
 		this.tipoActividad = tipoActividad;
 	}
+	
+	
+
+	public Solicitud getSolicitud() {
+		return solicitud;
+	}
+
+
+	public void setSolicitud(Solicitud solicitud) {
+		this.solicitud = solicitud;
+	}
+
 
 	/*
 	 * Metodos:

@@ -25,7 +25,7 @@ public class Solicitud implements Serializable, Actividad {
 	 * Constructores
 	 */
 	public Solicitud() {
-		cantidadTotal++;
+		cantidadTotal= BDDriver.solicitudes.size()+1;
 		this.codigo = cantidadTotal;
 	}
 
@@ -114,8 +114,8 @@ public class Solicitud implements Serializable, Actividad {
 	
 	@Override
 	public  String toString() {
-		return "Codigo: " + codigo + "\nSolicitante: " + solicitante.getNombre() + "\nTipo Procedimiento: "
-				+ procedimiento + "\nAprobado: " + aprobado;
+		return "Codigo de solicitud: " + codigo + "\nSolicitante: " + solicitante.getNombre() + "\nTipo Procedimiento: "
+				+ tipoActividad + "\nAprobado: " + aprobado+"\n";
 	}
 
 	public static Solicitud getSolucitudByProcedimiento(Procedimiento procedimiento) {
