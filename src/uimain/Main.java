@@ -1,7 +1,9 @@
 package uimain;
 
 import gestoraplicacion.infraestructura.Actividad;
+import gestoraplicacion.infraestructura.HistoriaClinica;
 import gestoraplicacion.infraestructura.Hospital;
+import gestoraplicacion.infraestructura.Procedimiento;
 import gestoraplicacion.infraestructura.Room;
 import gestoraplicacion.infraestructura.Solicitud;
 import gestoraplicacion.usuarios.Administrador;
@@ -9,6 +11,7 @@ import gestoraplicacion.usuarios.Medico;
 import gestoraplicacion.usuarios.Paciente;
 import gestoraplicacion.usuarios.Persona;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import basedatos.BDDriver;
@@ -236,8 +239,45 @@ public class Main {
 
 				break;
 			case 5:
+				//Test
+				Paciente p1 = new Paciente("Santiago");
+				ArrayList<Paciente> pacientes = new ArrayList<>();
+				pacientes.add(p1);
+				HistoriaClinica h1 = new HistoriaClinica(p1);
+				p1.setHistoriaClinica(h1);
+				Medico m1 = new Medico("Roberto", "otorrino");
+				Room r1 = new Room();
+				Procedimiento pro1 = new Procedimiento("otorrino", m1, 200, r1);
+				pro1.setPazYSalvo(true);
+				p1.setHabitacion(r1);
+				ArrayList<Procedimiento> procedimientos = new ArrayList<>();
+				procedimientos.add(pro1);
+				h1.setProcedimientos(procedimientos);
+				hospital.setPacientes(pacientes);
+				//
+				
+				System.out.println(p1.getNombre());
+				System.out.println(p1);
+				System.out.println(pro1.getTipoActividad());
+				System.out.println(procedimientos.size());
+				System.out.println(hospital.getPacientes());
+				//
+				
 				System.out.println("Esta es la lista de pacientes que pueden finalizar procedimeintos asociados: ");
-				administrador.listfinalizarProcedimiento();
+				System.out.println(administrador.detallesfinalizarProcedimiento()+"\n");
+				System.out.println("Ingrese el id del paciente y del procedimiento que quiere finalizar: \n");
+				System.out.println("Ingrese id Paciente: ");
+				idPaciente = entrada.nextInt();
+				System.out.println("Ingrese id Procedimiento: ");
+				int idProcedimiento = entrada.nextInt();
+				System.out.println(administrador.finalizarProcedimiento(idPaciente, idProcedimiento));
+				
+				//Prueba funcionalidad mostrarMedicosPacientes()
+				/*System.out.println("Mostrar medicos de un paciente");
+				System.out.println("ingrese id Paciente:");
+				idPaciente = entrada.nextInt();
+				System.out.println(administrador.consultarMedicosDePaciente(idPaciente));
+				*/
 				System.out.println(
 						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
 				opcion = entrada.nextInt();
@@ -246,6 +286,12 @@ public class Main {
 				}
 				break;
 			case 6:
+				System.out.println("Esta es la lista de pacientes que pueden ser dados de Alta\n");
+				System.out.println(administrador.detalledarDeAlta()+"\n");
+				System.out.println("Ingrese el id del paciente que se quiere dar de alta: \n");
+				System.out.println("Ingrese id Paciente: ");
+				idPaciente = entrada.nextInt();
+				System.out.println(administrador.darDeAlta(idPaciente));
 				System.out.println(
 						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
 				opcion = entrada.nextInt();

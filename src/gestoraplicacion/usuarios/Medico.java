@@ -82,22 +82,7 @@ public class Medico extends Persona{
 	/*
 	 * Metodos:
 	 */
-	public void darDeAlta(int idPaciente, int idProcedimiento) {
-		for(Procedimiento p : procedAsignados) {
-			if(p.getId() == idProcedimiento) {
-				p.setCompletado(true);
-				HistoriaClinica auxHC = p.getHistoriaClinica();
-				Paciente auxP = auxHC.getPaciente();
-				
-				if(auxP.getId() == idPaciente) {
-					auxP.setDeAlta(true);
-					Room auxR = auxP.getHabitacion();
-					auxR.setOcupado(false);
-				}
-				
-			}
-		}
-	}
+	
 	
 	
 	/*
