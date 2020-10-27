@@ -27,18 +27,18 @@ Ingrese 3 para:Listo
     (Mostramos lista de solicitudes pendientes por aprobar y detalle ocupación del hospital(Habitaciones libres))
     "Si no hay disponibilidad es posibe que quiera darle de alta a algún paciente".
 
-Ingrese 4 para :
+Ingrese 4 para :Listo
   -->Pagar deudas de paciente.
      (Mostrar pacientes deudores (id de paciente,nombre paciente) con sus deudas asociadas a los procedimientos respectivos (id procedimiento,patologia),
       y el total de lo que deben (de mayor deuda total a menorcdeuda total))
               1.Pagar procedimiento especifico.
               2.Pagar todas las deudas existentes.
-Ingrese 5 para:
+Ingrese 5 para:Listo
   -->Finalizar procedimiento
      "Sólo puede finalizar procedimiento aquellos pacientes que esten a paz y salvo en el respectivo procedimiento"
      (Mostramos pacientes(nombre y id) con procedimientos asociados(id de cada uno y tipoActividad) y que pueden finalizar procedimeinto).
 
-Ingrese 6 para: 
+Ingrese 6 para: Listo
   -->Dar de Alta 
      (Mostrar pacientes aptos(id) para dar de alta).
 

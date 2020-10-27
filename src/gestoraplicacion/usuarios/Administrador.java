@@ -220,11 +220,11 @@ public class Administrador extends Persona {
 
 					solicitud.setAprobado(true); // se cambia a true el atributo aprobado.
 					System.out.println();
-					System.out.println("Se ha aprobado con exito la solicitud");
+					System.out.println("Se ha aprobado con exito la solicitud para "+procedimiento.getMedico().getEspecialidad());
 					System.out.println();
-					System.out.println("El medico asignado es: " + procedimiento.getMedico().getNombre());
+					System.out.println("El medico asignado es: " + procedimiento.getMedico().getNombre()+" de "+procedimiento.getMedico().getEspecialidad());
 
-					System.out.println("La habitacion asignada es: " + procedimiento.getHabitacion().getCodigo());
+					System.out.println("El numero de habitacion asignada es: " + procedimiento.getHabitacion().getCodigo());
 					System.out.println();
 
 				} else {
