@@ -259,33 +259,42 @@ public class Administrador extends Persona {
 	 * Medico.
 	 */
 
-	public void consultarMedicosDePaciente(int idPaciente) {
+	public String consultarMedicosDePaciente(int idPaciente) {
 		/*
 		 * HistoriaClinica historiaClinica = paciente.getHistoriaClinica();
 		 * historiaClinica.medicos();
 		 */
-
-		for (Paciente p : hospital.getPacientes()) {
-			if (p.getId() == idPaciente) {
-				HistoriaClinica auxHC = p.getHistoriaClinica();
+		String detalle = "";
+		for (Paciente paciente : hospital.getPacientes()) {
+			if (paciente.getId() == idPaciente) {
+				HistoriaClinica auxHC = paciente.getHistoriaClinica();
 				ArrayList<Procedimiento> procedAux = auxHC.getProcedimientos();
 				for (Procedimiento proced : procedAux) {
 					Medico medico = proced.getMedico();
+					detalle += medico.getNombre() + "           " + medico.getEspecialidad()+"\n";
 				}
 			}
 		}
+		return "NOMBRE         Especialidad\n"
+		+ "==============   =============\n" + detalle;
 	}
 
-	public String listfinalizarProcedimiento() {
+	public String detallesfinalizarProcedimiento() {
 		String detalle = "";
 		for (Paciente paciente : this.hospital.getPacientes()) {
+			System.out.println(paciente.getNombre());
 			HistoriaClinica auxHc = paciente.getHistoriaClinica();
-			
+			System.out.println(auxHc);
+			System.out.println("h1-> "+auxHc.getPaciente());
 			ArrayList<Procedimiento> procedAux = auxHc.getProcedimientos();
+			System.out.println(procedAux.size());
 			for (Procedimiento proced : procedAux) {
-				if (proced.isPazYSalvo() == true) {
-					detalle += paciente.getNombre() + "           " + paciente.getId() +"\n"+ "" + ""
-							+ proced.getTipoActividad()+ "    " + proced.getId();
+				System.out.println(proced.getTipoActividad());
+				System.out.println(proced.isPazYSalvo());
+				if (proced.isPazYSalvo()) {
+					System.out.println("ok");
+					detalle += paciente.getNombre() + "           " + paciente.getId() + "                       "
+							+ proced.getTipoActividad()+ "         " + proced.getId();
 				}
 				
 			}
@@ -296,7 +305,7 @@ public class Administrador extends Persona {
 				+ "==============      ========              ===============   =======\n" + detalle;
 	}
 
-	public void finalizarProcedimiento(int idPaciente, int idProcedimiento) {
+	public String finalizarProcedimiento(int idPaciente, int idProcedimiento) {
 
 		for (Paciente paciente : this.hospital.getPacientes()) {
 			if (paciente.getId() == idPaciente) {
@@ -306,11 +315,52 @@ public class Administrador extends Persona {
 					if (proced.getId() == idProcedimiento) {
 						if (proced.isPazYSalvo()) {
 							proced.setCompletado(true);
+							return "Se finalizo el procedimiento id: "+proced.getId()+" del paciente: "+paciente.getNombre()+" Exitosamente\n";
 						}
 					}
 				}
 			}
 		}
+		return "!!No se pudo finalizar el procedimiento";
+	}
+	
+	
+	public String detalledarDeAlta() {
+		String detalle = "";
+		for(Paciente paciente : hospital.getPacientes()) {
+			HistoriaClinica auxHc = paciente.getHistoriaClinica();
+			ArrayList<Procedimiento> procedimientos = auxHc.getProcedimientos();
+			for(Procedimiento proced : procedimientos) {
+				if(proced.isCompletado()) {
+					detalle += paciente.getNombre() + "           " + paciente.getId();
+				}
+			}
+		}
+		return "NOMBRE               ID \n"
+		+ "==============      ======== \n" + detalle;
+	}
+	
+	public String darDeAlta(int idPaciente) {
+		for(Paciente paciente : hospital.getPacientes()) {
+			if(paciente.getId() == idPaciente) {
+				HistoriaClinica auxHc = paciente.getHistoriaClinica();
+				ArrayList<Procedimiento> procedimientos = auxHc.getProcedimientos();
+				System.out.println("ok");
+				System.out.println(procedimientos.size());
+				for(Procedimiento proced : procedimientos) {
+					System.out.println("ok");
+					if(proced.isCompletado()) {
+						System.out.println("ok");
+						paciente.setDeAlta(true);
+						Room room = paciente.getHabitacion();
+						System.out.println(room);
+						room.setOcupado(false);
+						return "Se dio de alta al paciente: "+paciente.getNombre()+" con id: "+paciente.getId()+ " Exitosamente\n";	
+					}
+				}
+			}
+		}
+		return "!!No se pudo dar de alta";
 	}
 
 }
