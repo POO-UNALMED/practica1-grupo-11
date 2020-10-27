@@ -183,19 +183,17 @@ public class Main {
 				System.out.println("Aqui esta la lista de tipos de procedimiento posible, también debe elegir uno: ");
 				System.out.println(administrador.detalleTipoActividad());
 				if (administrador.getHospital().getPacientes().size() != 0) {
-					System.out.println(
-							"Ingrese el id del"
-							+ " paciente al cual le desea crear una solicitud: ");
+					System.out.println("Ingrese el id del" + " paciente al cual le desea crear una solicitud: ");
 					int idPaciente = entrada.nextInt();
 					System.out.println("Ingrese el tipo de solicitud exactamente como se le mostro en la tabla: ");
-					String tipoActividad=entrada.next();
-					Actividad solicitud = administrador.crearSolicitud(idPaciente,tipoActividad);
+					String tipoActividad = entrada.next();
+					Actividad solicitud = administrador.crearSolicitud(idPaciente, tipoActividad);
 					System.out.println("Acaba de crear una solicitud para el paciente: ");
 					System.out.println(administrador.consultarPacienteByID(idPaciente).getNombre());
 					System.out.println("Con el id: ");
 					System.out.println(administrador.consultarPacienteByID(idPaciente).getId());
 					System.out.println("El codigo de la solicitud es:");
-					System.out.println(((Solicitud)solicitud).getCodigo());
+					System.out.println(((Solicitud) solicitud).getCodigo());
 				}
 
 				System.out.println(
@@ -234,8 +232,7 @@ public class Main {
 				int idDeudor = entrada.nextInt();
 
 				administrador.getHospital().pagarDeudaPaciente(idDeudor);
-				
-				
+
 				System.out.println(
 						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
 				opcion = entrada.nextInt();
@@ -245,23 +242,22 @@ public class Main {
 
 				break;
 			case 5:
-				
-				
+
 				System.out.println("Esta es la lista de pacientes que pueden finalizar procedimeintos asociados: ");
-				System.out.println(administrador.detallesfinalizarProcedimiento()+"\n");
+				System.out.println(administrador.detallesfinalizarProcedimiento() + "\n");
 				System.out.println("Ingrese el id del paciente y del procedimiento que quiere finalizar: \n");
 				System.out.println("Ingrese id Paciente: ");
 				int idPaciente = entrada.nextInt();
 				System.out.println("Ingrese id Procedimiento: ");
 				int idProcedimiento = entrada.nextInt();
 				System.out.println(administrador.finalizarProcedimiento(idPaciente, idProcedimiento));
-				
-				//Prueba funcionalidad mostrarMedicosPacientes()
-				/*System.out.println("Mostrar medicos de un paciente");
-				System.out.println("ingrese id Paciente:");
-				idPaciente = entrada.nextInt();
-				System.out.println(administrador.consultarMedicosDePaciente(idPaciente));
-				*/
+
+				// Prueba funcionalidad mostrarMedicosPacientes()
+				/*
+				 * System.out.println("Mostrar medicos de un paciente");
+				 * System.out.println("ingrese id Paciente:"); idPaciente = entrada.nextInt();
+				 * System.out.println(administrador.consultarMedicosDePaciente(idPaciente));
+				 */
 				System.out.println(
 						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
 				opcion = entrada.nextInt();
@@ -271,7 +267,7 @@ public class Main {
 				break;
 			case 6:
 				System.out.println("Esta es la lista de pacientes que pueden ser dados de Alta\n");
-				System.out.println(administrador.detalledarDeAlta()+"\n");
+				System.out.println(administrador.detalledarDeAlta() + "\n");
 				System.out.println("Ingrese el id del paciente que se quiere dar de alta: \n");
 				System.out.println("Ingrese id Paciente: ");
 				idPaciente = entrada.nextInt();
@@ -322,7 +318,7 @@ public class Main {
 
 	private static void salirDelsistema() {
 		System.out.println("Vuelva pronto");
-		// Serializador.serializar();
+		Serializador.serializar();
 		System.exit(0);
 	}
 }

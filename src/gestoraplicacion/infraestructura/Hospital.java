@@ -163,10 +163,11 @@ public class Hospital implements Serializable {
 	}
 	
 	public String pacientesConDeudas() {
-		String salida = "";
+		String salida = "PACIENTE          ID         DEBE\n"
+				      + "================ ========== ==========\n";
 		for (Paciente paciente: pacientes) {
 			if (paciente.getHistoriaClinica().totalCostos()>0) {
-				salida+=paciente+" "+paciente.getHistoriaClinica().totalCostos();
+				salida+=paciente.getNombre()+"      "+paciente.getId()+"           "+paciente.getHistoriaClinica().totalCostos()+"\n";
 			}
 		}
 		return salida;

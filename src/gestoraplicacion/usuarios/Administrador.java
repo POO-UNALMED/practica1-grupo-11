@@ -222,9 +222,9 @@ public class Administrador extends Persona {
 					System.out.println();
 					System.out.println("Se ha aprobado con exito la solicitud");
 					System.out.println();
-					System.out.println("El medico asignado es: "+procedimiento.getMedico().getNombre());
-					
-					System.out.println("La habitacion asignada es: "+procedimiento.getHabitacion().getCodigo());
+					System.out.println("El medico asignado es: " + procedimiento.getMedico().getNombre());
+
+					System.out.println("La habitacion asignada es: " + procedimiento.getHabitacion().getCodigo());
 					System.out.println();
 
 				} else {
@@ -307,18 +307,18 @@ public class Administrador extends Persona {
 
 			for (Procedimiento proced : procedAux) {
 
-				if (proced.isPazYSalvo()) {
-					
+				if (proced.isPazYSalvo()==true && proced.isCompletado()==false) {
+
 					detalle += paciente.getNombre() + "           " + paciente.getId() + "                       "
-							+ proced.getTipoActividad() + "         " + proced.getId();
+							+ proced.getTipoActividad() + "         " + proced.getId() + "\n";
 
 				}
 
 			}
 		}
 
-		return "NOMBRE               ID                   PROCEDIMIENTO      ID\n"
-				+ "==============      ========              ===============   =======\n" + detalle;
+		return "NOMBRE               ID                   PROCEDIMIENTO            ID\n"
+				+ "==============      ========              ===============          =======\n" + detalle;
 	}
 
 	public String finalizarProcedimiento(int idPaciente, int idProcedimiento) {
@@ -331,14 +331,14 @@ public class Administrador extends Persona {
 					if (proced.getId() == idProcedimiento) {
 						if (proced.isPazYSalvo()) {
 							proced.setCompletado(true);
-							return "Se finalizo el procedimiento id: " + proced.getId() + " del paciente: "
+							return "Se finalizo el procedimiento con el id: " + proced.getId() + "\ndel paciente: "
 									+ paciente.getNombre() + " Exitosamente\n";
 						}
 					}
 				}
 			}
 		}
-		return "!!No se pudo finalizar el procedimiento";
+		return "No se pudo finalizar el procedimiento!!";
 	}
 
 	public String detalledarDeAlta() {

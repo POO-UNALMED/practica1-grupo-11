@@ -65,11 +65,14 @@ public class HistoriaClinica implements Serializable{
 	 * 
 	 */
 	
-	//calcula los costos de todos los procedimientos.
+	//calcula los costos de todos los procedimientos no pagados
 	public double totalCostos() {
 		double total=0;
 		for(Procedimiento proced:procedimientos) {
-			total+=proced.getCosto();
+			if(proced.isPazYSalvo()==false) {
+				total+=proced.getCosto();
+			}
+			
 		}
 		return total;
 	}
