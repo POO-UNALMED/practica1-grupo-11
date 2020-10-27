@@ -27,49 +27,49 @@ public class Main {
 		 * la aplicacion, solo se crean algunos objetos y luego este codigo se comenta,
 		 * ya que no necesitamos que se ejecute cada vez que se inicia la aplicacion.
 		 */
-//		Hospital h1= new Hospital("Hospital Universitario");
-//		Persona a1= new Administrador("Jaime Alberto Guzman Luna");
-//		h1.setAdministrador(a1);
-//		a1.setHospital(h1);
-//		
-//		Room r1 = new Room();
-//		Room r2 = new Room();
-//		Room r3 = new Room();
-//		Room r4 = new Room();
-//		Room r5 = new Room();
-//		Room r6 = new Room();
-//		Room r7 = new Room();
-//		Room r8 = new Room();
-//		Room r9 = new Room();
-//		Room r10 = new Room();
-//		Room r11 = new Room();
-//		Room r12 = new Room();
-//		Room r13 = new Room();
-//		Room r14 = new Room();
-//		Room r15 = new Room();
-//		Room r16 = new Room();
-//		Room r17 = new Room();
-//		Room r18 = new Room();
-//		Room r19 = new Room();
-//		Room r20 = new Room();
-//		Room r21 = new Room();
-//		Room r22 = new Room();
-//		Room r23 = new Room();
-//		Room r24 = new Room();
-//		Room r25 = new Room();
-//		
-//		
-//		Persona m1 = new Medico("Carlos Mej�a","Oncologia");
-//		Persona m2 = new Medico("Jorge Ram�rez","Pediatria");
-//		Persona m3 = new Medico("Julian Moreno","Urologia");
-//		Persona m4 = new Medico("Jose Gomez","Oftalmologia");
-//		Persona m5 = new Medico("Hugo Restrepo","Cardiologia");
-//		Persona m6 = new Medico("Alejandro Henao","Neurologia");
-//		Persona m7 = new Medico("Bibiana Lopez","Nefrologia");
-//		Persona m8 = new Medico("Francisco Diaz","Dermatologia");
-//		Persona m9 = new Medico("Claudia Jimenez","Psiquiatria");
-//		Persona m10 = new Medico("Blanca Cardona","Ginecologia");
-//		Serializador.serializar();
+		Hospital h1= new Hospital("Hospital Universitario");
+		Persona a1= new Administrador("Jaime Alberto Guzman Luna");
+		h1.setAdministrador((Administrador) a1);
+		((Administrador) a1).setHospital(h1);
+		
+		Room r1 = new Room();
+		Room r2 = new Room();
+		Room r3 = new Room();
+		Room r4 = new Room();
+		Room r5 = new Room();
+		Room r6 = new Room();
+		Room r7 = new Room();
+		Room r8 = new Room();
+		Room r9 = new Room();
+		Room r10 = new Room();
+		Room r11 = new Room();
+		Room r12 = new Room();
+		Room r13 = new Room();
+		Room r14 = new Room();
+		Room r15 = new Room();
+		Room r16 = new Room();
+		Room r17 = new Room();
+		Room r18 = new Room();
+		Room r19 = new Room();
+		Room r20 = new Room();
+		Room r21 = new Room();
+		Room r22 = new Room();
+		Room r23 = new Room();
+		Room r24 = new Room();
+		Room r25 = new Room();
+		
+		
+		Persona m1 = new Medico("Carlos Mejia","Oncologia");
+		Persona m2 = new Medico("Jorge Ramirez","Pediatria");
+		Persona m3 = new Medico("Julian Moreno","Urologia");
+		Persona m4 = new Medico("Jose Gomez","Oftalmologia");
+		Persona m5 = new Medico("Hugo Restrepo","Cardiologia");
+		Persona m6 = new Medico("Alejandro Henao","Neurologia");
+		Persona m7 = new Medico("Bibiana Lopez","Nefrologia");
+		Persona m8 = new Medico("Francisco Diaz","Dermatologia");
+		Persona m9 = new Medico("Claudia Jimenez","Psiquiatria");
+		Persona m10 = new Medico("Blanca Cardona","Ginecologia");
+		Serializador.serializar();
 
 		/*
 		 * Este codigo se ejecuta desde el inicio de la aplicaicon
@@ -82,10 +82,6 @@ public class Main {
 		Hospital hospital = BDDriver.hospitales.get(0);
 		Administrador administrador = BDDriver.administradores.get(0);
 
-//		Paciente p1= new Paciente("Cristiano Ronaldo");
-//		Paciente p2= new Paciente("Lionel Messi");
-//		Paciente p3= new Paciente("Ronaldinho Gaucho");
-//		Paciente p4= new Paciente("Neymar Junior");
 
 		System.out.println("Hola Administrador " + administrador.getNombre() + "!.\n"
 				+ "Bienvenido al Software HealthTech para Administrar el " + hospital.getNombre());
@@ -302,7 +298,6 @@ public class Main {
 				break;
 			default:
 				System.out.println("Ingrese una opcion valida");
-				// Thread.sleep(2000);
 				System.out.println(
 						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
 				opcion = entrada.nextInt();

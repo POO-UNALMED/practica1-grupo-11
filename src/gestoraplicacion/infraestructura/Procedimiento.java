@@ -48,12 +48,15 @@ public class Procedimiento implements Serializable, Actividad{
 		//Asocio la habitacion con el procedimiento y viceversa
 		this.habitacion = habitacion;
 		habitacion.setOcupado(true);
+		//Asocio la habitacion con e paciente y viceversa
 		habitacion.setPaciente((Paciente) solicitud.getSolicitante());
+		((Paciente)solicitud.getSolicitante()).setHabitacion(habitacion);
 		habitacion.setProcedimiento(this);
 		this.solicitud=solicitud;
 		//Asocio el procedimiento con la historia clinica y viceversa
 		historiaClinica=((Paciente)(solicitud.getSolicitante())).getHistoriaClinica();
 		((Paciente)(solicitud.getSolicitante())).getHistoriaClinica().getProcedimientos().add(this);
+		((Paciente)(solicitud.getSolicitante())).setDeAlta(false);
 		BDDriver.procedimientos.add(this);
 	}
 	
