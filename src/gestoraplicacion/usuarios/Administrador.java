@@ -215,9 +215,17 @@ public class Administrador extends Persona {
 							hospital.consultarMedicoByEspecialidad(solicitud.getTipoActividad()), costo,
 							hospital.habitacionByVacia(), solicitud);
 
+					procedimiento.getMedico().agregarActividad(procedimiento);
 					solicitud.setProcedimiento(procedimiento); // asigno procedimiento.
 
 					solicitud.setAprobado(true); // se cambia a true el atributo aprobado.
+					System.out.println();
+					System.out.println("Se ha aprobado con exito la solicitud");
+					System.out.println();
+					System.out.println("El medico asignado es: "+procedimiento.getMedico().getNombre());
+					
+					System.out.println("La habitacion asignada es: "+procedimiento.getHabitacion().getCodigo());
+					System.out.println();
 
 				} else {
 					System.out.println("No hay habitaciones disponibles, no se puede aprobar solicitud");
@@ -282,33 +290,27 @@ public class Administrador extends Persona {
 				ArrayList<Procedimiento> procedAux = auxHC.getProcedimientos();
 				for (Procedimiento proced : procedAux) {
 					Medico medico = proced.getMedico();
-					detalle += medico.getNombre() + "           " + medico.getEspecialidad()+"\n";
+					detalle += medico.getNombre() + "           " + medico.getEspecialidad() + "\n";
 				}
 			}
 		}
-		return "NOMBRE         Especialidad\n"
-		+ "==============   =============\n" + detalle;
+		return "NOMBRE         Especialidad\n" + "==============   =============\n" + detalle;
 	}
 
 	public String detallesfinalizarProcedimiento() {
 		String detalle = "";
 		for (Paciente paciente : this.hospital.getPacientes()) {
-			System.out.println(paciente.getNombre());
+
 			HistoriaClinica auxHc = paciente.getHistoriaClinica();
 
-			System.out.println(auxHc);
-			System.out.println("h1-> "+auxHc.getPaciente());
-
 			ArrayList<Procedimiento> procedAux = auxHc.getProcedimientos();
-			System.out.println(procedAux.size());
+
 			for (Procedimiento proced : procedAux) {
 
-				System.out.println(proced.getTipoActividad());
-				System.out.println(proced.isPazYSalvo());
 				if (proced.isPazYSalvo()) {
-					System.out.println("ok");
+					
 					detalle += paciente.getNombre() + "           " + paciente.getId() + "                       "
-							+ proced.getTipoActividad()+ "         " + proced.getId();
+							+ proced.getTipoActividad() + "         " + proced.getId();
 
 				}
 
@@ -329,7 +331,8 @@ public class Administrador extends Persona {
 					if (proced.getId() == idProcedimiento) {
 						if (proced.isPazYSalvo()) {
 							proced.setCompletado(true);
-							return "Se finalizo el procedimiento id: "+proced.getId()+" del paciente: "+paciente.getNombre()+" Exitosamente\n";
+							return "Se finalizo el procedimiento id: " + proced.getId() + " del paciente: "
+									+ paciente.getNombre() + " Exitosamente\n";
 						}
 					}
 				}
@@ -337,39 +340,38 @@ public class Administrador extends Persona {
 		}
 		return "!!No se pudo finalizar el procedimiento";
 	}
-	
-	
+
 	public String detalledarDeAlta() {
 		String detalle = "";
-		for(Paciente paciente : hospital.getPacientes()) {
+		for (Paciente paciente : hospital.getPacientes()) {
 			HistoriaClinica auxHc = paciente.getHistoriaClinica();
 			ArrayList<Procedimiento> procedimientos = auxHc.getProcedimientos();
-			for(Procedimiento proced : procedimientos) {
-				if(proced.isCompletado()) {
+			for (Procedimiento proced : procedimientos) {
+				if (proced.isCompletado()) {
 					detalle += paciente.getNombre() + "           " + paciente.getId();
 				}
 			}
 		}
-		return "NOMBRE               ID \n"
-		+ "==============      ======== \n" + detalle;
+		return "NOMBRE               ID \n" + "==============      ======== \n" + detalle;
 	}
-	
+
 	public String darDeAlta(int idPaciente) {
-		for(Paciente paciente : hospital.getPacientes()) {
-			if(paciente.getId() == idPaciente) {
+		for (Paciente paciente : hospital.getPacientes()) {
+			if (paciente.getId() == idPaciente) {
 				HistoriaClinica auxHc = paciente.getHistoriaClinica();
 				ArrayList<Procedimiento> procedimientos = auxHc.getProcedimientos();
 				System.out.println("ok");
 				System.out.println(procedimientos.size());
-				for(Procedimiento proced : procedimientos) {
+				for (Procedimiento proced : procedimientos) {
 					System.out.println("ok");
-					if(proced.isCompletado()) {
+					if (proced.isCompletado()) {
 						System.out.println("ok");
 						paciente.setDeAlta(true);
 						Room room = paciente.getHabitacion();
 						System.out.println(room);
 						room.setOcupado(false);
-						return "Se dio de alta al paciente: "+paciente.getNombre()+" con id: "+paciente.getId()+ " Exitosamente\n";	
+						return "Se dio de alta al paciente: " + paciente.getNombre() + " con id: " + paciente.getId()
+								+ " Exitosamente\n";
 					}
 				}
 			}

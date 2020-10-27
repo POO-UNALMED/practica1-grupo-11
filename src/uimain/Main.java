@@ -144,6 +144,7 @@ public class Main {
 
 			switch (opcion) {
 			case 0:
+				System.out.println();
 				System.out.println(administrador.detallesHospital());
 				System.out.println(
 						"Si dese volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
@@ -174,6 +175,7 @@ public class Main {
 
 			// corregir case 2 para verificar nulidad de retorno
 			case 2:
+				System.out.println();
 				System.out.println(
 						"Aqui esta la lista de pacientes ingresados en el sistema para que elija uno de sus IDs: ");
 				System.out.println(administrador.detalleSimplePacientes());
@@ -205,7 +207,9 @@ public class Main {
 
 				break;
 			case 3:
+				System.out.println();
 				System.out.println("Aqui esta la lista de las solicitudes sin aprobar, elija un codigo: ");
+				System.out.println();
 				System.out.println(administrador.detalleSolicitudes());
 				System.out.println();
 				System.out.println("Ingrese el codigo de la solicitud que desea aprobar: ");
@@ -213,13 +217,13 @@ public class Main {
 				System.out.println();
 				System.out.println("Ingrese el Costo del procedimiento a realizar: ");
 				int costo = entrada.nextInt();
-//				administrador.aprobarSolicitud(codigoSolicitud, costo);
-//				System.out.println(
-//						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
-//				opcion = entrada.nextInt();
-//				if (opcion == 9) {
-//					salirDelsistema();
-//				}
+				administrador.aprobarSolicitud(codigoSolicitud, costo);
+				System.out.println(
+						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
+				opcion = entrada.nextInt();
+				if (opcion == 9) {
+					salirDelsistema();
+				}
 
 				break;
 			case 4:
@@ -230,6 +234,8 @@ public class Main {
 				int idDeudor = entrada.nextInt();
 
 				administrador.getHospital().pagarDeudaPaciente(idDeudor);
+				
+				
 				System.out.println(
 						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
 				opcion = entrada.nextInt();
@@ -239,35 +245,13 @@ public class Main {
 
 				break;
 			case 5:
-				//Test
-				Paciente p1 = new Paciente("Santiago");
-				ArrayList<Paciente> pacientes = new ArrayList<>();
-				pacientes.add(p1);
-				HistoriaClinica h1 = new HistoriaClinica(p1);
-				p1.setHistoriaClinica(h1);
-				Medico m1 = new Medico("Roberto", "otorrino");
-				Room r1 = new Room();
-				Procedimiento pro1 = new Procedimiento("otorrino", m1, 200, r1);
-				pro1.setPazYSalvo(true);
-				p1.setHabitacion(r1);
-				ArrayList<Procedimiento> procedimientos = new ArrayList<>();
-				procedimientos.add(pro1);
-				h1.setProcedimientos(procedimientos);
-				hospital.setPacientes(pacientes);
-				//
 				
-				System.out.println(p1.getNombre());
-				System.out.println(p1);
-				System.out.println(pro1.getTipoActividad());
-				System.out.println(procedimientos.size());
-				System.out.println(hospital.getPacientes());
-				//
 				
 				System.out.println("Esta es la lista de pacientes que pueden finalizar procedimeintos asociados: ");
 				System.out.println(administrador.detallesfinalizarProcedimiento()+"\n");
 				System.out.println("Ingrese el id del paciente y del procedimiento que quiere finalizar: \n");
 				System.out.println("Ingrese id Paciente: ");
-				idPaciente = entrada.nextInt();
+				int idPaciente = entrada.nextInt();
 				System.out.println("Ingrese id Procedimiento: ");
 				int idProcedimiento = entrada.nextInt();
 				System.out.println(administrador.finalizarProcedimiento(idPaciente, idProcedimiento));

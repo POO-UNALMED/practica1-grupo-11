@@ -144,7 +144,7 @@ public class Hospital implements Serializable {
 	public Medico consultarMedicoByEspecialidad (String especialidad) {
 		Medico medico=null;
 		for(Medico m:this.medicos) {
-			if(m.getEspecialidad()==especialidad) {
+			if(m.getEspecialidad().equals(especialidad)) {
 				medico=m;
 			}
 		}

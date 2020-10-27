@@ -61,7 +61,6 @@ public class Solicitud implements Serializable, Actividad {
 
 	public void setProcedimiento(Procedimiento procedimiento) {
 		this.procedimiento = procedimiento;
-		System.out.println("Procedimiento asignado, exitosamente");
 	}
 
 	public boolean isAprobado() {

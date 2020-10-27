@@ -44,7 +44,6 @@ public class Procedimiento implements Serializable, Actividad{
 		tipoActividad = solicitud.getTipoActividad();
 		//Las siguientes dos lineas asocian el procedimiento al medico y viceversa. 
 		this.medico = medico;
-		medico.agregarActividad(solicitud);
 		this.costo = costo;
 		//Asocio la habitacion con el procedimiento y viceversa
 		this.habitacion = habitacion;

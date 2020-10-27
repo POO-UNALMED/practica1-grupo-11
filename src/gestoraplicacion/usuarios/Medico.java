@@ -91,7 +91,6 @@ public class Medico extends Persona{
 	@Override
 	public void agregarActividad(Actividad actividad) {
 		procedAsignados.add((Procedimiento) actividad);
-		
 	}
 	
 	

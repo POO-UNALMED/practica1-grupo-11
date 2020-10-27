@@ -18,11 +18,11 @@ Ingrese 1 para:Listo
 /*
    Funcionalidades interesantes
 */
-Ingrese 2 para:
+Ingrese 2 para:Listo
   -->Crear Solicitud para determinado paciente:
 
 
-Ingrese 3 para:
+Ingrese 3 para:Listo
   -->Aprobar Solicitud (Sujeto a disponibilidad de habitaciones)
     (Mostramos lista de solicitudes pendientes por aprobar y detalle ocupación del hospital(Habitaciones libres))
     "Si no hay disponibilidad es posibe que quiera darle de alta a algún paciente".
