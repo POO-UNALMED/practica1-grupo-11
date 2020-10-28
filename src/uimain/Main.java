@@ -264,10 +264,12 @@ public class Main {
 			case 6:
 				System.out.println("Esta es la lista de pacientes que pueden ser dados de Alta\n");
 				System.out.println(administrador.detalledarDeAlta() + "\n");
-				System.out.println("Ingrese el id del paciente que se quiere dar de alta: \n");
-				System.out.println("Ingrese id Paciente: ");
-				idPaciente = entrada.nextInt();
-				System.out.println(administrador.darDeAlta(idPaciente));
+				if (administrador.getHospital().getPacientes().size() != 0) {
+					System.out.println("Ingrese el id del paciente que se quiere dar de alta: \n");
+					System.out.println("Ingrese id Paciente: ");
+					idPaciente = entrada.nextInt();
+					System.out.println(administrador.darDeAlta(idPaciente));
+				}
 				System.out.println(
 						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
 				opcion = entrada.nextInt();
@@ -285,6 +287,11 @@ public class Main {
 				}
 				break;
 			case 8:
+				System.out.println("Esta es la lista de pacientes:\n");
+				System.out.println(administrador.detalleSimplePacientes());
+				System.out.println("Ingrese el ID de paciente de ver detalles:\n");
+				idPaciente = entrada.nextInt();
+				System.out.println(administrador.verDetallesPaciente(idPaciente));
 				System.out.println(
 						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
 				opcion = entrada.nextInt();

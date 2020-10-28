@@ -156,9 +156,17 @@ public class Administrador extends Persona {
 	 */
 
 	/*
-	 * Retorna un String con la siguiente forma Paciente: id:... nombre:...
-	 * habitacion:... pazYSalvo: verdadero | falso estadoSolicitudes: Aprobado:...
-	 * Finalizado:... basado en id del paciente que recibe como atributo
+	 * Retorna un String con informacion asociada a un paciente, su habitacion,
+	 * su estado de cuenta, y una breve descripcion de su historia clinica
+	 * Paciente: 
+	 * 	id:...
+	 * 	nombre:...
+	 * 	habitacion:...
+	 *  pazYSalvo: verdadero | falso 
+	 *  estadoSolicitudes: 
+	 *  	Aprobado:...
+	 * 		Finalizado:...
+	 *  
 	 */
 	public String verDetallesPaciente(int id) {
 		Optional<Paciente> pacienteOptional = Paciente.getPacienteById(id);
@@ -166,7 +174,11 @@ public class Administrador extends Persona {
 		String salida;
 		salida = "Paciente\n";
 		salida += "  id: " + paciente.getId() + "\n";
-		salida += "  habitacion: " + paciente.getHabitacion().getCodigo() + "\n";
+		if(paciente.getHabitacion() == null) {
+			salida += "  habitacion: No tiene habitacion asignada\n";
+		} else {
+			salida += "  habitacion: " + paciente.getHabitacion().getCodigo() + "\n";
+		}
 		salida += "  paz y salvo: " + (paciente.valorTotaldeProcedimientos() == 0 ? "Verdadero" : "Falso") + "\n";
 		salida += "  Estado solicitudes: \n";
 		HistoriaClinica historiaClinica = paciente.getHistoriaClinica();
