@@ -8,7 +8,7 @@ public interface Actividad extends Serializable{
 	public static final String[] tipoActividad= {"Oncologia","Pediatria","Urologia",
 			"Oftalmologia","Cardiologia","Neurologia","Nefrologia","Dermatologia","Psiquiatria","Ginecologia"};
 	
-	
+	public String verDetalle();
 	
 	
 }

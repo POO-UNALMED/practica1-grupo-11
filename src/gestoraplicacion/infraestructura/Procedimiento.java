@@ -161,6 +161,15 @@ public class Procedimiento implements Serializable, Actividad{
 	public String toString() {
 		return "Tipo " + tipoActividad + " a cargo de: " + medico + ", tiene un valor de: " + costo;
 	}
+
+
+	@Override
+	public String verDetalle() {
+		String salida = "";
+		salida += "    Habitacion: " + this.getHabitacion().getCodigo()  + "\n";
+		salida += "    Finalizado: " + (this.isCompletado() ? "Si" : "No") + "\n";
+		return salida;
+	}
 	
 	
 

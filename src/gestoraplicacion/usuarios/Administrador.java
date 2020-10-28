@@ -156,17 +156,11 @@ public class Administrador extends Persona {
 	 */
 
 	/*
-	 * Retorna un String con informacion asociada a un paciente, su habitacion,
+	 * Proporsiona informacion asociada a un paciente, su habitacion,
 	 * su estado de cuenta, y una breve descripcion de su historia clinica
-	 * Paciente: 
-	 * 	id:...
-	 * 	nombre:...
-	 * 	habitacion:...
-	 *  pazYSalvo: verdadero | falso 
-	 *  estadoSolicitudes: 
-	 *  	Aprobado:...
-	 * 		Finalizado:...
-	 *  
+	 * 
+	 * @param id Identificacion del paciente
+	 * @return String Texto con la informacion del paciente
 	 */
 	public String verDetallesPaciente(int id) {
 		Optional<Paciente> pacienteOptional = Paciente.getPacienteById(id);
@@ -174,24 +168,26 @@ public class Administrador extends Persona {
 		String salida;
 		salida = "Paciente\n";
 		salida += "  id: " + paciente.getId() + "\n";
-		if(paciente.getHabitacion() == null) {
-			salida += "  habitacion: No tiene habitacion asignada\n";
+		if(paciente.getHabitacion() == null) { // No existe habitacion
+			salida += "  habitacion actual: No tiene habitacion asignada\n";
 		} else {
-			salida += "  habitacion: " + paciente.getHabitacion().getCodigo() + "\n";
+			salida += "  habitacion actual: " + paciente.getHabitacion().getCodigo() + "\n";
 		}
 		salida += "  paz y salvo: " + (paciente.valorTotaldeProcedimientos() == 0 ? "Verdadero" : "Falso") + "\n";
 		salida += "  Estado solicitudes: \n";
-		HistoriaClinica historiaClinica = paciente.getHistoriaClinica();
-		ArrayList<Procedimiento> procedimientos = historiaClinica.getProcedimientos();
-		for (Procedimiento procedimiento : procedimientos) {
-			Solicitud solicitud = Solicitud.getSolucitudByProcedimiento(procedimiento);
-			salida += "    codigo: " + solicitud.getCodigo() + "\n";
-			salida += "    Aprobado: " + (solicitud.isAprobado() ? "Si" : "No") + "\n";
-			salida += "    Finalizado: " + (procedimiento.isCompletado() ? "Si" : "No") + "\n";
+		ArrayList<Solicitud> solicitudes = paciente.getSolicitudes();
+		for (Solicitud solicitud : solicitudes) {
+			Procedimiento procedimiento = solicitud.getProcedimeinto();
+			salida += solicitud.verDetalle();
+			if(procedimiento != null) {
+				salida += procedimiento.verDetalle();
+			} else {
+				salida += "    No hay procedimiento asociado\n";
+			}			
 			salida += "==================";
 		}
-		if (procedimientos.size() == 0) {
-			salida += "    No hay solicitudes asociadas a este paciente. :(";
+		if (solicitudes.size() == 0) {
+			salida += "    No hay solicitudes asociadas a este paciente. :(\n";
 		}
 		return salida;
 	}
