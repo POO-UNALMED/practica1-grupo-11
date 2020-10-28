@@ -305,21 +305,28 @@ public class Administrador extends Persona {
 		return "NOMBRE         Especialidad\n" + "==============   =============\n" + detalle;
 	}
 
+	/*
+	 * Metodo detallesfinalizarProcedimiento() es parte de la funcionalidad de
+	 * "Finalizar procedimiento" y su objetivo es mostrar los pacientes que se
+	 * encuentran a paz (sin deudas) con el hospital y su procedimiento esta 
+	 * completado.
+	 * Ruta de las clases accedas:Administrador-->Paciente-->HistoriaClinica-->
+	 * Procedimiento
+	 */
 	public String detallesfinalizarProcedimiento() {
 		String detalle = "";
+		//for recorre los pacientes en el hospital
 		for (Paciente paciente : this.hospital.getPacientes()) {
-
+			//guarda la historia clinica asociada al paciente
 			HistoriaClinica auxHc = paciente.getHistoriaClinica();
-
+			//guarda los procedimientos asociados a la histori clinica del paciente
 			ArrayList<Procedimiento> procedAux = auxHc.getProcedimientos();
-
+            //for reccorre los procedimientos asociados a la historia clinica del paciente
 			for (Procedimiento proced : procedAux) {
-
+				//verifica si el paciente no tiene deudas y su procedimiento esta completado
 				if (proced.isPazYSalvo() == true && proced.isCompletado() == false) {
-
 					detalle += paciente.getNombre() + "           " + paciente.getId() + "             "
 							+ proced.getTipoActividad() + "           " + proced.getId() + "\n";
-
 				}
 
 			}
@@ -329,15 +336,32 @@ public class Administrador extends Persona {
 				+ "==============      ========              ===============          =======\n" + detalle;
 	}
 
+	/*
+	 * Metodo finalizarProcedimiento() es parte de la funcionalidad de
+	 * "finalizar procedimiento" y su objetivo es verificar los pacientes
+	 * que se encuentran a paz(sin deudas) con el hospital.
+	 * Ruta de las clases accedas:Administrador-->Paciente-->HistoriaClinica-->
+	 * Procedimiento
+	 * @params idPaciente, idProcedmiento
+	 */
 	public String finalizarProcedimiento(int idPaciente, int idProcedimiento) {
 
+		//for recorre los pacientes en el hospital
 		for (Paciente paciente : this.hospital.getPacientes()) {
+			//verifica si el usuario esta registrado en el hospital
 			if (paciente.getId() == idPaciente) {
+				//guarda la historia clinica del paciente
 				HistoriaClinica auxHc = paciente.getHistoriaClinica();
+				//guarda los procedimientos asociados a la historia clinica del paciente
 				ArrayList<Procedimiento> procedAux = auxHc.getProcedimientos();
+				//recorre todos los procedimientos asociado a la historica clinica del paciente
 				for (Procedimiento proced : procedAux) {
+					//verifica si el procedimiento se encuentra en la lista de procedimientos
 					if (proced.getId() == idProcedimiento) {
+						//verifica si el procedmiente asociado a la historia clinica del paciente
+						//esta a paz y salvo(sin deudas) con el hospital
 						if (proced.isPazYSalvo()) {
+							//Si estas a paz se ha completado el procedimiento y se finaliza.
 							proced.setCompletado(true);
 							return "Se finalizo el procedimiento con el id: " + proced.getId() + "\ndel paciente: "
 									+ paciente.getNombre() + " Exitosamente\n";
@@ -348,19 +372,36 @@ public class Administrador extends Persona {
 		}
 		return "No se pudo finalizar el procedimiento!!";
 	}
+	
+	/*
+	 * Metodo detalledarDeAlta() es parte de la funcionalida
+	 * "dar de Alta" y su objetivo es mostra los pacientes que ya
+	 * se encuentran a paz(sin deudas) y su procedimiento esta finalizado.
+	 * Ruta de clases accesadas: Administrador-->Paciente-->HistoriaClinica-->
+	 * Procedimiento.
+	 */
 
 	public String detalledarDeAlta() {
 		String detalle = "";
+		//for recorre los pacientes registrados en el hospital
 		for (Paciente paciente : hospital.getPacientes()) {
+			//guarda la historia clinica del paciente
 			HistoriaClinica auxHc = paciente.getHistoriaClinica();
+			//guarda los procedimientos asociados a la historia clinica del paciente
 			ArrayList<Procedimiento> procedimientos = auxHc.getProcedimientos();
 			int count = 0;
 			for (Procedimiento proced : procedimientos) {
+				//verifica si dicho procedimiento esta completado a paz(sin deudas) y con
+				//habitaciones ocupadas
 				if (proced.isCompletado()==true && proced.isPazYSalvo()==true && proced.getHabitacion()!=null
 						&& ((Paciente)proced.getSolicitud().getSolicitante()).isDeAlta()==false) {
+					//count cuenta todos los procemientos que se encuentran completados,
+					// a paz(sin deudas) y con habitaciones ocupas.
 					count++;
 				}
 			}
+			//verifica que count sea igual al la cantidad de procedimientos asociados a la historia
+			//clinica del paciente
 			if (count == procedimientos.size() && procedimientos.size()>0) {
 				detalle += paciente.getNombre() + "           " + paciente.getId() + "\n";
 			}
@@ -368,16 +409,32 @@ public class Administrador extends Persona {
 		return "NOMBRE               ID \n" + "==============      ======== \n" + detalle;
 	}
 
+	
+	/*
+	 * Metodo darDeAlta() es parte de la funcionalida
+	 * "dar de Alta" y su objetivo es dar de alta a los pacientes que ya
+	 * se encuentran a paz(sin deudas) y su procedimiento esta finalizado.
+	 * Ruta de clases accesadas: Administrador-->Paciente-->HistoriaClinica-->
+	 * Procedimiento.
+	 * @param idPaciente 
+	 */
+	
 	public String darDeAlta(int idPaciente) {
+		//Recorre los pacientes registrados en el hospital
 		for (Paciente paciente : hospital.getPacientes()) {
+			//verifica si el paciente esta registrado en el hospital
 			if (paciente.getId() == idPaciente) {
+				//recorre todos los procedimiento asociados a la historia clinica del paciente
 				for(Procedimiento p:paciente.getHistoriaClinica().getProcedimientos()) {
+					//se vacia la habitacion y se elimina el procedimiento
 					p.getHabitacion().setOcupado(false);
 					p.getHabitacion().setPaciente(null);
 					p.getHabitacion().setProcedimiento(null);
 				}
 				
+				//vacia la habitacion
 				paciente.setHabitacion(null);
+				//se de de alta al paciente
 				paciente.setDeAlta(true);
 				return "Se dio de alta al paciente: " + paciente.getNombre() + " con id: " + paciente.getId()
 						+ " de forma exitosa\n";
