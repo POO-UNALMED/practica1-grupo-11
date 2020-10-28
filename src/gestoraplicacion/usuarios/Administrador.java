@@ -193,7 +193,7 @@ public class Administrador extends Persona {
 	}
 
 	/*
-	 * Ver detalle solicitud --> Recorrer lisa de solicitudes de la clase
+	 * Ver detalle solicitud --> Recorre lista de solicitudes de la clase
 	 * administrador y mostrar detalle de cada solicitud. llama metodo toString de
 	 * la clase solicitud. Retorna un string con todas las solicitudes con salto de
 	 * linea.
@@ -209,9 +209,12 @@ public class Administrador extends Persona {
 		}
 		return detalle;
 	}
-
-	// Recibe el codigo de una solicitud, se busca en el arreglo de solicitudes y se
-	// cambia atributo aprobado a true:
+	//FUNCIONALIDAD: Aprobar Solicitud.
+	// Recibe el codigo de una solicitud, se recorre arreglo de solicitudes, se selecciona la solicitud especifica.
+	//Sólo si hay habitaciones disponibles en el hospital, se hace lo siguiente:
+	//Se genera un nuevo procedimiento de acuerdo a la actividad solicitada.
+	//Se asigna el procedimiento al médico y a la solicitud.
+	//Se cambia el estado de la solicitud a aprobado=true.
 	public void aprobarSolicitud(int codigoSolicitud, int costo) {
 
 		for (Solicitud solicitud : solicitudes) {
@@ -221,9 +224,9 @@ public class Administrador extends Persona {
 
 					Procedimiento procedimiento = new Procedimiento(
 							hospital.consultarMedicoByEspecialidad(solicitud.getTipoActividad()), costo,
-							hospital.habitacionByVacia(), solicitud);
+							hospital.habitacionByVacia(), solicitud); //Constructor de Procedimiento que recibe atributos de la solicitud, costo y del hospital.
 
-					procedimiento.getMedico().agregarActividad(procedimiento);
+					procedimiento.getMedico().agregarActividad(procedimiento); //Asignacion del procedimiento a medico
 					solicitud.setProcedimiento(procedimiento); // asigno procedimiento.
 
 					solicitud.setAprobado(true); // se cambia a true el atributo aprobado.

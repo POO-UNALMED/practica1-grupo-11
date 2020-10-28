@@ -174,7 +174,7 @@ public class Main {
 						"Aqui esta la lista de pacientes ingresados en el sistema para que elija uno de sus IDs: ");
 				System.out.println(administrador.detalleSimplePacientes());
 				System.out.println();
-				System.out.println("Aqui esta la lista de tipos de procedimiento posible, también debe elegir uno: ");
+				System.out.println("Aqui esta la lista de tipos de procedimiento posible, tambiï¿½n debe elegir uno: ");
 				System.out.println(administrador.detalleTipoActividad());
 				if (administrador.getHospital().getPacientes().size() != 0) {
 					System.out.println("Ingrese el id del" + " paciente al cual le desea crear una solicitud: ");
@@ -196,7 +196,11 @@ public class Main {
 				if (opcion == 8) {
 					salirDelsistema();
 				}
-
+				
+				//Aplicacion de funcionalidad APROBAR SOLICITUD.
+				//Metodo detalle solicitud para mostrar un reporte de las solicitudes del sistema.
+				//El programa permite escoger la solicitud a aprobar.
+				//Aplicacion del metodo aprobarSolicitud con la solicitud seleccionada
 				break;
 			case 3:
 				System.out.println();
@@ -218,6 +222,10 @@ public class Main {
 				}
 
 				break;
+				//Aplicacion de funcionalidad PAGAR DEUDA PACIENTE.
+				//Llamado del metodo pacientesConDeudas, que muestra los pacientes con deudas registrados en el sistema del Hospital.
+				//El programa permite escoger el paciente que desea pagar sus deudas.
+				//Aplicacion del metodo pagarDeudaPaciente con el paciente deudor seleccionado.
 			case 4:
 				System.out.println("Aqui esta la lista de pacientes con deudas: ");
 				System.out.println(administrador.getHospital().pacientesConDeudas());
