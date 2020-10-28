@@ -125,11 +125,9 @@ public class Main {
 					"	Recuerde que para dar de alta al paciente, debe haber finalizado todos los procedimientos que tenga pendientes,");
 			System.out.println("	para ello tal vez quiera hacer uso de la opcion 5.");
 			System.out.println("======================================================================");
-			System.out.println("Ingrese 7 para:\n	-->Ver procedimientos asignados a un medico");
+			System.out.println("Ingrese 7 para:\n	-->Ver detalles de pacientes");
 			System.out.println("======================================================================");
-			System.out.println("Ingrese 8 para:\n	-->Ver detalles de pacientes");
-			System.out.println("======================================================================");
-			System.out.println("Ingrese 9 para:\n	-->Salir del sistema de forma segura");
+			System.out.println("Ingrese 8 para:\n	-->Salir del sistema de forma segura");
 			System.out.println("======================================================================");
 			System.out.println();
 			System.out.println();
@@ -143,9 +141,9 @@ public class Main {
 				System.out.println();
 				System.out.println(administrador.detallesHospital());
 				System.out.println(
-						"Si dese volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
+						"Si dese volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 8: ");
 				opcion = entrada.nextInt();
-				if (opcion == 9) {
+				if (opcion == 8) {
 					salirDelsistema();
 				}
 				break;
@@ -162,9 +160,9 @@ public class Main {
 				System.out.println();
 				System.out.println();
 				System.out.println(
-						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
+						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 8: ");
 				opcion = entrada.nextInt();
-				if (opcion == 9) {
+				if (opcion == 8) {
 					salirDelsistema();
 				}
 				break;
@@ -193,9 +191,9 @@ public class Main {
 				}
 
 				System.out.println(
-						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
+						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 8: ");
 				opcion = entrada.nextInt();
-				if (opcion == 9) {
+				if (opcion == 8) {
 					salirDelsistema();
 				}
 
@@ -213,9 +211,9 @@ public class Main {
 				int costo = entrada.nextInt();
 				administrador.aprobarSolicitud(codigoSolicitud, costo);
 				System.out.println(
-						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
+						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 8: ");
 				opcion = entrada.nextInt();
-				if (opcion == 9) {
+				if (opcion == 8) {
 					salirDelsistema();
 				}
 
@@ -230,9 +228,9 @@ public class Main {
 				administrador.getHospital().pagarDeudaPaciente(idDeudor);
 
 				System.out.println(
-						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
+						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 8: ");
 				opcion = entrada.nextInt();
-				if (opcion == 9) {
+				if (opcion == 8) {
 					salirDelsistema();
 				}
 
@@ -255,9 +253,9 @@ public class Main {
 				 * System.out.println(administrador.consultarMedicosDePaciente(idPaciente));
 				 */
 				System.out.println(
-						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
+						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 8: ");
 				opcion = entrada.nextInt();
-				if (opcion == 9) {
+				if (opcion == 8) {
 					salirDelsistema();
 				}
 				break;
@@ -271,48 +269,41 @@ public class Main {
 					System.out.println(administrador.darDeAlta(idPaciente));
 				}
 				System.out.println(
-						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
+						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 8: ");
 				opcion = entrada.nextInt();
-				if (opcion == 9) {
+				if (opcion == 8) {
 					salirDelsistema();
 				}
 				break;
 
+			
 			case 7:
-				System.out.println(
-						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
-				opcion = entrada.nextInt();
-				if (opcion == 9) {
-					salirDelsistema();
-				}
-				break;
-			case 8:
 				System.out.println("Esta es la lista de pacientes:\n");
 				System.out.println(administrador.detalleSimplePacientes());
 				System.out.println("Ingrese el ID de paciente de ver detalles:\n");
 				idPaciente = entrada.nextInt();
 				System.out.println(administrador.verDetallesPaciente(idPaciente));
 				System.out.println(
-						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
+						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 8: ");
 				opcion = entrada.nextInt();
-				if (opcion == 9) {
+				if (opcion == 8) {
 					salirDelsistema();
 				}
 
 				break;
-			case 9:
+			case 8:
 				salirDelsistema();
 				break;
 			default:
 				System.out.println("Ingrese una opcion valida");
 				System.out.println(
-						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 9: ");
+						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 8: ");
 				opcion = entrada.nextInt();
-				if (opcion == 9) {
+				if (opcion == 8) {
 					salirDelsistema();
 				}
 			}
-		} while (opcion != 9);
+		} while (opcion != 8);
 
 //		BorradorDeArchivos.borrarContArchivos();
 

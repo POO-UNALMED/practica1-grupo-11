@@ -184,7 +184,7 @@ public class Administrador extends Persona {
 			} else {
 				salida += "    No hay procedimiento asociado\n";
 			}			
-			salida += "==================";
+			salida += "==================\n";
 		}
 		if (solicitudes.size() == 0) {
 			salida += "    No hay solicitudes asociadas a este paciente. :(\n";
