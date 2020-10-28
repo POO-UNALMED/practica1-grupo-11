@@ -77,7 +77,11 @@ public class HistoriaClinica implements Serializable{
 		return total;
 	}
 	
-	//Pago especifico de cada procedimiento. 
+	//Metodo usado en funcionalidad PAGAR DEUDAS PACIENTE.
+	//Recorre la lista de procedimientos asociados a la historia clinica
+	//y genera paz y salvo en todos los procedimientos, mediante el cambio
+	//del atributo pazYSalvo a true.
+	//Imprime que la historia clinica tiene un paz y salvo total. 
 	public void pagarDeudas() {
 		for (Procedimiento proced:procedimientos) {
 			proced.setPazYSalvo(true);

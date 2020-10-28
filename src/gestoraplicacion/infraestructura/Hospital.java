@@ -162,6 +162,9 @@ public class Hospital implements Serializable {
 		return room;
 	}
 	
+	//Metodo usado en la funcionalidad PAGAR DEUDAS PACIENTE.
+	//Recorre la lista de pacientes y retorna en un String aquellos
+	//que presenten su atributo totalCostos con un valor superior a 0.
 	public String pacientesConDeudas() {
 		String salida = "PACIENTE          ID         DEBE\n"
 				      + "================ ========== ==========\n";
@@ -173,7 +176,9 @@ public class Hospital implements Serializable {
 		return salida;
 	}
 	
-	//Pago de todas las deudas del paciente. 
+	//Metodo usado en la funcionalidad PAGAR DEUDAS PACIENTE.
+	//Recorre la lista de pacientes del hospital y revisa su historia clinica para
+	//ejecutar el metodo pagarDeudas sobre su historia Clinica.
 	public void pagarDeudaPaciente(int idDeudor) {
 		for (Paciente paciente: pacientes) {
 			if (paciente.getId()==idDeudor) {
