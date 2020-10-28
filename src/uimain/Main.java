@@ -244,7 +244,10 @@ public class Main {
 
 				break;
 			case 5:
-
+				//Aplicacion de funcionalidad FINALIZAR PROCEDIMIENTO.
+				//Llamado del metodo detallesfinalizarProcedimiento, que muestra los pacientes que se encuentran a paz(sin deuda) con el Hospital.
+				//El programa permite escoger el paciente que desea finalizar el procedimiento.
+				//Aplicacion del metodo finalizar procedimiento con el paciente a paz y salvo seleccionado.
 				System.out.println("Esta es la lista de pacientes que pueden finalizar procedimeintos asociados: ");
 				System.out.println(administrador.detallesfinalizarProcedimiento() + "\n");
 				System.out.println("Ingrese el id del paciente y del procedimiento que quiere finalizar: \n");
@@ -254,12 +257,6 @@ public class Main {
 				int idProcedimiento = entrada.nextInt();
 				System.out.println(administrador.finalizarProcedimiento(idPaciente, idProcedimiento));
 
-				// Prueba funcionalidad mostrarMedicosPacientes()
-				/*
-				 * System.out.println("Mostrar medicos de un paciente");
-				 * System.out.println("ingrese id Paciente:"); idPaciente = entrada.nextInt();
-				 * System.out.println(administrador.consultarMedicosDePaciente(idPaciente));
-				 */
 				System.out.println(
 						"Si desea volver al menu principal ingrese 1 , si desea cerrar el sistema de forma segura ingrese 8: ");
 				opcion = entrada.nextInt();
@@ -268,6 +265,10 @@ public class Main {
 				}
 				break;
 			case 6:
+				//Aplicacion de funcionalidad DAR DE ALTA.
+				//Llamado del metodo detallesdarDeAlta, que muestra los pacientes que se encuentran a paz(sin deuda) y el procedimiento finalizado con el Hospital.
+				//El programa permite escoger el paciente que desea dar de alta.
+				//Aplicacion del metodo dar de alta con el paciente a paz(sin deudas) y el procedimiento finalizado seleccionado.
 				System.out.println("Esta es la lista de pacientes que pueden ser dados de Alta\n");
 				System.out.println(administrador.detalledarDeAlta() + "\n");
 				if (administrador.getHospital().getPacientes().size() != 0) {
