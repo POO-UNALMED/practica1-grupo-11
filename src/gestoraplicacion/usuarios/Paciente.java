@@ -103,8 +103,7 @@ public class Paciente extends Persona {
 
 	/*
 	 * Busca un paciente en el sistema basado en el identificador
-	 * @param id Identificador del paciente
-	 * @return Optional<Paciente> Paciente asociado a el identificador
+	 * unico de tipo entero, retorna una Opcion de Paciente.
 	 */
 	public static Optional<Paciente> getPacienteById(int id) {
 		Stream<Paciente> pacienteID = BDDriver.getPacientes().stream().filter(paciente -> paciente.getId() == id);
