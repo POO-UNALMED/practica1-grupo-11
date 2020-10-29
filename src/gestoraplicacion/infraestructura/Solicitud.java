@@ -119,15 +119,17 @@ public class Solicitud implements Serializable, Actividad {
 	
 	/*
 	 * Retorna una solucion basado en un procedimiento asociado
-	 * @param procedimiento Procedimiento asociado a la solicitud
-	 * @return Solicitud solicitud asociada al procedimiento
 	 */
 	public static Solicitud getSolucitudByProcedimiento(Procedimiento procedimiento) {
 		Stream<Solicitud> solicitudes = BDDriver.solicitudes.stream()
 				.filter(solicitud -> solicitud.getProcedimeinto() == procedimiento);
 		return solicitudes.findFirst().get();
 	}
-
+	
+	/*
+	 * Produce una cadena de texto con informacion de acerca del tipo, codigo
+	 * y si ha sido aprobado
+	 */
 	@Override
 	public String verDetalle() {
 	    return "    Tipo: " + this.getTipoActividad() + "\n" +
