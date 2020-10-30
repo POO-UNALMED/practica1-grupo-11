@@ -36,7 +36,7 @@ public class Deserializador {
 	 * El método se invoca al inicio de la ejecución del programa. 
 	 * 
 	 */
-
+	
 	@SuppressWarnings("unchecked")
 	public static void deserializar() {
 		File[] docs = rutaTemp.listFiles();

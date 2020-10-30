@@ -90,7 +90,6 @@ public class Solicitud implements Serializable, Actividad {
 	 * el metodo heredado de Persona asignarActividad();
 	 * 
 	 */
-
 	
 	public static Solicitud crearSolicitud(Persona persona) {
 		Actividad solicitud = new Solicitud(persona);

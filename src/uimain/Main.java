@@ -19,6 +19,10 @@ import basedatos.BorradorDeArchivos;
 import basedatos.Deserializador;
 import basedatos.Serializador;
 
+/*
+ * Inicio de ejecucion de la aplicacion
+ */
+
 public class Main {
 	public static void main(String[] args) throws InterruptedException {
 
@@ -71,14 +75,17 @@ public class Main {
 //		Persona m10 = new Medico("Blanca Cardona","Ginecologia");
 //		Serializador.serializar();
 
+		
 		/*
-		 * Este codigo se ejecuta desde el inicio de la aplicaicon
+		 * Deserializar los objetos es lo primero que se hace al iniciar la aplicacion
 		 */
-
 		Deserializador.deserializar();
 
 		Scanner entrada = new Scanner(System.in);
 
+		/*
+		 * Se inicializan los objetos hospital y administrador, recuperandolos de la base de datos.
+		 */
 		Hospital hospital = BDDriver.hospitales.get(0);
 		Administrador administrador = BDDriver.administradores.get(0);
 
@@ -91,8 +98,16 @@ public class Main {
 		System.out.println();
 		int opcion;
 
+		/*
+		 * Este es el inicio de ejecucion del cilo do-while para mantener un menu dinamico 
+		 * y que el usuario pueda interactual con la aplicacion
+		 */
 		do {
 
+			/*
+			 * Aqui se imprimen las opciones del menu, para que el usuario se informe sobre las posibilidades
+			 * que tiene
+			 */
 			System.out.println("MENU:");
 			System.out.println();
 
@@ -174,7 +189,7 @@ public class Main {
 						"Aqui esta la lista de pacientes ingresados en el sistema para que elija uno de sus IDs: ");
 				System.out.println(administrador.detalleSimplePacientes());
 				System.out.println();
-				System.out.println("Aqui esta la lista de tipos de procedimiento posible, tambi�n debe elegir uno: ");
+				System.out.println("Aqui esta la lista de tipos de procedimiento posible, tambien debe elegir uno: ");
 				System.out.println(administrador.detalleTipoActividad());
 				if (administrador.getHospital().getPacientes().size() != 0) {
 					System.out.println("Ingrese el id del" + " paciente al cual le desea crear una solicitud: ");

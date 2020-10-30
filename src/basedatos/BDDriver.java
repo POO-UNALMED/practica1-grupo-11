@@ -30,8 +30,6 @@ public class BDDriver {
 	
 	public static void agregarPaciente(Paciente paciente) {
 		pacientes.add(paciente);
-//		hospitales.get(0).setPacientes(BDDriver.getPacientes());
-//		administradores.get(0).setHospital(hospitales.get(0));
 		administradores.get(0).getHospital().setPacientes(pacientes);
 	}
 	
@@ -51,19 +49,6 @@ public class BDDriver {
 	
 	
 	
-	
-	
-	
-	/*
-	 * Está pendiente añadir métodos estáticos de fábrica para crear objetos, y ponerles condiciones para que:
-	 *  
-	 * 1. sólo pueda haber uno y solo un administrador y uno y solo un hospital
-	 * 2. Cada vez que se cree un paciente también se cree su respectiva historia clinica.
-	 * 
-	 *  
-	 *  y empezar a trabajar la interfaz gráfica. 
-	 *  
-	 */
 	
 	
 	

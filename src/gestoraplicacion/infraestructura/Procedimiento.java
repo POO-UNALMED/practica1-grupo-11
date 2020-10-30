@@ -10,10 +10,9 @@ public class Procedimiento implements Serializable, Actividad{
 	 *Atributos 
 	 */
 	private static final long serialVersionUID = 7092617778020316714L;
-	
-	
 
 	private int id;
+	
 	private static int totalProcedimientos=BDDriver.procedimientos.size();
 
 	//los tipos de actividades están definidos como constantes en la interfaz Actividad.

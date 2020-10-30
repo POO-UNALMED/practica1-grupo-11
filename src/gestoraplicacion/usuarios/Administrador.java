@@ -177,7 +177,7 @@ public class Administrador extends Persona {
 		salida += "  Estado solicitudes: \n";
 		ArrayList<Solicitud> solicitudes = paciente.getSolicitudes();
 		for (Solicitud solicitud : solicitudes) {
-			Procedimiento procedimiento = solicitud.getProcedimeinto();
+			Actividad procedimiento = solicitud.getProcedimeinto();
 			salida += solicitud.verDetalle();
 			if(procedimiento != null) {
 				salida += procedimiento.verDetalle();
@@ -187,7 +187,7 @@ public class Administrador extends Persona {
 			salida += "==================\n";
 		}
 		if (solicitudes.size() == 0) {
-			salida += "    No hay solicitudes asociadas a este paciente. :(\n";
+			salida += "    No hay solicitudes asociadas a este paciente.\n";
 		}
 		return salida;
 	}
@@ -252,7 +252,7 @@ public class Administrador extends Persona {
 	 * Metodo sobrecargado. Para ver detalle de las solicitudes por filtros:
 	 * A=aprobado, N=No aprobado.
 	 */
-	public void detalleSolicitud(String param) {
+	public void detalleSolicitudes(String param) {
 		if (param.equalsIgnoreCase("A")) {
 			for (Solicitud elemento : solicitudes) {
 				if (elemento.isAprobado() == true) {

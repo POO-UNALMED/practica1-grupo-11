@@ -19,11 +19,11 @@ public abstract class Persona implements Serializable {
 	 * Constructores
 	 * 
 	 */
-	public Persona() {
+	protected Persona() {
 		this.id=BDDriver.totalPersonas()+1;
 	}
 	
-	public Persona(String nombre) {
+	protected Persona(String nombre) {
 		this();
 		this.nombre = nombre;
 	}
