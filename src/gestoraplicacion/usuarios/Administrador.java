@@ -157,10 +157,9 @@ public class Administrador extends Persona {
 
 	/*
 	 * Proporsiona informacion asociada a un paciente, su habitacion,
-	 * su estado de cuenta, y una breve descripcion de su historia clinica
-	 * 
-	 * @param id Identificacion del paciente
-	 * @return String Texto con la informacion del paciente
+	 * su estado de cuenta, y una breve descripcion de su historia clinica.
+	 * Toma un entero como identificador de un paciente y retorna una cadena
+	 * de texto con la informacion mencionada.
 	 */
 	public String verDetallesPaciente(int id) {
 		Optional<Paciente> pacienteOptional = Paciente.getPacienteById(id);
