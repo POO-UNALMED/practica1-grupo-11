@@ -86,7 +86,7 @@ public class Medico extends Persona{
 	
 	
 	/*
-	 * M�todo que implementa ligadura din�mica
+	 * Metodo que implementa ligadura dinamica
 	 */
 	@Override
 	public void agregarActividad(Actividad actividad) {

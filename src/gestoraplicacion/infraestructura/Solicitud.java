@@ -80,8 +80,7 @@ public class Solicitud implements Serializable, Actividad {
 	}
 
 
-	// =========================================================================
-	// =========================================================================
+	
 	/*
 	 * En este metodo se aplica la ligadura dinamica al llamar al metodo
 	 * asignarSolicitud() de Persona. Es un metodo estatico de fabrica que se
@@ -96,9 +95,7 @@ public class Solicitud implements Serializable, Actividad {
 		persona.agregarActividad(solicitud);
 		return (Solicitud) solicitud;
 	}
-	// =========================================================================
-	// =========================================================================
-
+	
 	/*
 	 * Metodos:
 	 */

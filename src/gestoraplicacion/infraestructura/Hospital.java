@@ -85,9 +85,19 @@ public class Hospital implements Serializable {
 	public static int getHabitacionesTotales() {
 		return habitacionesTotales;
 	}
+	
+	
+	
+	/*
+	 * Metodos
+	 */
 
-	// =========================================================================
-	// =========================================================================
+	
+	
+	
+	/*
+	 * Metodo que entrega detalles sobre el estado actual del hospital
+	 */
 	public String detallesHospital() {
 		return "Nombre del hospital: " + this.getNombre() + "\n\n" + "Nombre del administrador: "
 				+ this.getAdministrador().getNombre() + "\n\n" + "Habitaciones totales: "+getHabitacionesTotales()+"\n\n"
@@ -106,7 +116,7 @@ public class Hospital implements Serializable {
 		return count;
 	}
 	
-	//UNUSED YET
+	
 	//Detalle de las habitaciones y su disponibilidad.
 	public String detalleHabitaciones() {
 		String detalle="Id    Habitacion            Numero#\n"
@@ -118,6 +128,9 @@ public class Hospital implements Serializable {
 		
 	}
 	
+	/*
+	 * método que devuelve informacion basica sobre los medicos
+	 */
 	public String detalleMedicos() {
 		String detalle="Id    Nombre            Especialidad\n"
 				     + "===== ================ ================\n";
@@ -151,6 +164,10 @@ public class Hospital implements Serializable {
 		return medico;
 	}
 	
+	/*
+	 * metodo encargado de encontrar una habitacion disponible en el sistema
+	 * y devolver un objeto de tipo Room
+	 */
 	public Room habitacionByVacia() {
 		Room room=null;
 		for(Room habitacion:rooms) {
@@ -188,13 +205,6 @@ public class Hospital implements Serializable {
 		
 	}
 	
-
-	// ==========================================================================
-	// ==========================================================================
-
-	/*
-	 * Metodos
-	 */
 
 	/*
 	 * Metodo totalCostosPorPaciente() es parte de Funcionalidad de

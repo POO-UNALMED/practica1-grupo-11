@@ -56,7 +56,7 @@ public class HistoriaClinica implements Serializable{
 	 */
 	
 	/*
-	 * M�todo totalCostos() parte de Funcionalidad de
+	 * Metodo totalCostos() parte de Funcionalidad de
 	 * "Consultar deudas de un paciente para ver si est� a paz y salvo". Accede a
 	 * los procedimientos que tiene asignada la HistoriaClinica de determinado
 	 * paciente y suma el total de los costos de cada procedimiento

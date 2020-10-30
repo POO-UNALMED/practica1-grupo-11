@@ -57,9 +57,14 @@ public class Administrador extends Persona {
 	public void setHospital(Hospital hospital) {
 		this.hospital = hospital;
 	}
+	
+	
+	
+	/*
+	 * Metodos:
+	 */
 
-	// =========================================================================
-	// =========================================================================
+
 
 	// Metodo que muestra la informacion basica del hospital, como su nombre, el
 	// nombre del administrador,
@@ -148,12 +153,8 @@ public class Administrador extends Persona {
 		}
 	}
 
-	// ==========================================================================
-	// ==========================================================================
 
-	/*
-	 * Metodos:
-	 */
+	
 
 	/*
 	 * Proporsiona informacion asociada a un paciente, su habitacion,

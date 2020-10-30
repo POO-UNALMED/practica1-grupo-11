@@ -182,7 +182,6 @@ public class Main {
 				}
 				break;
 
-			// corregir case 2 para verificar nulidad de retorno
 			case 2:
 				System.out.println();
 				System.out.println(
@@ -333,6 +332,7 @@ public class Main {
 
 	}
 
+	//metodo estatico que cierra el sistema de forma correcta
 	private static void salirDelsistema() {
 		System.out.println("Vuelva pronto");
 		Serializador.serializar();
